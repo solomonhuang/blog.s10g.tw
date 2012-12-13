@@ -1,0 +1,10 @@
+---
+layout: post
+title: 'Youtube頻道 thenewboston'
+date: 2010-10-8
+wordpress_id: 73
+permalink: /blogs/73
+comments: true
+---
+<a title="thenewboston - Youtube channel" href="http://www.youtube.com/user/thenewboston" target="_blank">thenewboston</a>一個有關於程式教學的頻道，有很多項目都是從最基礎的部分開始，也是我聽過最清楚的程式教學頻道。同時講者Bucky的英文用字也不難，而且很清楚。也可以當簡單的英聽練習，熟悉一些電腦相關的語句。底下的影片是Bucky感謝收到一個訂閱者送給他的禮物，禮物是一台價值4000美金的專業攝影機。
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="640" height="385" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube-nocookie.com/v/x7Ub7rsVzHs?fs=1&amp;hl=zh_TW" /><param name="allowfullscreen" value="true" /><embed type="application/x-shockwave-flash" width="640" height="385" src="http://www.youtube-nocookie.com/v/x7Ub7rsVzHs?fs=1&amp;hl=zh_TW" allowscriptaccess="always" allowfullscreen="true"></embed></object>

@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'AWS再次調降資料傳輸費率'
+date: 2011-6-30
+wordpress_id: 112
+permalink: /blogs/112
+comments: true
+---
+資料來源：<a href="http://aws.typepad.com/aws/2011/06/aws-lowers-its-pricing-again-free-inbound-data-transfer-and-lower-outbound-data-transfer-for-all-ser.html" target="_blank">AWS Lowers its Pricing Again! – No Inbound Data Transfer Fees and Lower Outbound Data Transfer for All Services including Amazon CloudFront</a>
+
+主要不收美西、美東及歐洲的資料傳入費用，其他的部分也都調降了。依照網頁的範例10TB in加上10TB out，比之前少支付52%的價錢。我比較期待EC2可以再降價。

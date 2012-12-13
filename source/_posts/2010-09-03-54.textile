@@ -1,0 +1,43 @@
+---
+layout: post
+title: 's3cmd與unicode相關的修改'
+date: 2010-9-3
+wordpress_id: 54
+permalink: /blogs/54
+comments: true
+---
+s3cmd: dry-run error while sync from s3 to local (<a href="http://github.com/solomonhuang/s3cmd-fork/commit/e3b3d09610bb64c6e097b43dff568a3c4d2d46d7">github</a>)
+<pre class="brush: diff">index f3009a4..3440a40 100755
+--- a/s3cmd
++++ b/s3cmd
+@@ -870,7 +870,7 @@ def cmd_sync_remote2local(args):
+                        for key in local_list:
+                                output(u"delete: %s" % local_list[key]['full_nam
+                for key in remote_list:
+-                       output(u"download: %s -&gt; %s" % (remote_list[key]['object
++                       output(u"download: %s -&gt; %s" % (remote_list[key]['object
+
+                warning(u"Exitting now because of --dry-run")
+                return{% endcodeblock %}
+s3cmd: Using unicode object on remote uri instead of str (<a href="http://github.com/solomonhuang/s3cmd-fork/commit/cbec76db3477e1bb81443c3c12be2fb4461261b9">github</a>)
+<pre class="brush: diff">index 3440a40..4d8d855 100755
+--- a/s3cmd
++++ b/s3cmd
+@@ -277,7 +277,7 @@ def fetch_remote_list(args, require_attribs = False, recursive = None):
+                                remote_list[key] = objectlist[key]
+        else:
+                for uri in remote_uris:
+-                       uri_str = str(uri)
++                       uri_str = unicode(uri)
+                        ## Wildcards used in remote URI?
+                        ## If yes we'll need a bucket listing...
+                        if uri_str.find('*') &gt; -1 or uri_str.find('?') &gt; -1:
+@@ -326,7 +326,7 @@ def cmd_object_put(args):
+        destination_base_uri = S3Uri(args.pop())
+        if destination_base_uri.type != 's3':
+                raise ParameterError("Destination must be S3Uri. Got: %s" % destination_base_uri)
+-       destination_base = str(destination_base_uri)
++       destination_base = unicode(destination_base_uri)
+
+        if len(args) == 0:
+                raise ParameterError("Nothing to upload. Expecting a local file or directory."){% endcodeblock %}

@@ -1,0 +1,22 @@
+---
+layout: post
+title: 'CentOS使用EPEL套件庫'
+date: 2010-11-25
+wordpress_id: 81
+permalink: /blogs/81
+comments: true
+---
+<a href="http://fedoraproject.org/wiki/EPEL" target="_blank">EPEL</a>是Extra Packages for Enterprise Linux的縮寫，提供RHEL/CentOS(還有其他的衍生發行版本)在原有套件庫所沒有的套件。
+
+EPEL主要來源是fedora project，整體的套件品質應該是可以相信的。
+
+使用EPEL的方式很簡單只要照著<a href="http://fedoraproject.org/wiki/EPEL/FAQ#howtouse" target="_blank">EPEL的說明</a>就可以了。
+<pre class="brush: bash">su -c \
+'rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm'{% endcodeblock %}
+之後就可以從EPEL直接安裝原本CentOS沒有的套件了，像是trac或是python2.6。
+
+EDIT:
+CentOS 6
+
+<pre class="brush: bash">su -c \
+'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm'{% endcodeblock %}

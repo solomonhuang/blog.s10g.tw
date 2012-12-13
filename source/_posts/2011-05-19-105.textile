@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'Sony Ericsson MW600配對備忘'
+date: 2011-5-19
+wordpress_id: 105
+permalink: /blogs/105
+comments: true
+---
+配對：關機的時候按住開關鍵五秒以上，直到出現配對指示。密碼為「0000」。
+
+清除記憶配對：以前面的方式進入配對模式之後，按住通話鍵跟開關鍵直到關機。會清除全部的配對資料。

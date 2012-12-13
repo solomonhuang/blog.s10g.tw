@@ -1,0 +1,31 @@
+---
+layout: post
+title: 'Thunderbird建立新的使用者設定檔'
+date: 2011-4-4
+wordpress_id: 103
+permalink: /blogs/103
+comments: true
+---
+本文簡介如何利用 Profile Manager 建立新使用者設定檔。
+
+<!--more-->
+
+第一，從原本的雷鳥連結複製一個新的並改名成 TH-profile
+
+<img class="aligncenter" title="複製連結" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-01.jpg" alt="" width="212" height="141" />
+
+第二，修改連結的內容。
+
+<img class="aligncenter" title="修改內容" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-02.jpg" alt="" width="429" height="311" />
+
+第三，加上參數 -ProfileManager，按下確定。
+
+<img class="aligncenter" title="加上參數" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-03.jpg" alt="" width="364" height="474" />第四，執行 TH-Profile，出現選取使用者設定檔視窗。點選「建立設定檔」。
+
+<img class="aligncenter" title="建立使用者設定檔" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-04.jpg" alt="" width="372" height="272" />第五，藉由建立設定檔精靈開始建立新的設定檔。
+
+<img class="aligncenter" title="建立使用者設定檔精靈" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-05.jpg" alt="" width="545" height="412" />第六，輸入新的設定檔名稱，按下完成。
+
+<img class="aligncenter" title="輸入設定檔名稱" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-06.jpg" alt="" width="546" height="419" />第七，再一次執行 TH-Profile，選擇新建立的設定檔並點擊「啟動 Thunderbird」。
+
+<img class="aligncenter" title="使用新的設定檔" src="http://data.s10g.tw/images/2011/20110404/th-profile/th-profile-07.jpg" alt="" width="371" height="266" />

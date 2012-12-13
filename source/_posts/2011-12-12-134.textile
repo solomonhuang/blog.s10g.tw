@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'FORK YOU'
+date: 2011-12-12
+wordpress_id: 134
+permalink: /blogs/134
+comments: true
+---
+OpenOffice被fork成LibreOffice。
+MySQL被fork成MariaDB。
+許多偉大的軟體專案都有被人fork的情況。
+
+現在我們也fork了GCIN。新的<a title="HIME-HIME INPUT METHOD EDITOR" href="https://github.com/caleb-/hime" target="_blank">HIME</a>誕生了。

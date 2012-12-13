@@ -1,0 +1,18 @@
+---
+layout: post
+title: 'Git的object'
+date: 2011-9-28
+wordpress_id: 126
+permalink: /blogs/126
+comments: true
+---
+看了<a href="http://book.git-scm.com/" target="_blank">Git Community Book</a>之後，才開始真正對git有比較正確的了解。開宗明義第一個重點，Git用SHA來表示全部的object。<!--more-->
+
+每個物件記錄了它的型態、大小與內容。型態分四種，blob、tree、commit與tag。
+<ul>
+	<li>blob: 存一般的檔案</li>
+	<li>tree: 可以當成目錄。記錄了一堆其他的trees或許還有blobs。就像是子目錄與檔案。</li>
+	<li>commit: 指向單一個tree。有一點像某個時間點上整個project的快照。</li>
+	<li>tag: 用來標記特別的commit。通常拿來指出某個commit。</li>
+</ul>
+所以這樣子就很容易了解git的操作了。簡單來說整個git的操作就是控制這些物件的關係。

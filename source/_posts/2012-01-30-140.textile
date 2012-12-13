@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'Cygwin下使用apt-cyg安裝程式'
+date: 2012-1-30
+wordpress_id: 140
+permalink: /blogs/140
+comments: true
+---
+前幾天忘了在哪邊看到的。<a title="apt-cyg" href="http://code.google.com/p/apt-cyg/" target="_blank">apt-cyg</a>可以很方便地安裝cygwin的套件而不用每次都去執行setup.exe。
+
+太簡單了，看了就會用。

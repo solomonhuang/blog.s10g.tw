@@ -1,0 +1,17 @@
+---
+layout: post
+title: '將YouTube的影片轉成mp3'
+date: 2010-11-1
+wordpress_id: 77
+permalink: /blogs/77
+comments: true
+---
+YouTube上的音樂，有許多老歌可以聽。常常把影片抓回來，不過其實主要也只是需要音樂的部分。ffmpeg可以將從YouTube抓回來的flv檔案轉換成MP3的格式。命令很簡單，只要一行。
+<pre class="brush: shell">ffmpeg -i "$FLV" -ab 128k -f mp3 "$MP3"{% endcodeblock %}
+<ul>
+	<li>$FLV就是抓回來flv的檔名</li>
+	<li>$MP3是輸出的檔名</li>
+	<li>-ab是bitrate，設成128k</li>
+	<li>-f是格式，直接設成mp3</li>
+</ul>
+執行結束就得到一個新的MP3檔案了。

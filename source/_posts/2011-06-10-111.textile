@@ -1,0 +1,11 @@
+---
+layout: post
+title: 'Changelog'
+date: 2011-6-10
+wordpress_id: 111
+permalink: /blogs/111
+comments: true
+---
+說實在看到那種"modify xxx files"的changelog真的很脫力。VCS已經告訴我們什麼檔案被修改了，changelog寫這個比寫"fix some bugs"好不到哪邊去。
+
+真想去說，加油好嗎！

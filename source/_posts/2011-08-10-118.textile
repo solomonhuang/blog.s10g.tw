@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'Linux下一般使用者開機執行程式'
+date: 2011-8-10
+wordpress_id: 118
+permalink: /blogs/118
+comments: true
+---
+可以用 crontab 來做到。
+
+根據 man page crontab(5)，
+<blockquote>@reboot        Run once, at startup.</blockquote>
+將 @reboot 取代原本的時間欄位就可以了。會在開機時執行，而不用等到登入後才會執行，也不需要去修改 rc.local。

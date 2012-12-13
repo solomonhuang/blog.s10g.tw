@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://blog.s10g.tw
+title: 所羅門筆記本
+subtitle: 寫寫東西
+author: Solomon Huang
 simple_search: http://google.com/search
 description:
 
