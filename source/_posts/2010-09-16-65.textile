@@ -7,7 +7,7 @@ permalink: /blogs/65
 comments: true
 ---
 之前為了很明瞭的明白cvs管理的檔案發生了什麼修改與變化。寫了一個script來處理cvs status的訊息。本script會濾掉沒有修改的檔案，會將沒有在cvs控管下的檔案標示出來。
-<pre class="brush: shell">#!/bin/bash
+{% codeblock %}#!/bin/bash
 TMPFILE="/tmp/cvsst-tmpfile-${USERNAME}-$(date +%s)"
 cvs status &gt;${TMPFILE} 2&gt;/dev/null
 cat ${TMPFILE} | grep -v ^\? | grep -v ^$ | grep -v ^=*=$ | \

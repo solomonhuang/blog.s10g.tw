@@ -9,7 +9,7 @@ comments: true
 在做遠端ssh備份的時候，常常在五分鐘的時候就發生"Corrupted MAC on input"的現象，而導致斷線。查了一下，只要把網卡的rx offload關掉就可以了。
 
 查詢網卡offload的設定：
-<pre class="brush: bash">ethtool -k eth0{% endcodeblock %}
+{% codeblock %}ethtool -k eth0{% endcodeblock %}
 關閉網卡rx offload(需要root權限)：
-<pre class="brush: bash">ethtool -K eth0 rx off{% endcodeblock %}
+{% codeblock %}ethtool -K eth0 rx off{% endcodeblock %}
 雖然在我的網卡上ethtool告訴我不知道這一個操作，不過很神奇的就沒發生錯誤了。

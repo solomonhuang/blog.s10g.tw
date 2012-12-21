@@ -7,7 +7,7 @@ permalink: /blogs/16
 comments: true
 ---
 使用以下命令
-<pre class="brush: text">fakeroot make-kpkg --append-to-version -s10g \
+{% codeblock %}fakeroot make-kpkg --append-to-version -s10g \
   --revision 2.6.35.3+1 buildpackage{% endcodeblock %}
 <ul>
 	<li>fakeroot: 使用 buildpackage 命令時需要在 fakeroot 下使用 make-kpkg。-r 參數無法用。</li>

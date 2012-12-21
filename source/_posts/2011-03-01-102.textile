@@ -11,7 +11,7 @@ comments: true
 被壓縮檔是 ubuntu-10.10-desktop-i386.iso，大小為694MB(726827008 bytes)。
 
 第一次測試，單純測試時間，指定參數全部相同為‘-c ubuntu-10.10-desktop-i386.iso &gt; /dev/null’。
-<pre class="brush: text">======== GZIP ========
+{% codeblock %}======== GZIP ========
 real	0m44.138s
 user	0m42.300s
 sys	0m0.576s
@@ -26,7 +26,7 @@ real	7m53.939s
 user	7m51.902s
 sys	0m1.436s{% endcodeblock %}
 第二次測試，主要紀錄壓縮檔大小，指定參數均為‘-c ubuntu-10.10-desktop-i386.iso &gt; u1010.iso.gz’
-<pre class="brush: text">======== GZIP ========
+{% codeblock %}======== GZIP ========
 real	0m44.551s
 user	0m42.279s
 sys	0m1.303s
@@ -47,7 +47,7 @@ sys	0m2.654s
 測試的script
 
 第一次：
-<pre class="brush: bash">#!/bin/sh
+{% codeblock %}#!/bin/sh
 echo ======== GZIP ========
 time gzip -c ubuntu-10.10-desktop-i386.iso &gt; /dev/null
 echo ======== BZIP2 ========
@@ -55,7 +55,7 @@ time bzip2 -c ubuntu-10.10-desktop-i386.iso &gt; /dev/null
 echo ======== XZ ========
 time xz -c ubuntu-10.10-desktop-i386.iso &gt; /dev/null{% endcodeblock %}
 第二次：
-<pre class="brush: bash">#!/bin/sh
+{% codeblock %}#!/bin/sh
 echo ======== GZIP ========
 time gzip -c ubuntu-10.10-desktop-i386.iso &gt; u1010.iso.gz
 ls -sh u1010.iso.gz

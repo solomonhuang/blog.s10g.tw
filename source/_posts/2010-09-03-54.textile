@@ -7,7 +7,7 @@ permalink: /blogs/54
 comments: true
 ---
 s3cmd: dry-run error while sync from s3 to local (<a href="http://github.com/solomonhuang/s3cmd-fork/commit/e3b3d09610bb64c6e097b43dff568a3c4d2d46d7">github</a>)
-<pre class="brush: diff">index f3009a4..3440a40 100755
+{% codeblock %}index f3009a4..3440a40 100755
 --- a/s3cmd
 +++ b/s3cmd
 @@ -870,7 +870,7 @@ def cmd_sync_remote2local(args):
@@ -20,7 +20,7 @@ s3cmd: dry-run error while sync from s3 to local (<a href="http://github.com/sol
                 warning(u"Exitting now because of --dry-run")
                 return{% endcodeblock %}
 s3cmd: Using unicode object on remote uri instead of str (<a href="http://github.com/solomonhuang/s3cmd-fork/commit/cbec76db3477e1bb81443c3c12be2fb4461261b9">github</a>)
-<pre class="brush: diff">index 3440a40..4d8d855 100755
+{% codeblock %}index 3440a40..4d8d855 100755
 --- a/s3cmd
 +++ b/s3cmd
 @@ -277,7 +277,7 @@ def fetch_remote_list(args, require_attribs = False, recursive = None):

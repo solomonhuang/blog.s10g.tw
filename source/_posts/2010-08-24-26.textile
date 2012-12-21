@@ -7,7 +7,7 @@ permalink: /blogs/26
 comments: true
 ---
 適用於系統上已有一套wine或是要同時測試不同版本的wine。
-<pre class="brush: bash">#!/usr/bin/env bash
+{% codeblock %}#!/usr/bin/env bash
 WINEDIR=/full/path/of/your/wine
 PATH=${WINEDIR}/bin:${PATH}
 

@@ -7,12 +7,12 @@ permalink: /blogs/98
 comments: true
 ---
 要在CentOS 5的環境底下安裝Debian，並使用chroot來進行後續的作業。第一件事就是要安裝debootstrap。原始CentOS的套件庫沒有debootstrap，所以要先<a href="http://blog.s10g.tw/2010/11/25/using-epel-in-centos/">使用EPEL的套件庫</a>。啟用EPEL之後再安裝debootstrap。
-<pre class="brush: bash">yum install debootstrap{% endcodeblock %}
+{% codeblock %}yum install debootstrap{% endcodeblock %}
 安裝完成之後，舊版的debootstrap沒有squeeze的腳本，而其實腳本也只是一個軟連結而已。所以再下指令：
-<pre class="brush: bash">cd /usr/share/debootstrap/scripts/
+{% codeblock %}cd /usr/share/debootstrap/scripts/
 ln -s sid squeeze{% endcodeblock %}
 將debian安裝到/srv/debian的目錄下
-<pre class="brush: bash">debootstrap --arch amd64 squeeze /srv/debian http://ftp.tw.debian.org/debian{% endcodeblock %}
+{% codeblock %}debootstrap --arch amd64 squeeze /srv/debian http://ftp.tw.debian.org/debian{% endcodeblock %}
 其中arch需要指定。安裝好之後，記得掛上/proc與/sys就可以了。
-<pre class="brush: bash">mount -o bind /proc /srv/debian/proc
+{% codeblock %}mount -o bind /proc /srv/debian/proc
 mount -o bind /sys /srv/debian/sys{% endcodeblock %}

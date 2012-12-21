@@ -7,7 +7,7 @@ permalink: /blogs/70
 comments: true
 ---
 from _13h
-<pre class="brush: c">void *malloc(size_t size)
+{% codeblock %}void *malloc(size_t size)
 {
     void *p = NULL;
     if(my_malloc == NULL)

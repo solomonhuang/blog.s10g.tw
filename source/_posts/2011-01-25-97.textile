@@ -7,7 +7,7 @@ permalink: /blogs/97
 comments: true
 ---
 重點是AuthBasicProvider與AuthzLDAPAuthoritative這兩個參數。
-<pre class="brush: text">&lt;Location /svn&gt;
+{% codeblock %}&lt;Location /svn&gt;
   DAV svn
   SVNParentPath /svn/repos
   AuthType Basic

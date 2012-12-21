@@ -34,7 +34,7 @@ comments: true
 設定Subversion
 
 編輯<span style="color: #ff0000;"><strong>/etc/httpd/conf.d/subversion.conf</strong></span>
-<pre class="brush: text">&lt;Location /svn&gt;
+{% codeblock %}&lt;Location /svn&gt;
   DAV svn
   SVNParentPath /svn/repos
   AuthType Basic
@@ -43,21 +43,21 @@ comments: true
   Require valid-user
 &lt;Location&gt;{% endcodeblock %}
 建立SVN目錄
-<pre class="brush: text"># mkdir -p /svn/repos{% endcodeblock %}
+{% codeblock %}# mkdir -p /svn/repos{% endcodeblock %}
 建立SVN/TRAC帳號
-<pre class="brush: text"># touch /svn/svn-auth-file
+{% codeblock %}# touch /svn/svn-auth-file
 # htpasswd -b /svn/svn-auth-file admin adminpassword
 # htpasswd -b /svn/svn-auth-file user01 user01password
 # htpasswd -b /svn/svn-auth-file user02 user02password{% endcodeblock %}
 建立SVN檔案庫
-<pre class="brush: text"># svnadmin create proj01{% endcodeblock %}
+{% codeblock %}# svnadmin create proj01{% endcodeblock %}
 變更目錄權限，提供httpd讀寫的權限
-<pre class="brush: text"># chown apache:apache /svn -R{% endcodeblock %}
+{% codeblock %}# chown apache:apache /svn -R{% endcodeblock %}
 設定啟動httpd
-<pre class="brush: text"># chkconfig httpd on
+{% codeblock %}# chkconfig httpd on
 # service httpd start{% endcodeblock %}
 停用防火牆與SELinux或是正確地設定
-<pre class="brush: text"># system-config-securitylevel{% endcodeblock %}
+{% codeblock %}# system-config-securitylevel{% endcodeblock %}
 使用瀏覽器開啟<span style="color: #ff0000;"><strong>http://&lt;server ip address&gt;/svn/proj01</strong></span>可以看到檔案庫內容就是成功了。
 
 設定Trac的部分就等下一篇文章。
