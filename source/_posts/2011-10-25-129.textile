@@ -11,6 +11,5 @@ comments: true
 {% codeblock %}
 # git archive example with linux git.
 git archive --format tar --prefix linux-2.6.25/ v2.6.25 | tar x -C ~/tmp/linux/
-
 {% endcodeblock %}
 
