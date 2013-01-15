@@ -1,0 +1,27 @@
+---
+layout: post
+title: "12306 ticket helper 猛擊 github"
+date: 2013-01-16 00:28
+comments: true
+categories: [github, ddos, event]
+---
+
+12306 ticket helper 是一個輔助在 12306.cn 定票的 plugin。
+
+這個 plugin 的程式碼放在 github 上。因為春運搶票，而導致 github 被廣大的
+購票用戶存取，進而影響 github 的穩定。
+
+Github 的員工還特地來開 [issue #16][issue16] 請作者協助處理。這種用戶量真的是太驚人了。
+完全不是一般用 octopress 架這種簡單 blog 可以比擬的。
+
+<!--more-->
+
+作者 [iccfish][iccfish] 有在 [issue #16][issue16] 提了主要原因。
+簡單來說就是 github 有流量限制，當達到的時候會回應 403 的 status code。
+而這反而造成 plugin 五秒後再去要一次，這麼一來就變成惡性循環了。
+
+所以結論就是 GFW 真的是要保護牆外的廣大世界人民。
+
+[iccfish]: https://github.com/iccfish
+[issue16]: https://github.com/iccfish/12306_ticket_helper/issues/16
+
