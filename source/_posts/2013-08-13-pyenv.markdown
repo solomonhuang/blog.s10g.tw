@@ -1,0 +1,12 @@
+---
+layout: post
+title: "pyenv"
+date: 2013-08-13 18:09
+comments: true
+categories: python, pyenv
+---
+
+[pyenv][1] 好用。相較於 pythonbrew 或是 pythonz 來說， pyenv 光可以自動切換環境這件事就讓人覺得很舒服了。
+
+[1]: https://github.com/yyuu/pyenv
+
