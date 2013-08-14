@@ -1,0 +1,18 @@
+---
+layout: post
+title: "SVN 回復修改"
+date: 2013-08-14 10:35
+comments: true
+categories: [svn]
+---
+
+svn 要回復已 commit 的修改很簡單。直接 merge backward diff 就可以了。
+
+```
+svn merge -r n:n-1 ^/trunk
+```
+
+參考 [stackoverflow: How do I return to an older version of our code in Subversion?][1] 與 [SVN redbook][2]
+
+[1]: http://stackoverflow.com/questions/814433/how-do-i-return-to-an-older-version-of-our-code-in-subversion
+[2]: http://svnbook.red-bean.com/en/1.2/svn.branchmerge.commonuses.html#svn.branchmerge.commonuses.undo
