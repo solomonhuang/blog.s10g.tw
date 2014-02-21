@@ -8,8 +8,8 @@ categories: [apt, preferences, debian]
 
 將 debian stable 加入 testing 但是只在需要安裝 testing 套件的時候才安裝。
 
-# 在 `/etc/apt/sources.list` 加入 `testing`
-# 在 `/etc/apt/preferences.d/` 建立 `testing` 檔案。內容如下
+1. 在 `/etc/apt/sources.list` 加入 `testing`
+2. 在 `/etc/apt/preferences.d/` 建立 `testing` 檔案。內容如下
 ```
 Package: *
 Pin: release a=testing
