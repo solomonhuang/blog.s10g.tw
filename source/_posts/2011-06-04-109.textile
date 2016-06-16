@@ -1,9 +1,0 @@
----
-layout: post
-title: '不應該忘記的日子'
-date: 2011-6-4
-wordpress_id: 109
-permalink: /blogs/109
-comments: true
----
-只是為了留下一個日期。
