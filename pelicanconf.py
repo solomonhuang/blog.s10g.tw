@@ -39,3 +39,9 @@ DEFAULT_PAGINATION = 10
 ARTICLE_URL = '{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
+STATIC_PATHS = ['images', 'extra/CNAME']
+
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+}
+
