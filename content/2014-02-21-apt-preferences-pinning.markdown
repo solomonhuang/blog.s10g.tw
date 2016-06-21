@@ -3,7 +3,8 @@ layout: post
 title: "apt preferences pinning"
 date: 2014-02-21 15:10:26 +0800
 comments: true
-categories: [apt, preferences, debian]
+category: note
+tags: apt, preferences, debian
 ---
 
 將 debian stable 加入 testing 但是只在需要安裝 testing 套件的時候才安裝。

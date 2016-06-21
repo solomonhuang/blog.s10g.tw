@@ -3,7 +3,8 @@ layout: post
 title: "Redmine 升級與更換資料庫"
 date: 2013-05-14 20:25
 comments: true
-categories: [redmine, ruby, sysadmin]
+category: note
+tags: redmine, ruby, sysadmin
 ---
 
 最近要把 Redmine 從 1.1.0 升級到最新的 2.3.1。附帶將資料庫從 MySQL 換成 PostgreSQL。跑去了 [serverfault][1]

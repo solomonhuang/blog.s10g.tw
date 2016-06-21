@@ -3,7 +3,8 @@ layout: post
 title: "Clear putty cache"
 date: 2013-03-28 16:42
 comments: true
-categories: [putty, windows]
+category: note
+tags: putty, windows
 ---
 
 PuTTY 的 ssh 連線可以把 host key cache 起來。

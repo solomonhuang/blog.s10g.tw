@@ -4,7 +4,8 @@ title: "國泰世華的 android app"
 date: 2013-01-14 19:11
 slug: cathay-bank-android-app
 comments: true
-categories: [android, bank]
+category: note
+tags: android, bank
 ---
 
 國泰世華的 android app 還不錯，不過個人對於為了讓 icon 排到

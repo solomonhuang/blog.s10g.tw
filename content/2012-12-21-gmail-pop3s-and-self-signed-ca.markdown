@@ -4,7 +4,8 @@ title: "GMail 不支援自行簽署的憑證"
 date: 2012-12-21 11:10
 slug: gmail-pop3s-and-self-signed-ca
 comments: true
-categories: [gmail, pop3, ssl]
+category: note
+tags: gmail, pop3, ssl
 ---
 
 從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。

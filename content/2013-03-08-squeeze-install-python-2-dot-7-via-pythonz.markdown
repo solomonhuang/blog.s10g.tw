@@ -3,7 +3,8 @@ layout: post
 title: "Debian Squeeze install python 2.7 via pythonz"
 date: 2013-03-08 16:05
 comments: true
-categories: [debian, squeeze, python]
+category: note
+tags: debian, squeeze, python
 ---
 
 要配合 vitrualenv 有幾個重點：

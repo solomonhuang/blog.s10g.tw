@@ -3,7 +3,8 @@ layout: post
 title: "Line 合併 whoscall 並開放專業版功能"
 date: 2014-01-07 15:39:55 +0800
 comments: true
-categories: [line, whoscall, apps]
+category: note
+tags: line, whoscall, apps
 ---
 
 Whoscall 在加入 Line 母公司之後開放了原本專業版的功能。對於全體使用者來說是一件很好的事情，但是對一開始付費支持的使用者來講有一點像是付出的感情收不回來一樣。支持原本的終生專業版，到現在沒有感受到對早期付費使用者的重視。

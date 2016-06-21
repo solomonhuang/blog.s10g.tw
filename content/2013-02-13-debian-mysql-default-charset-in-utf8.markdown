@@ -4,7 +4,8 @@ title: "MySQL 設定 utf8 為預設 charset"
 date: 2013-02-13 23:41
 slug: debian-mysql-default-charset-in-utf8
 comments: true
-categories: [mysql, utf8, utf8mb4, unicode]
+category: note
+tags: mysql, utf8, utf8mb4, unicode
 ---
 
 因為 debian 預設還是 latin1 所以找了一下如何設定。有一種設定在 5.5.x(不確定哪一版開始) 之後會讓 mysqld 開不起來。

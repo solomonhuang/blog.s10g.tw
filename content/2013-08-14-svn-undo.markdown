@@ -3,7 +3,8 @@ layout: post
 title: "SVN 回復修改"
 date: 2013-08-14 10:35
 comments: true
-categories: [svn]
+category: note
+tags: svn
 ---
 
 svn 要回復已 commit 的修改很簡單。直接 merge backward diff 就可以了。

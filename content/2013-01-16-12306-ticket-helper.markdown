@@ -4,7 +4,8 @@ title: "12306 ticket helper 猛擊 github"
 date: 2013-01-16 00:28
 slug: 12306-ticket-helper
 comments: true
-categories: [github, ddos, event]
+category: note
+tags: github, ddos, event
 ---
 
 12306 ticket helper 是一個輔助在 12306.cn 定票的 plugin。
