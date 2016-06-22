@@ -1,0 +1,24 @@
+title: TRex
+date: 2016-06-22 23:00:00 +08:00
+category: note
+tags: trex, linux, tool
+
+[TRex](https://trex-tgn.cisco.com "TRex") 是一個封包產生軟體。底層使用 [DPDK](http://dpdk.org/)。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。
+
+TRex 可以裝在 x86 的設備上，希望可以在自動化測試上有所幫助。
+
+從 [手冊 (pdf)](https://trex-tgn.cisco.com/trex/doc/trex_book.pdf) 看來的資訊：
+
+* 產生並分析 L4-L7 的封包
+* 基於實際流量的模版來產生流量
+* 虛擬網卡也可以跑
+
+硬體現在沒有什麼特別的限制，但是未來不一定。
+
+> A high-end UCS platform is not required for operating TRex in its current
+> version, but may be required for future versions.
+
+網卡的支援很少，支援的卡簡單查了一下都是一萬台幣起跳。可以用 ESXi 的虛擬網卡讓不支援的網卡可以使用。
+
+目前看起來也許用 iperf3 會比較簡單。
+
