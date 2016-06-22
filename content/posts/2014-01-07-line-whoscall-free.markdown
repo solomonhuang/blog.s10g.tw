@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Line 合併 whoscall 並開放專業版功能"
+title: Line 合併 whoscall 並開放專業版功能
 date: 2014-01-07 15:39:55 +0800
 comments: true
 category: note

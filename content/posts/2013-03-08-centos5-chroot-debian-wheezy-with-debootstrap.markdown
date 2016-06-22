@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CentOS 5 使用 debootstrap 安裝 Debian Wheezy"
+title: CentOS 5 使用 debootstrap 安裝 Debian Wheezy
 date: 2013-03-08 11:47
 comments: true
 category: note

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "gitlab cannot locate ruby with rvm"
+title: gitlab cannot locate ruby with rvm
 date: 2013-10-25 11:32
 comments: true
 category: note

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Clear putty cache"
+title: Clear putty cache
 date: 2013-03-28 16:42
 comments: true
 category: note

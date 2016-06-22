@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "apt preferences pinning"
+title: apt preferences pinning
 date: 2014-02-21 15:10:26 +0800
 comments: true
 category: note

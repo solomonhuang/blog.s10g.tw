@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GMail 不支援自行簽署的憑證"
+title: GMail 不支援自行簽署的憑證
 date: 2012-12-21 11:10
 slug: gmail-pop3s-and-self-signed-ca
 comments: true

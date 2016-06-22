@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Django setting 設定相對路徑"
+title: Django setting 設定相對路徑
 date: 2013-08-14 14:12
 comments: true
 category: note

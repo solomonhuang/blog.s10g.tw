@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "pyenv"
+title: pyenv
 date: 2013-08-13 18:09
 comments: true
 category: note

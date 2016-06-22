@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "12306 ticket helper 猛擊 github"
+title: 12306 ticket helper 猛擊 github
 date: 2013-01-16 00:28
 slug: 12306-ticket-helper
 comments: true

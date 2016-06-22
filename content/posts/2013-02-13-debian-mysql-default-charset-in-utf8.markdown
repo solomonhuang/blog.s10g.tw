@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MySQL 設定 utf8 為預設 charset"
+title: MySQL 設定 utf8 為預設 charset
 date: 2013-02-13 23:41
 slug: debian-mysql-default-charset-in-utf8
 comments: true

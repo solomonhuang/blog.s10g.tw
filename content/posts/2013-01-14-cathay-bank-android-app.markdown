@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "國泰世華的 android app"
+title: 國泰世華的 android app
 date: 2013-01-14 19:11
 slug: cathay-bank-android-app
 comments: true

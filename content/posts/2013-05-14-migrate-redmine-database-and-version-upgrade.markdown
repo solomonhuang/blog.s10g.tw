@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Redmine 升級與更換資料庫"
+title: Redmine 升級與更換資料庫
 date: 2013-05-14 20:25
 comments: true
 category: note
