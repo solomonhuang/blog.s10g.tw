@@ -1,0 +1,14 @@
+title: CI Skip build
+date: 2016-06-27 15:37:00 +08:00
+category: note
+tags: ci, automation, sysop
+
+
+gitlab-ci, travis-ci, circle-ci 跟 jenkins 都支援 `[ci skip]` 來跳過 commit build。
+
+```
+Your commit messages [ci skip]
+```
+
+其中 jenkins 要裝 plugin。
+
