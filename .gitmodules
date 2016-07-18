@@ -1,3 +1,6 @@
 [submodule "themes/simplegrey"]
 	path = themes/simplegrey
 	url = https://github.com/solomonhuang/pelican-simplegrey.git
+[submodule "themes/flex"]
+	path = themes/flex
+	url = git@github.com:solomonhuang/Flex.git

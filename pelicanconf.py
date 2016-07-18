@@ -5,18 +5,22 @@ from __future__ import unicode_literals
 AUTHOR = 'Solomon Huang'
 SITENAME = '所羅門筆記本'
 SITEURL = ''
+SITELOGO = 'https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200'
 
 PATH = 'content'
 PAGE_PATHS = ['pages']
 ARTICLE_PATHS = ['posts']
 ARTICLE_EXCLUDES = ['drafts']
 
+MAIN_MENU = True
+
 
 TIMEZONE = 'Asia/Taipei'
 
 DEFAULT_LANG = 'zh'
 HTML_LANG = 'zh'
-THEME = 'themes/simplegrey'
+THEME = 'themes/flex'
+OG_LOCALE = 'zh_TW'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -26,15 +30,17 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = ()
+#LINKS = ()
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
          ('Jinja2', 'http://jinja.pocoo.org/'))
 
 # Social widget
-SOCIAL = ()
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
+SOCIAL = (('github', 'https://github.com/solomonhuang/'),
+          ('twitter', 'https://twitter.com/solomonhuang/'),
+          ('linkedin', 'https://tw.linkedin.com/in/solomon-huang-4074b356'))
 
 DEFAULT_PAGINATION = 10
 
