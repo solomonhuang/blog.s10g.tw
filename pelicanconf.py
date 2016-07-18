@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Solomon Huang'
-SITENAME = '所羅門筆記本'
+SITENAME = 'Solomon\'s Notebook'
 SITEURL = ''
 SITELOGO = 'https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200'
 
@@ -31,9 +31,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 #LINKS = ()
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'))
+LINKS = (('Hide My Ass!', 'https://goo.gl/VO3IuK'),)
 
 # Social widget
 #SOCIAL = (('You can add links in your config file', '#'),
