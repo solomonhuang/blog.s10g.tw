@@ -31,7 +31,7 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 #LINKS = ()
-LINKS = (('Hide My Ass!', 'https://goo.gl/VO3IuK'),)
+LINKS = (('多國超快 VPN', 'https://goo.gl/VO3IuK'),)
 
 # Social widget
 #SOCIAL = (('You can add links in your config file', '#'),
