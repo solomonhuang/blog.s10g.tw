@@ -8,9 +8,14 @@ tags: docker, jenkins
 
 ### 安裝 jenkins
 
-照著 jenkins 自己的[正式文件](https://github.com/jenkinsci/docker/blob/master/README.md)來做。這邊就不寫了。
+照著 jenkins 自己的[正式文件](https://github.com/jenkinsci/docker/blob/master/README.md)來做。
 
-我的選擇是建一個 jenkins 專用的 volume image。run jenkins container 的時候再掛上來。這樣子的好處是不會看到亂亂的目錄，雖然說實際上還是存在系統上。但是我就不用額外指定了。
+```
+docker create -v /var/jenkins_home --name jenkins_data jenkinsci/jenkins
+docker run --volumes-from jenkins_data --name jenkins_container --restart=always -d -p 8080:8080 -p 50000:50000 jenkinsci/jenkins
+```
+
+我的選擇是建一個 jenkins 專用的 volume container。run jenkins container 的時候再掛上來。這樣子的好處是不會看到亂亂的目錄，雖然說實際上還是存在系統上。但是我就不用額外指定了。
 
 ### 自動更新 jenkins
 
