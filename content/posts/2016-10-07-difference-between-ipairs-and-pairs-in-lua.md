@@ -4,8 +4,6 @@ date: 2016-10-07T11:31:55T+0800
 category: note
 tags: lua
 
-# Lua 中的 `ipairs` 與 `pairs` 的差異。
-
 [PIL 7.3 – Stateless Iterators](https://www.lua.org/pil/7.3.html) 中有提到
 
 > ipairs, which iterates over all elements in an array, as illustrated next
