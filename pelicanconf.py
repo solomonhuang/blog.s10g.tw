@@ -15,11 +15,11 @@ ARTICLE_EXCLUDES = ['drafts']
 
 try:
     if os.environ['CI'] == 'true':
-        PLUGIN_PATH = ['../pelican-plugins']
+        PLUGIN_PATHS = [os.environ['HOME'] + '/pelican-plugins']
     else:
-        PLUGIN_PATH = ['../pelican-plugins']
+        PLUGIN_PATHS = ['../pelican-plugins']
 except KeyError:
-    PLUGIN_PATH = ['../pelican-plugins']
+    PLUGIN_PATHS = ['../pelican-plugins']
 
 PLUGINS = ['liquid_tags.graphviz']
 
