@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
 
 AUTHOR = 'Solomon Huang'
 SITENAME = 'Solomon\'s Notebook'
@@ -11,6 +12,16 @@ PATH = 'content'
 PAGE_PATHS = ['pages']
 ARTICLE_PATHS = ['posts']
 ARTICLE_EXCLUDES = ['drafts']
+
+try:
+    if os.environ['CI'] == 'true':
+        PLUGIN_PATH = ['../pelican-plugins']
+    else:
+        PLUGIN_PATH = ['../pelican-plugins']
+except KeyError:
+    PLUGIN_PATH = ['../pelican-plugins']
+
+PLUGINS = ['liquid_tags.graphviz']
 
 MAIN_MENU = True
 

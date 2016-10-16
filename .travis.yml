@@ -10,6 +10,9 @@ branches:
   only:  
   - master
 
+before_install:
+  - git clone -b liquid_tags-graphviz https://github.com/solomonhuang/pelican-plugins.git $HOME/pelican-plugins || (cd $HOME/pelican-plugins && git pull)
+
 install:  
   - pip install -r requirements.txt
 
