@@ -21,7 +21,7 @@ try:
 except KeyError:
     PLUGIN_PATHS = ['../pelican-plugins']
 
-PLUGINS = ['liquid_tags.graphviz']
+PLUGINS = ['liquid_tags.graphviz', 'sitemap']
 
 MAIN_MENU = True
 
