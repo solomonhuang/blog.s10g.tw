@@ -24,6 +24,9 @@ except KeyError:
 PLUGINS = ['liquid_tags.graphviz', 'sitemap']
 
 MAIN_MENU = True
+SITEMAP = {
+    'format': 'xml'
+}
 
 
 TIMEZONE = 'Asia/Taipei'
