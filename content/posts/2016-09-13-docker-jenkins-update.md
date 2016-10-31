@@ -11,6 +11,7 @@ tags: docker, jenkins
 照著 jenkins 自己的[正式文件](https://github.com/jenkinsci/docker/blob/master/README.md)來做。
 
 ```
+:::bash
 docker create -v /var/jenkins_home --name jenkins_data jenkinsci/jenkins
 docker run --volumes-from jenkins_data --name jenkins_container --restart=always -d -p 8080:8080 -p 50000:50000 jenkinsci/jenkins
 ```
@@ -22,6 +23,7 @@ docker run --volumes-from jenkins_data --name jenkins_container --restart=always
 重點只是要紀錄一下我自己用的 script。
 
 ```
+:::bash
 #!/bin/bash
 
 docker pull jenkinsci/jenkins

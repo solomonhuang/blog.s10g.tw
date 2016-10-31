@@ -9,6 +9,7 @@ Linux Kernel 文件 [binfmt_misc.txt](https://www.kernel.org/doc/Documentation/b
 ### 第一步掛載 binfmt_misc
 
 ```
+:::bash
 mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc 
 ```
 
@@ -31,5 +32,6 @@ mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
 範例 lua 用 luac 編過的 binary file
 
 ```
+:::bash
 echo ':luac:M:0:\x1b\x4c\x75\x61::/usr/bin/lua:' > /proc/sys/fs/binfmt_misc/register
 ```

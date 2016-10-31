@@ -7,6 +7,7 @@ tags: lua
 之前踩到一個坑，因為沒注意到指定 array table 中的物件時是 reference 到原有物件，所以整個 table 中的東西都長得一樣，而且還牽一髮動全身。解決方式就是複製生出新的物件。
 
 ```
+:::lua
 function deepcopy(orig)
 	local orig_type = type(orig)
 	local copy

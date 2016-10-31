@@ -18,6 +18,7 @@ tags: lua, utf8
 ### utf8len
 
 ```
+:::lua
 function utf8len(s)
     _, len = string.gsub(s, '([\0-\x7F\xC2-\xF4][\x80-\xBF]*)', '%1')
     return len
@@ -27,6 +28,7 @@ end
 ### utf8strncpy
 
 ```
+:::lua
 function utf8strncpy(s, len)
     local result = ''
     local count = 0
@@ -44,6 +46,7 @@ end
 ### 範例
 
 ```
+:::lua
 a = '天天開心一二三四abcd'
 
 print('length: #:' .. #a)

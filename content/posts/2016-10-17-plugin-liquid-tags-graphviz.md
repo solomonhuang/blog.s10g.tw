@@ -8,6 +8,7 @@ tags: graphviz, pelican, python
 為了之後要畫圖方便，加裝了 [ligquid tags](https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags) 的 plugin。方法很簡單只要加入 `PLUGIN_PATHS` 與 `PLUGIN` 即可。
 
 ```
+:::python
 PLUGIN_PATHS = ['../pelican-plugins']
 PLUGINS = ['liquid_tags.graphviz']
 ```
@@ -42,6 +43,7 @@ PLUGINS = ['liquid_tags.graphviz']
 底下是 python 3 的執行結果，只要加了 `decode('utf-8')` 就可以了。
 
 ```
+:::python
 >>> print(base64.b64encode(b'\01'))
 b'AQ=='
 >>> print(base64.b64encode(b'\01').decode('utf-8'))
