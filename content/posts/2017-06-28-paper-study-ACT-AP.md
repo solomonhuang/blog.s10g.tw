@@ -10,11 +10,11 @@ tags: infocom, wireless, wifi, multicast
 * 論文題目：ACT-AP:ACTivator Access Point for Multicast over WLAN
 * 作者：Gyujin Lee, Yeonchul Shin, Jonghoe Koo, Junyoung Choi, and Sunghyun Choi
 
-### 問題簡述
+# 問題簡述
 
 大多數的 WiFi client 為了省電會進到 power saving mode(PSM)，在 PSM 情況下 client 往往會收不到 AP 發射出來的 multicast 封包。作者設計了 ACT-AP 讓 client 不會因為 PWM 而沒收到 multicast 封包。
 
-### 主要問題
+# 主要問題
 
 一般市售 WiFi client 有三種情況會造成 PDR (packet deliver rate) 下降。
 
@@ -27,7 +27,7 @@ tags: infocom, wireless, wifi, multicast
 
 ![undesired functions](/images/2017-06-28-ACT-AP-undesired-functions.png "undesired functions")
 
-### 解決方案
+# 解決方案
 
 在 AP 端發 ACT-packet(1 byte 的 data)，讓 client 端保持清醒。
 
