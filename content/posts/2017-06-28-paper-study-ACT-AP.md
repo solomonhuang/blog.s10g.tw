@@ -25,13 +25,13 @@ tags: infocom, wireless, wifi, multicast
 * Inappropriate wakeup
     - 因為送了 NULL-DATA(PM bit 0) 之後沒多久，就又送了 NULL-DATA(PM bit 1)，進入 PSM。
 
-![undesired functions](images/2017-06-28-ACT-AP-undesired-functions.png "undesired functions")
+![undesired functions](/images/2017-06-28-ACT-AP-undesired-functions.png "undesired functions")
 
 ### 解決方案
 
 在 AP 端發 ACT-packet(1 byte 的 data)，讓 client 端保持清醒。
 
-![ACT-AP desgin](images/2017-06-28-ACT-AP-design.png "ACT-AP desgin")
+![ACT-AP desgin](/images/2017-06-28-ACT-AP-design.png "ACT-AP desgin")
 
 圖中的重點是 `ACT-packet Interval Controller`。作者的演算法會去逼近 client 的 tail time(沒收到封包進入PWM的時間)，在 tail time 結束前對 client 發 ACT-packet，所以 client 就可以醒著接收 multicast 封包了。
 
