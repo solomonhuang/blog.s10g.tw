@@ -7,7 +7,7 @@ tags: infocom, wireless, wifi, multicast
 
 這篇 INFOCOM 2017 的論文主要目的是只修改 AP 的軟體而不修改 client 端的運作前提下，讓 multicast 封包的送達率提高。
 
-* 論文題目：ACT-AP:ACTivator Access Point for Multicast over WLAN
+* 論文題目：ACT-AP: ACTivator Access Point for Multicast over WLAN
 * 作者：Gyujin Lee, Yeonchul Shin, Jonghoe Koo, Junyoung Choi, and Sunghyun Choi
 
 # 問題簡述
