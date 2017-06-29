@@ -6,7 +6,7 @@ tags: infocom, wireless, protocol
 
 這一篇 INFOCOM 2017 的論文提出的 protocol 是為了改善低功耗產品 (如：ZigBee) 中，同時要把 data 回傳給同一個 node 的情況下，減少碰撞，減少 radio-on time。另外就是多個 node 要把自己的資料傳遞給其他 node，同時也是要減少碰撞與 radio-on time。
 
-* 論文題目：Design and Application of a Many-to-OneCommunication Protocol
+* 論文題目：Design and Application of a Many-to-One Communication Protocol
 * 作者：Sudipta Saha, Mun Choon Chan
 
 直接看圖講重點
