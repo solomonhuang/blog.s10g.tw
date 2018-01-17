@@ -18,6 +18,3 @@ tags: cscope, graphviz, dot,
 
 ![add_del_if](/images/2018-01-09-linux-4.14.12-add_del_if.png "add_del_if")
 
-### 查 linux-4.14.12 的 nr_processes
-
-![nr_processes](/images/2018-01-09-linux-4.14.12-nr_processes.png "nr_processes")
