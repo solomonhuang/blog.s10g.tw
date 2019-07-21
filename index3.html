@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    <meta name="author" content="Solomon Huang" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Solomon's Notebook"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://tw.linkedin.com/in/solomon-huang-4074b356" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/06/lua-deep-copy/#lua-deep-copy">lua 複製物件</a></h2>
+    <p>
+          Posted on Thu 06 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/lua/">lua</a>
+    </p>
+  </header>
+  <div>
+      <p>之前踩到一個坑，因為沒注意到指定 array table 中的物件時是 reference 到原有物件，所以整個 table 中的東西都長得一樣，而且還牽一髮動全身。解決方式就是複製生出新的物件。</p>
+<div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">orig_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">copy</span>
+    <span class="kr">if</span> <span class="n">orig_type</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span> <span class="kr">then</span>
+        <span class="n">copy</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="kr">for</span> <span class="n">orig_key</span><span class="p">,</span> <span class="n">orig_value</span> <span class="kr">in</span> <span class="nb">next</span><span class="p">,</span> <span class="n">orig</span><span class="p">,</span> <span class="kc">nil</span> <span class="kr">do</span>
+            <span class="n">copy</span><span class="p">[</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">orig_key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">orig_value</span><span class="p">)</span>
+        <span class="kr">end</span>
+        <span class="nb">setmetatable</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="nb">getmetatable</span><span class="p">(</span><span class="n">orig</span><span class="p">)))</span>
+    <span class="kr">else</span> <span class="c1">-- number, string, boolean, etc …</span></pre></div>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/06/lua-deep-copy/#lua-deep-copy">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/05/podcast/#podcast">聽哪些 podcast</a></h2>
+    <p>
+          Posted on Wed 05 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/podcast/">podcast</a>
+    </p>
+  </header>
+  <div>
+      <p>跟朋友聊天聊到我開車上下班的時候都聽 podcast，他就問我都聽哪些節目。整理一下聊到的內容。</p>
+<h2>中文</h2>
+<p>中文的大部分比較偏休閒但還有少許知識性。目前沒有聽到台灣的節目，以前有聽劉必榮在 <a href="https://tzangms.com/the-record-of-myaudiocast/">MyAudioCast(已結束)</a> 的節目。</p>
+<ul>
+<li><a href="https://ipn.li/kernelpanic/">內核恐慌</a><ul>
+<li>IPN 旗下。一些技術類的閒談，更新時間不固定。</li>
+<li>如果要從這個節目得到新資訊就太慢了，當成同事閒聊就好。</li>
+<li>主播是兩位業內工程師。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/taiyilaile/">太醫來了</a><ul>
+<li>IPN 旗下。醫生談話類節目，接近每週更新。近期不穩定。</li>
+<li>聊一些中國大陸的醫療事件與現象，也有一些醫學常識。</li>
+<li>主播是兩位醫生。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/weizhidao/">味之道</a><ul>
+<li>IPN 旗下。美食類節目。一週一檔新節目。</li>
+<li>聊各種食物、餐廰、主廚還有廚藝學校。我喜歡女主持人席妙雅的聲音。</li>
+<li>主播是餐飲工作相關人士。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/bowuzhi/">博物志</a><ul>
+<li>IPN 旗下。聊博物館、展覽與建築。每月兩至三檔新節目。</li>
+<li>主播是念博物館學的，另一位常駐的是建築師。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/xuanmei/">選美</a><ul>
+<li>IPN 旗下。美國選舉觀察 …</li></ul></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/05/podcast/#podcast">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/24/dropbox-password/#dropbox-password">dropbox 保存密碼的安全措施筆記</a></h2>
+    <p>
+          Posted on Sat 24 September 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/dropbox/">dropbox</a>,              <a href="https://blog.s10g.tw/tag/security/">security</a>,              <a href="https://blog.s10g.tw/tag/password/">password</a>
+    </p>
+  </header>
+  <div>
+      <p>Dropbox 寫了一篇<a href="https://blogs.dropbox.com/tech/2016/09/how-dropbox-securely-stores-your-passwords/">文章</a>來告訴大家他們如何安全地保存用戶的密碼。我認為蠻有趣的，有一些是我沒有接觸過的。</p>
+<h1>保存密碼的方式</h1>
+<p>簡單用一行來寫</p>
+<div class="highlight"><pre><span></span><span class="n">AES256</span><span class="p">(</span><span class="n">bcrypt</span><span class="p">(</span><span class="n">SHA512</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)))</span>
+</pre></div>
+
+
+<ul>
+<li>AES256 加密用的是另外存的金鑰 (global pepper)，每個用戶都一樣。</li>
+<li>bcrypt 做 hash 的 salt 是每個使用者分開的，強度是 10<ul>
+<li>這是引起我細讀的地方</li>
+</ul>
+</li>
+</ul>
+<h1>bcrypt 是什麼</h1>
+<p><a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>是基於<a href="https://en.wikipedia.org/wiki/Blowfish_(cipher)">Blowfish</a>所發展出來的 hash function。因為有 salt 的關係，所以可以對抗 rainbow table 的攻擊。</p>
+<p>同時，bcrypt 的 cost (上面寫的強度)會以 2 的 cost …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/24/dropbox-password/#dropbox-password">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/13/docker-jenkins-update/#docker-jenkins-update">docker 更新 jenkins</a></h2>
+    <p>
+          Posted on Tue 13 September 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/docker/">docker</a>,              <a href="https://blog.s10g.tw/tag/jenkins/">jenkins</a>
+    </p>
+  </header>
+  <div>
+      <p>因為自己家的 jenkins 是用 docker 裝的，紀錄一下自動更新 weekly 版本的方式。</p>
+<h3>安裝 jenkins</h3>
+<p>照著 jenkins 自己的<a href="https://github.com/jenkinsci/docker/blob/master/README.md">正式文件</a>來做。</p>
+<div class="highlight"><pre><span></span>docker create -v /var/jenkins_home --name jenkins_data jenkinsci/jenkins
+docker run --volumes-from jenkins_data --name jenkins_container --restart<span class="o">=</span>always -d -p <span class="m">8080</span>:8080 -p <span class="m">50000</span>:50000 jenkinsci/jenkins
+</pre></div>
+
+
+<p>我的選擇是建一個 jenkins 專用的 volume container。run jenkins container 的時候再掛上來 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/13/docker-jenkins-update/#docker-jenkins-update">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/09/start-programming/#start-programming">如何轉換跑道去寫程式</a></h2>
+    <p>
+          Posted on Fri 09 September 2016 in <a href="https://blog.s10g.tw/category/ama/">ama</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/programming/">programming</a>
+    </p>
+  </header>
+  <div>
+      <p>因為 <a href="/posts/2016/09/08/cs-graduate-school/">準備資工所考試的心得</a> 貼在 PTT 的研究所板(graduate) 然後就被問如何轉換跑道去寫程式的。其實我的答案就只有一個</p>
+<h1>怎麼開始的</h1>
+<ul>
+<li>小時候在小叔叔的 APPLE II 前用 BASIC 寫出九九乘法表，當時候還先把程式碼寫在習作簿上面之後，再一個字一個字打進去。</li>
+<li>為了玩電動，去書店看書背 arj 指令，然後回家解壓縮。找資料改 <code>CONFIG.SYS</code> 及 <code>AUTOEXEC.BAT</code>，來讓記憶體可以玩遊戲還可以多重開機來選不同遊戲！</li>
+<li>為了修改遊戲，在使用遊戲修改大師的時候學會了十進制與十六進制的轉換，小時候一直不能理解明明十進制的 <code>999</code> 在十六進制下明明是 <code>0x3E7</code>，但是遊戲修大師就是要填 <code>E7 03</code>。一直到後來學到 endian 才明白真正的原因。</li>
+<li>為了找資料，學會了 modem 撥接上 dial-up BBS。</li>
+<li>為了玩 MUD，買了當時有名的黑皮書學安裝 …</li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/09/start-programming/#start-programming">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/08/cs-graduate-school/#cs-graduate-school">準備資工在職專班考試</a></h2>
+    <p>
+          Posted on Thu 08 September 2016 in <a href="https://blog.s10g.tw/category/graduate-school/">graduate school</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/nctu/">nctu</a>,              <a href="https://blog.s10g.tw/tag/ncu/">ncu</a>,              <a href="https://blog.s10g.tw/tag/nccu/">nccu</a>,              <a href="https://blog.s10g.tw/tag/yzu/">yzu</a>
+    </p>
+  </header>
+  <div>
+      <p>從 2014 年底決定要考資工在職專班開始到現在要開學也已經過了一年多，記錄一下自己當初準備的方向。同時也期許自己在這樣子忙碌的生活中可以達成目標。</p>
+<h3>結果</h3>
+<p>我總共報了四間學校，交大資工、中央資工、政大資管及元智資工。台大資工因為上課時間無法配合，就沒有花錢去報名了。</p>
+<ul>
+<li>交大：直接正取，無需口試。</li>
+<li>中央：正取，無口試。</li>
+<li>政大：正取，有口試。</li>
+<li>元智：正取，只有書面審查。</li>
+</ul>
+<h3>背景</h3>
+<p>我大學本科是學心理的。因為自身的興趣在畢業後找了一個新創公司上班。寫程式解決問題的工作一做就做了十年了。 心中還是一直想要進入研究所完成碩士學業。</p>
+<p>工作內容是無線網路設備嵌入式系統為主的軟體開發，做過 kernel 的模組及 wireless driver，設備中 user mode 的 各種程式 (SNMP agent, device control flow, configuration system, etc.)、使用者介面 (CLI …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/08/cs-graduate-school/#cs-graduate-school">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/29/mqtt-data-spec/#mqtt-data-spec">MQTT 資料格式</a></h2>
+    <p>
+          Posted on Mon 29 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/mqtt/">mqtt</a>,              <a href="https://blog.s10g.tw/tag/iot/">iot</a>,              <a href="https://blog.s10g.tw/tag/protocol/">protocol</a>
+    </p>
+  </header>
+  <div>
+      <p>看了一下 <a href="http://mqtt.org/documentation">MQTT</a> 的文件，隨手紀錄一下。</p>
+<h3>資料格式的表示</h3>
+<ul>
+<li>位元組 bit 0 ~ bit 7<ul>
+<li>bit 0 是 least significant bit, bit 7 是 most sigificant bit</li>
+</ul>
+</li>
+<li>整數<ul>
+<li>big endian 排列的 16 bits 數字，也就是最大是 65535。</li>
+</ul>
+</li>
+<li>字串<ul>
+<li>UTF-8 編碼</li>
+<li>字串長度從 0-65535</li>
+<li>字串結構中，前兩個 byte 放整數，表示 UTF-8 編碼字串的位元組長度。</li>
+</ul>
+</li>
+</ul>
+<h3>控制封包結構</h3>
+<ul>
+<li>固定表頭<ul>
+<li>全部的 MQTT control packet 都有 …</li></ul></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/29/mqtt-data-spec/#mqtt-data-spec">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">Linux Performance tools 整理筆記</a></h2>
+    <p>
+          Posted on Thu 18 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/tools/">tools</a>
+    </p>
+  </header>
+  <div>
+      <p>Twitter 上看到這一篇<a href="https://twitter.com/nixcraft/status/763627361224957952">推文</a>，整理了 linux 下許多效能監測工具。手動整理一些自己不熟但可能會用到的部分。</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sar_(Unix)">sar</a>: System Activity Report</li>
+<li><a href="http://www.cyberciti.biz/files/ss.html">ss</a>: another utility to investigate sockets</li>
+<li><a href="http://iptraf.seul.org/">IPTraf</a>: IP Network Monitoring Software</li>
+<li><a href="https://github.com/iovisor/bcc">bcc</a>: BPF Compiler Collection (BCC)</li>
+</ul>
+<p>來源：</p>
+<blockquote class="twitter-tweet" data-lang="zh-tw"><p lang="en" dir="ltr">Awesome. &quot;Linux Performance Tools&quot; by <a href="https://twitter.com/brendangregg">@brendangregg</a> via <a href="https://twitter.com/FreeBSDHelp">@FreeBSDHelp</a> Large version <a href="https://t.co/ByoYeLpjWW">https://t.co/ByoYeLpjWW</a> <a href="https://twitter.com/hashtag/sysadmin?src=hash">#sysadmin</a> <a href="https://t.co/sLckhiJiPB">pic.twitter.com/sLckhiJiPB</a></p>&mdash; nixCraft (@nixcraft) <a href="https://twitter.com/nixcraft/status/763627361224957952">2016年8月11日 …</a></blockquote>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/11/virtualbox-interface-not-found/#virtualbox-interface-not-found">VirtualBox 發生 VERR_INTNET_FLT_IF_NOT_FOUND 錯誤</a></h2>
+    <p>
+          Posted on Thu 11 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/virutalbox/">virutalbox</a>,              <a href="https://blog.s10g.tw/tag/windows/">windows</a>
+    </p>
+  </header>
+  <div>
+      <p>升級了 Windows 10 的年度更新之後，VirtualBox 就找不到 host only 網卡了。解決方式很簡單，就是把 <code>VirtualBox Host-Only Ethernet Adapter</code> 網卡的 <code>VirtualBox NDIS6 Bridge Networking Driver</code> 打開就可以了。</p>
+<p><img alt="乙太網路內容" src="/images/2016-08-11-virtualbox-interface-not-found.png" title="乙太網路內容"></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/11/virtualbox-interface-not-found/#virtualbox-interface-not-found">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/22/windows-python-pip-with-strawberry-perl/#windows-python-pip-with-strawberry-perl">pip 在 windows 下無法使用</a></h2>
+    <p>
+          Posted on Fri 22 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/python/">python</a>,              <a href="https://blog.s10g.tw/tag/pip/">pip</a>,              <a href="https://blog.s10g.tw/tag/perl/">perl</a>
+    </p>
+  </header>
+  <div>
+      <p>紀錄一下，主要原因是因為我同時安裝了 <a href="http://strawberryperl.com/">Strawberry Perl</a>。</p>
+<p>輸入 <code>where pip</code> 查詢一下，</p>
+<div class="highlight"><pre><span></span><span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Strawberry</span><span class="err">\</span><span class="n">perl</span><span class="err">\</span><span class="n">bin</span><span class="err">\</span><span class="n">pip</span>
+<span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Strawberry</span><span class="err">\</span><span class="n">perl</span><span class="err">\</span><span class="n">bin</span><span class="err">\</span><span class="n">pip</span><span class="p">.</span><span class="n">bat</span>
+<span class="k">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">Solomon</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Programs</span><span class="err">\</span><span class="n">Python</span><span class="err">\</span><span class="n">Python35</span><span class="o">-</span><span class="mi">32</span><span class="err">\</span><span class="n">Scripts</span><span class="err">\</span><span class="n">pip</span><span class="p">.</span><span class="n">exe</span>
+</pre></div>
+
+
+<p>所以直接打 <code>pip</code> 就會出現奇怪的訊息。因為執行到 Strawberry 的 <code>pip</code> 了。</p>
+<div class="highlight"><pre><span></span><span class="n">Did</span> <span class="k">not</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">command</span>
+</pre></div>
+
+
+<p>解決方式就是調整一下 PATH 環境變數，或是使用完整路徑。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/22/windows-python-pip-with-strawberry-perl/#windows-python-pip-with-strawberry-perl">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn float-left" href="https://blog.s10g.tw/index4.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
+
+    </a>
+    <a class="btn float-right" href="https://blog.s10g.tw/index2.html">
+          Newer Posts
+ <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

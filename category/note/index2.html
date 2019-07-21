@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    <meta name="author" content="Solomon Huang" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Solomon's Notebook"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash;     Category note
+</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://tw.linkedin.com/in/solomon-huang-4074b356" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/20/linux-kernel-binfmt/#linux-kernel-binfmt">Kernel Support for miscellaneous Binary Formats</a></h2>
+    <p>
+          Posted on Thu 20 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/kernel/">kernel</a>,              <a href="https://blog.s10g.tw/tag/binfmt/">binfmt</a>
+    </p>
+  </header>
+  <div>
+      <p>Linux Kernel 文件 <a href="https://www.kernel.org/doc/Documentation/binfmt_misc.txt">binfmt_misc.txt</a> 提到的功能。主要就是告訴 kernel 如果把特定的檔案當成執行檔來呼叫。判斷的方式分成 extension 及 magic。</p>
+<h3>第一步掛載 binfmt_misc</h3>
+<div class="highlight"><pre><span></span>mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc 
+</pre></div>
+
+
+<h3>向 binfmt 註冊你的格式</h3>
+<p>註冊字串組成</p>
+<div class="highlight"><pre><span></span><span class="p">:</span><span class="n">name</span><span class="p">:</span><span class="k">type</span><span class="p">:</span><span class="k">offset</span><span class="p">:</span><span class="n">magic</span><span class="p">:</span><span class="n">mask</span><span class="p">:</span><span class="n">interpreter</span><span class="p">:</span><span class="n">flags</span>
+</pre></div>
+
+
+<ul>
+<li>name 是識別用的字串，註冊後會出現在 <code>/proc/sys/fs/binfmt_misc</code></li>
+<li>type 有 <code>M</code> 與 <code>E</code>。<code>M</code> 就是 magic number …</li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/20/linux-kernel-binfmt/#linux-kernel-binfmt">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/17/utf8-string-in-lua/#utf8-string-in-lua">Lua 處理 UTF-8 字串</a></h2>
+    <p>
+          Posted on Mon 17 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/lua/">lua</a>,              <a href="https://blog.s10g.tw/tag/utf8/">utf8</a>
+    </p>
+  </header>
+  <div>
+      <p>最近要用 Lua 處理 UTF-8 字串，但是 Lua 到了 <a href="http://www.lua.org/manual/5.3/manual.html#6.5">5.3</a> 才開始支援 UTF-8。</p>
+<h2>UTF-8 字串長度及複製</h2>
+<p>我的需求很簡單，只要判斷字串長度及類似 <code>strncpy</code> 的字串複製。所以直接利用 <a href="http://www.lua.org/manual/5.3/manual.html#6.5">Lua 5.3 手冊</a> 提到的 charpattern 來進行字串的操作。</p>
+<div class="highlight"><pre><span></span><span class="p">[</span><span class="err">\</span><span class="mi">0</span><span class="o">-</span><span class="err">\</span><span class="n">x7F</span><span class="err">\</span><span class="n">xC2</span><span class="o">-</span><span class="err">\</span><span class="n">xF4</span><span class="p">][</span><span class="err">\</span><span class="n">x80</span><span class="o">-</span><span class="err">\</span><span class="n">xBF</span><span class="p">]</span><span class="o">*</span>
+</pre></div>
+
+
+<h3>utf8len</h3>
+<div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">utf8len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">len</span> <span class="o">=</span> <span class="nb">string.gsub</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;([</span><span class="se">\0</span><span class="s1">-</span><span class="se">\x7F\xC2</span><span class="s1">-</span><span class="se">\xF4</span><span class="s1">][</span><span class="se">\x80</span><span class="s1">-</span><span class="se">\xBF</span><span class="s1">]*)&#39;</span><span class="p">,</span> <span class="s1">&#39;%1&#39;</span><span class="p">)</span>
+    <span class="kr">return</span> <span class="n">len …</span></pre></div>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/17/utf8-string-in-lua/#utf8-string-in-lua">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/#plugin-liquid-tags-graphviz">Pelican 裝 ligquid tags plugin</a></h2>
+    <p>
+          Posted on Mon 17 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/graphviz/">graphviz</a>,              <a href="https://blog.s10g.tw/tag/pelican/">pelican</a>,              <a href="https://blog.s10g.tw/tag/python/">python</a>
+    </p>
+  </header>
+  <div>
+      <p>為了之後要畫圖方便，加裝了 <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">ligquid tags</a> 的 plugin。方法很簡單只要加入 <code>PLUGIN_PATHS</code> 與 <code>PLUGIN</code> 即可。</p>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../pelican-plugins&#39;</span><span class="p">]</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;liquid_tags.graphviz&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>之後底下的 dot 語言就可以畫出 graphviz 的圖了。</p>
+<div class="highlight"><pre><span></span><span class="err">{</span><span class="o">%</span> <span class="n">graphviz</span>
+    <span class="n">dot</span> <span class="err">{</span>
+        <span class="n">digraph</span> <span class="n">graphname</span> <span class="err">{</span>
+            <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="k">c</span><span class="p">;</span>
+            <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">d</span><span class="p">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="o">%</span><span class="err">}</span>
+</pre></div>
+
+
+<p><span class="graphviz" style="text-align: center;"><img src="data:image/png;base64,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"></span></p>
+<h3>但是</h3>
+<p>因為我用的是 Python 3 會因為 <code>base64.b64encode</code> 會輸出 byte string。這會導致 inline base64 encodeing 的格式跑掉，所以圖會出不來。改了一下程式碼發了個 <a href="https://github.com/getpelican/pelican-plugins/pull/798">PR #798</a>。</p>
+<p>底下是 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/#plugin-liquid-tags-graphviz">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/07/difference-between-ipairs-and-pairs-in-lua/#difference-between-ipairs-and-pairs-in-lua">Lua 中的 ipairs 與 pairs 的差異。</a></h2>
+    <p>
+          Posted on Fri 07 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/lua/">lua</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://www.lua.org/pil/7.3.html">PIL 7.3 – Stateless Iterators</a> 中有提到</p>
+<blockquote>
+<p>ipairs, which iterates over all elements in an array, as illustrated next</p>
+</blockquote>
+<p>及</p>
+<blockquote>
+<p>The pairs function, which iterates over all elements in a table</p>
+</blockquote>
+<p>也就是說 <code>ipairs</code> 是遍歷 array (Lua 中以數字為 index 的 table, 1 為起始)，而 <code>pairs</code> 則是遍歷 table 中所有的元素。</p>
+<p><strong>當你把 Lua 的 table …</strong></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/07/difference-between-ipairs-and-pairs-in-lua/#difference-between-ipairs-and-pairs-in-lua">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/06/lua-deep-copy/#lua-deep-copy">lua 複製物件</a></h2>
+    <p>
+          Posted on Thu 06 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/lua/">lua</a>
+    </p>
+  </header>
+  <div>
+      <p>之前踩到一個坑，因為沒注意到指定 array table 中的物件時是 reference 到原有物件，所以整個 table 中的東西都長得一樣，而且還牽一髮動全身。解決方式就是複製生出新的物件。</p>
+<div class="highlight"><pre><span></span><span class="kr">function</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">orig_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">copy</span>
+    <span class="kr">if</span> <span class="n">orig_type</span> <span class="o">==</span> <span class="s1">&#39;table&#39;</span> <span class="kr">then</span>
+        <span class="n">copy</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="kr">for</span> <span class="n">orig_key</span><span class="p">,</span> <span class="n">orig_value</span> <span class="kr">in</span> <span class="nb">next</span><span class="p">,</span> <span class="n">orig</span><span class="p">,</span> <span class="kc">nil</span> <span class="kr">do</span>
+            <span class="n">copy</span><span class="p">[</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">orig_key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">orig_value</span><span class="p">)</span>
+        <span class="kr">end</span>
+        <span class="nb">setmetatable</span><span class="p">(</span><span class="n">copy</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="nb">getmetatable</span><span class="p">(</span><span class="n">orig</span><span class="p">)))</span>
+    <span class="kr">else</span> <span class="c1">-- number, string, boolean, etc …</span></pre></div>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/06/lua-deep-copy/#lua-deep-copy">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/05/podcast/#podcast">聽哪些 podcast</a></h2>
+    <p>
+          Posted on Wed 05 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/podcast/">podcast</a>
+    </p>
+  </header>
+  <div>
+      <p>跟朋友聊天聊到我開車上下班的時候都聽 podcast，他就問我都聽哪些節目。整理一下聊到的內容。</p>
+<h2>中文</h2>
+<p>中文的大部分比較偏休閒但還有少許知識性。目前沒有聽到台灣的節目，以前有聽劉必榮在 <a href="https://tzangms.com/the-record-of-myaudiocast/">MyAudioCast(已結束)</a> 的節目。</p>
+<ul>
+<li><a href="https://ipn.li/kernelpanic/">內核恐慌</a><ul>
+<li>IPN 旗下。一些技術類的閒談，更新時間不固定。</li>
+<li>如果要從這個節目得到新資訊就太慢了，當成同事閒聊就好。</li>
+<li>主播是兩位業內工程師。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/taiyilaile/">太醫來了</a><ul>
+<li>IPN 旗下。醫生談話類節目，接近每週更新。近期不穩定。</li>
+<li>聊一些中國大陸的醫療事件與現象，也有一些醫學常識。</li>
+<li>主播是兩位醫生。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/weizhidao/">味之道</a><ul>
+<li>IPN 旗下。美食類節目。一週一檔新節目。</li>
+<li>聊各種食物、餐廰、主廚還有廚藝學校。我喜歡女主持人席妙雅的聲音。</li>
+<li>主播是餐飲工作相關人士。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/bowuzhi/">博物志</a><ul>
+<li>IPN 旗下。聊博物館、展覽與建築。每月兩至三檔新節目。</li>
+<li>主播是念博物館學的，另一位常駐的是建築師。</li>
+</ul>
+</li>
+<li><a href="https://ipn.li/xuanmei/">選美</a><ul>
+<li>IPN 旗下。美國選舉觀察 …</li></ul></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/05/podcast/#podcast">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/24/dropbox-password/#dropbox-password">dropbox 保存密碼的安全措施筆記</a></h2>
+    <p>
+          Posted on Sat 24 September 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/dropbox/">dropbox</a>,              <a href="https://blog.s10g.tw/tag/security/">security</a>,              <a href="https://blog.s10g.tw/tag/password/">password</a>
+    </p>
+  </header>
+  <div>
+      <p>Dropbox 寫了一篇<a href="https://blogs.dropbox.com/tech/2016/09/how-dropbox-securely-stores-your-passwords/">文章</a>來告訴大家他們如何安全地保存用戶的密碼。我認為蠻有趣的，有一些是我沒有接觸過的。</p>
+<h1>保存密碼的方式</h1>
+<p>簡單用一行來寫</p>
+<div class="highlight"><pre><span></span><span class="n">AES256</span><span class="p">(</span><span class="n">bcrypt</span><span class="p">(</span><span class="n">SHA512</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)))</span>
+</pre></div>
+
+
+<ul>
+<li>AES256 加密用的是另外存的金鑰 (global pepper)，每個用戶都一樣。</li>
+<li>bcrypt 做 hash 的 salt 是每個使用者分開的，強度是 10<ul>
+<li>這是引起我細讀的地方</li>
+</ul>
+</li>
+</ul>
+<h1>bcrypt 是什麼</h1>
+<p><a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>是基於<a href="https://en.wikipedia.org/wiki/Blowfish_(cipher)">Blowfish</a>所發展出來的 hash function。因為有 salt 的關係，所以可以對抗 rainbow table 的攻擊。</p>
+<p>同時，bcrypt 的 cost (上面寫的強度)會以 2 的 cost …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/24/dropbox-password/#dropbox-password">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/09/13/docker-jenkins-update/#docker-jenkins-update">docker 更新 jenkins</a></h2>
+    <p>
+          Posted on Tue 13 September 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/docker/">docker</a>,              <a href="https://blog.s10g.tw/tag/jenkins/">jenkins</a>
+    </p>
+  </header>
+  <div>
+      <p>因為自己家的 jenkins 是用 docker 裝的，紀錄一下自動更新 weekly 版本的方式。</p>
+<h3>安裝 jenkins</h3>
+<p>照著 jenkins 自己的<a href="https://github.com/jenkinsci/docker/blob/master/README.md">正式文件</a>來做。</p>
+<div class="highlight"><pre><span></span>docker create -v /var/jenkins_home --name jenkins_data jenkinsci/jenkins
+docker run --volumes-from jenkins_data --name jenkins_container --restart<span class="o">=</span>always -d -p <span class="m">8080</span>:8080 -p <span class="m">50000</span>:50000 jenkinsci/jenkins
+</pre></div>
+
+
+<p>我的選擇是建一個 jenkins 專用的 volume container。run jenkins container 的時候再掛上來 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/09/13/docker-jenkins-update/#docker-jenkins-update">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/29/mqtt-data-spec/#mqtt-data-spec">MQTT 資料格式</a></h2>
+    <p>
+          Posted on Mon 29 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/mqtt/">mqtt</a>,              <a href="https://blog.s10g.tw/tag/iot/">iot</a>,              <a href="https://blog.s10g.tw/tag/protocol/">protocol</a>
+    </p>
+  </header>
+  <div>
+      <p>看了一下 <a href="http://mqtt.org/documentation">MQTT</a> 的文件，隨手紀錄一下。</p>
+<h3>資料格式的表示</h3>
+<ul>
+<li>位元組 bit 0 ~ bit 7<ul>
+<li>bit 0 是 least significant bit, bit 7 是 most sigificant bit</li>
+</ul>
+</li>
+<li>整數<ul>
+<li>big endian 排列的 16 bits 數字，也就是最大是 65535。</li>
+</ul>
+</li>
+<li>字串<ul>
+<li>UTF-8 編碼</li>
+<li>字串長度從 0-65535</li>
+<li>字串結構中，前兩個 byte 放整數，表示 UTF-8 編碼字串的位元組長度。</li>
+</ul>
+</li>
+</ul>
+<h3>控制封包結構</h3>
+<ul>
+<li>固定表頭<ul>
+<li>全部的 MQTT control packet 都有 …</li></ul></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/29/mqtt-data-spec/#mqtt-data-spec">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">Linux Performance tools 整理筆記</a></h2>
+    <p>
+          Posted on Thu 18 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/tools/">tools</a>
+    </p>
+  </header>
+  <div>
+      <p>Twitter 上看到這一篇<a href="https://twitter.com/nixcraft/status/763627361224957952">推文</a>，整理了 linux 下許多效能監測工具。手動整理一些自己不熟但可能會用到的部分。</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sar_(Unix)">sar</a>: System Activity Report</li>
+<li><a href="http://www.cyberciti.biz/files/ss.html">ss</a>: another utility to investigate sockets</li>
+<li><a href="http://iptraf.seul.org/">IPTraf</a>: IP Network Monitoring Software</li>
+<li><a href="https://github.com/iovisor/bcc">bcc</a>: BPF Compiler Collection (BCC)</li>
+</ul>
+<p>來源：</p>
+<blockquote class="twitter-tweet" data-lang="zh-tw"><p lang="en" dir="ltr">Awesome. &quot;Linux Performance Tools&quot; by <a href="https://twitter.com/brendangregg">@brendangregg</a> via <a href="https://twitter.com/FreeBSDHelp">@FreeBSDHelp</a> Large version <a href="https://t.co/ByoYeLpjWW">https://t.co/ByoYeLpjWW</a> <a href="https://twitter.com/hashtag/sysadmin?src=hash">#sysadmin</a> <a href="https://t.co/sLckhiJiPB">pic.twitter.com/sLckhiJiPB</a></p>&mdash; nixCraft (@nixcraft) <a href="https://twitter.com/nixcraft/status/763627361224957952">2016年8月11日 …</a></blockquote>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn float-left" href="https://blog.s10g.tw/category/note/index3.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
+
+    </a>
+    <a class="btn float-right" href="https://blog.s10g.tw/category/note/index.html">
+          Newer Posts
+ <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

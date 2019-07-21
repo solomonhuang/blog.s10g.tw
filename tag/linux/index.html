@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    <meta name="author" content="Solomon Huang" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Solomon's Notebook"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash;     Tag linux
+</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://tw.linkedin.com/in/solomon-huang-4074b356" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2019/05/21/install-the-matlab-engine-for-python/#install-the-matlab-engine-for-python">Python 安裝 matlab engine</a></h2>
+    <p>
+          Posted on Tue 21 May 2019 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/matlab/">matlab</a>,              <a href="https://blog.s10g.tw/tag/python/">python</a>,              <a href="https://blog.s10g.tw/tag/ubuntu/">ubuntu</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>
+    </p>
+  </header>
+  <div>
+      <p>Matlab 有教學，其實很簡單。主要是記錄一下如果是要安裝在 virtualenv 中的時候要怎麼辦。</p>
+<ul>
+<li>找出 python 套件的目錄。在 matlab 的命令列輸入底下的指令，就會得到目錄</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">fullfile</span><span class="p">(</span><span class="n">matlabroot</span><span class="p">,</span><span class="s">&#39;extern&#39;</span><span class="p">,</span><span class="s">&#39;engines&#39;</span><span class="p">,</span><span class="s">&#39;python&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>在你的 python virtual env 中，切換剛剛得到的目錄。再打下面的指令就可以安裝。</li>
+</ul>
+<div class="highlight"><pre><span></span>python setup.py install
+</pre></div>
+
+
+<p>現在就可以在 python 使用 matlab engine 了。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matlab.engine</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">matlab</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">start_matlab</span><span class="p">()</span>
+<span class="n">eng</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
+<span class="n">eng</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+
+
+<p>ref. <a href="https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html">Install …</a></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2019/05/21/install-the-matlab-engine-for-python/#install-the-matlab-engine-for-python">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2018/09/09/retrive-windows-key-from-your-laptop/#retrive-windows-key-from-your-laptop">取得 windows 的序號</a></h2>
+    <p>
+          Posted on Sun 09 September 2018 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/windows/">windows</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>
+    </p>
+  </header>
+  <div>
+      <p>買 notebook 通常會有隨機安裝的 windows，但是像我已經裝了 linux 如果重新安裝 windows 沒有序號怎麼辦？</p>
+<p>只要一行指令</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">firmware</span><span class="o">/</span><span class="n">acpi</span><span class="o">/</span><span class="n">tables</span><span class="o">/</span><span class="n">MSDM</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="k">c</span> <span class="mi">32</span> <span class="o">|</span> <span class="n">xargs</span> <span class="o">-</span><span class="mi">0</span> <span class="n">echo</span>
+</pre></div>
+
+
+<p>ref. <a href="https://twitter.com/BrandonPrry/status/1038269038881898498">Brandon Prry</a></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2018/09/09/retrive-windows-key-from-your-laptop/#retrive-windows-key-from-your-laptop">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2017/06/19/pdf-watermark-remove/#pdf-watermark-remove">pdftk 移除 pdf 的浮水印</a></h2>
+    <p>
+          Posted on Mon 19 June 2017 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/pdf/">pdf</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/pdftk/">pdftk</a>,              <a href="https://blog.s10g.tw/tag/watermark/">watermark</a>
+    </p>
+  </header>
+  <div>
+      <h3>目標：移除 pdf 中的文字浮水印</h3>
+<p>手上有一些 pdf 有浮水印，突然想要移除看看。找了一下 <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/">pdftk</a> 可以做到這件事。Superuser 上的 <a href="https://superuser.com/questions/448519/how-to-remove-watermark-from-pdf-using-pdftk">How to remove watermark from pdf using pdftk?</a> 寫得很清楚又簡單。</p>
+<p><strong>做修改之前應該要先備份原檔</strong></p>
+<p><strong>做修改之前應該要先備份原檔</strong></p>
+<p><strong>做修改之前應該要先備份原檔</strong></p>
+<h3>步驟</h3>
+<h4>1. 把壓縮過的 pdf 解壓縮</h4>
+<p>如果你的 pdf 有被壓縮，要先解壓縮</p>
+<div class="highlight"><pre><span></span>pdftk input.pdf ouput uncompress.pdf uncompress
+</pre></div>
+
+
+<h4>2. 把浮水印的文字去除</h4>
+<div class="highlight"><pre><span></span>sed -e <span class="s2">&quot;s/watermarktextstring/ /g&quot;</span> uncompress.pdf …</pre></div>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2017/06/19/pdf-watermark-remove/#pdf-watermark-remove">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2017/03/28/tmux-dump-buffer-to-file/#tmux-dump-buffer-to-file">Tmux dump buffer to file</a></h2>
+    <p>
+          Posted on Tue 28 March 2017 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/tmux/">tmux</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/utlls/">utlls</a>
+    </p>
+  </header>
+  <div>
+      <h3>將 <code>tmux</code> buffer 中的資料寫到檔案中</h3>
+<p>參考 <a href="http://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file">Unix stackexchange</a></p>
+<blockquote>
+<p>prefix + :, then type in capture-pane -S -3000</p>
+</blockquote>
+<p>上面這行把 3000 行的資料複製到 buffer 中。</p>
+<blockquote>
+<p>prefix + : again, and type in save-buffer filename.txt</p>
+</blockquote>
+<p>上面這行把 buffer 中的資料寫到 <code>filename.txt</code> 中</p>
+<p><code>prefix</code> 預設值是 <code>Ctrl+b</code></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2017/03/28/tmux-dump-buffer-to-file/#tmux-dump-buffer-to-file">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2017/03/15/find-exclude/#find-exclude">Find 排除目錄</a></h2>
+    <p>
+          Posted on Wed 15 March 2017 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/find/">find</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/utlls/">utlls</a>
+    </p>
+  </header>
+  <div>
+      <p>使用 find 可以很簡單的找出目標檔案來做處理，記錄一下要排除特定目錄怎麼做。</p>
+<h3>目標是排除 .git 下的所有檔案</h3>
+<div class="highlight"><pre><span></span>find . -path <span class="s2">&quot;./.git/*&quot;</span> -prune -o -type f -exec blahblah <span class="o">{}</span> <span class="se">\;</span>
+</pre></div>
+
+
+<p><code>blahblah</code> 就是要對每個檔案做處理的程式。</p>
+<h3>單元解釋</h3>
+<div class="highlight"><pre><span></span>-path <span class="s2">&quot;./.git/*&quot;</span> -prune
+</pre></div>
+
+
+<p>除去 (<code>-prune</code>) 路徑符合 <code>./.git/*</code> 的部分</p>
+<div class="highlight"><pre><span></span>-o -type f -exec blahblah <span class="o">{}</span> <span class="se">\;</span>
+</pre></div>
+
+
+<p>或者是 (<code>-o</code>) 找出類別是檔案 (<code>-type f</code>) 的項目交給程式處理 ( <code>-exec blahblah {} \;</code> )</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2017/03/15/find-exclude/#find-exclude">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/20/linux-kernel-binfmt/#linux-kernel-binfmt">Kernel Support for miscellaneous Binary Formats</a></h2>
+    <p>
+          Posted on Thu 20 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/kernel/">kernel</a>,              <a href="https://blog.s10g.tw/tag/binfmt/">binfmt</a>
+    </p>
+  </header>
+  <div>
+      <p>Linux Kernel 文件 <a href="https://www.kernel.org/doc/Documentation/binfmt_misc.txt">binfmt_misc.txt</a> 提到的功能。主要就是告訴 kernel 如果把特定的檔案當成執行檔來呼叫。判斷的方式分成 extension 及 magic。</p>
+<h3>第一步掛載 binfmt_misc</h3>
+<div class="highlight"><pre><span></span>mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc 
+</pre></div>
+
+
+<h3>向 binfmt 註冊你的格式</h3>
+<p>註冊字串組成</p>
+<div class="highlight"><pre><span></span><span class="p">:</span><span class="n">name</span><span class="p">:</span><span class="k">type</span><span class="p">:</span><span class="k">offset</span><span class="p">:</span><span class="n">magic</span><span class="p">:</span><span class="n">mask</span><span class="p">:</span><span class="n">interpreter</span><span class="p">:</span><span class="n">flags</span>
+</pre></div>
+
+
+<ul>
+<li>name 是識別用的字串，註冊後會出現在 <code>/proc/sys/fs/binfmt_misc</code></li>
+<li>type 有 <code>M</code> 與 <code>E</code>。<code>M</code> 就是 magic number …</li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/20/linux-kernel-binfmt/#linux-kernel-binfmt">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">Linux Performance tools 整理筆記</a></h2>
+    <p>
+          Posted on Thu 18 August 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/tools/">tools</a>
+    </p>
+  </header>
+  <div>
+      <p>Twitter 上看到這一篇<a href="https://twitter.com/nixcraft/status/763627361224957952">推文</a>，整理了 linux 下許多效能監測工具。手動整理一些自己不熟但可能會用到的部分。</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Sar_(Unix)">sar</a>: System Activity Report</li>
+<li><a href="http://www.cyberciti.biz/files/ss.html">ss</a>: another utility to investigate sockets</li>
+<li><a href="http://iptraf.seul.org/">IPTraf</a>: IP Network Monitoring Software</li>
+<li><a href="https://github.com/iovisor/bcc">bcc</a>: BPF Compiler Collection (BCC)</li>
+</ul>
+<p>來源：</p>
+<blockquote class="twitter-tweet" data-lang="zh-tw"><p lang="en" dir="ltr">Awesome. &quot;Linux Performance Tools&quot; by <a href="https://twitter.com/brendangregg">@brendangregg</a> via <a href="https://twitter.com/FreeBSDHelp">@FreeBSDHelp</a> Large version <a href="https://t.co/ByoYeLpjWW">https://t.co/ByoYeLpjWW</a> <a href="https://twitter.com/hashtag/sysadmin?src=hash">#sysadmin</a> <a href="https://t.co/sLckhiJiPB">pic.twitter.com/sLckhiJiPB</a></p>&mdash; nixCraft (@nixcraft) <a href="https://twitter.com/nixcraft/status/763627361224957952">2016年8月11日 …</a></blockquote>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/#linux-performance-tools">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/19/xargs-execute-command-parallelly/#xargs-execute-command-parallelly">xargs 平行化處理指令</a></h2>
+    <p>
+          Posted on Tue 19 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/xargs/">xargs</a>
+    </p>
+  </header>
+  <div>
+      <p>直接先上範例</p>
+<div class="highlight"><pre><span></span><span class="n">xargs</span> <span class="o">-</span><span class="n">a</span> <span class="k">data</span><span class="p">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">I</span> <span class="o">%</span> <span class="o">-</span><span class="n">P</span> <span class="mi">0</span> <span class="n">bash</span> <span class="o">-</span><span class="k">c</span> <span class="ss">&quot;sleep 1; echo %&quot;</span>
+</pre></div>
+
+
+<p>我要解決的問題是，我有一個文字檔 <code>data.txt</code>，其內容是我要處理的資料，一行一筆。我希望可以同時處理這些資料。答案就是上面的範例。
+<code>data.txt</code> 的內容是</p>
+<div class="highlight"><pre><span></span><span class="n">a</span>
+<span class="n">b</span>
+<span class="k">c</span>
+<span class="n">d</span>
+<span class="n">e</span>
+<span class="n">f</span>
+</pre></div>
+
+
+<p>現在來解釋一下參數：</p>
+<ul>
+<li>
+<p><code>-a data.txt</code></p>
+<p>從 data.txt 直接讀入參數，而不是從 <code>STDIN</code>。</p>
+</li>
+<li>
+<p><code>-P 0</code></p>
+<p>最大執行的 process 數量。平行化的主要參數，<code>0</code> 是盡可能大。以範例來看的話，設 …</p></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/19/xargs-execute-command-parallelly/#xargs-execute-command-parallelly">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/06/22/trex/#trex">TRex</a></h2>
+    <p>
+          Posted on Wed 22 June 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/trex/">trex</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/tool/">tool</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://trex-tgn.cisco.com" title="TRex">TRex</a> 是一個封包產生軟體。底層使用 <a href="http://dpdk.org/">DPDK</a>。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。</p>
+<p>TRex 可以裝在 x86 的設備上，希望可以在自動化測試上有所幫助。</p>
+<p>從 <a href="https://trex-tgn.cisco.com/trex/doc/trex_book.pdf">手冊 (pdf)</a> 看來的資訊：</p>
+<ul>
+<li>產生並分析 L4-L7 的封包</li>
+<li>基於實際流量的模版來產生流量</li>
+<li>虛擬網卡也可以跑</li>
+</ul>
+<p>硬體現在沒有什麼特別的限制，但是未來不一定。</p>
+<blockquote>
+<p>A high-end UCS platform is not required for operating TRex in its current
+version, but may be required for future versions.</p>
+</blockquote>
+<p>網卡的支援很少，支援的卡簡單查了一下都是一萬台幣起跳。可以用 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/06/22/trex/#trex">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2012/12/19/trickle/#trickle">Linux 控制流量的軟體 trickle</a></h2>
+    <p>
+          Posted on Wed 19 December 2012 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/software/">software</a>
+    </p>
+  </header>
+  <div>
+      <p>軟體備忘，trickle。我都用來限制 git pull 的速度，尤其是在更新 android 的 source code 的時候。</p>
+<p>像是 git 沒辦法限速的軟體，可以使用 <code>trickle -d 100 git pull</code> 的方式來限制。馬上就把大洪水變成涓涓細流了。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2012/12/19/trickle/#trickle">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+  </div>
+
+
+
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

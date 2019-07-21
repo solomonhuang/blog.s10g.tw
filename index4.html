@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    <meta name="author" content="Solomon Huang" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Solomon's Notebook"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://tw.linkedin.com/in/solomon-huang-4074b356" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/21/new-post-on-pelican-with-github/#new-post-on-pelican-with-github">用 github 直接新增 blog 文章</a></h2>
+    <p>
+          Posted on Thu 21 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/pelican/">pelican</a>,              <a href="https://blog.s10g.tw/tag/blog/">blog</a>,              <a href="https://blog.s10g.tw/tag/github/">github</a>
+    </p>
+  </header>
+  <div>
+      <p>之前看了 <a href="https://blog.m157q.tw/author/m157q.html">m157q</a> 的 <a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/">用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上</a>
+的文章後，就設定一樣的自動化發怖流程。</p>
+<p>剛剛突然想到，我可以直接在 GitHub 上新建檔案呀！還可以直接 preview，這下子也不用切 env 來寫新的文章。直接先寫這一篇來試試看！</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/21/new-post-on-pelican-with-github/#new-post-on-pelican-with-github">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/19/xargs-execute-command-parallelly/#xargs-execute-command-parallelly">xargs 平行化處理指令</a></h2>
+    <p>
+          Posted on Tue 19 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/xargs/">xargs</a>
+    </p>
+  </header>
+  <div>
+      <p>直接先上範例</p>
+<div class="highlight"><pre><span></span><span class="n">xargs</span> <span class="o">-</span><span class="n">a</span> <span class="k">data</span><span class="p">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">I</span> <span class="o">%</span> <span class="o">-</span><span class="n">P</span> <span class="mi">0</span> <span class="n">bash</span> <span class="o">-</span><span class="k">c</span> <span class="ss">&quot;sleep 1; echo %&quot;</span>
+</pre></div>
+
+
+<p>我要解決的問題是，我有一個文字檔 <code>data.txt</code>，其內容是我要處理的資料，一行一筆。我希望可以同時處理這些資料。答案就是上面的範例。
+<code>data.txt</code> 的內容是</p>
+<div class="highlight"><pre><span></span><span class="n">a</span>
+<span class="n">b</span>
+<span class="k">c</span>
+<span class="n">d</span>
+<span class="n">e</span>
+<span class="n">f</span>
+</pre></div>
+
+
+<p>現在來解釋一下參數：</p>
+<ul>
+<li>
+<p><code>-a data.txt</code></p>
+<p>從 data.txt 直接讀入參數，而不是從 <code>STDIN</code>。</p>
+</li>
+<li>
+<p><code>-P 0</code></p>
+<p>最大執行的 process 數量。平行化的主要參數，<code>0</code> 是盡可能大。以範例來看的話，設 …</p></li></ul>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/19/xargs-execute-command-parallelly/#xargs-execute-command-parallelly">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/19/hao-yong-de-vpn-hide-my-ass/#hao-yong-de-vpn-hide-my-ass">好用的 vpn Hide my ass</a></h2>
+    <p>
+          Posted on Tue 19 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/vpn/">vpn</a>,              <a href="https://blog.s10g.tw/tag/pokemon/">pokemon</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://goo.gl/VO3IuK">Hide My Ass</a> 還不錯，可以連線的國家多。我試了一下，還可以連到美國 Google Play 去下載 Pokemon Go！雖然在台灣還是不能玩……</p>
+<p>簡單測了一下，整體的速度還 ok 喔。之後就是進大陸再試一下有沒有辦法連外。</p>
+<p>然後找個時間連一下美國的 netflix。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/19/hao-yong-de-vpn-hide-my-ass/#hao-yong-de-vpn-hide-my-ass">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/01/java-letsencrypt/#java-letsencrypt">Java 與 Let's Encrypt</a></h2>
+    <p>
+          Posted on Fri 01 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/java/">java</a>,              <a href="https://blog.s10g.tw/tag/tls/">tls</a>,              <a href="https://blog.s10g.tw/tag/letsencrypt/">letsencrypt</a>
+    </p>
+  </header>
+  <div>
+      <p>在弄 Jenkins windows slave 的時候踩到 Java 還沒有把 <a href="https://letsencrypt.org">Let's Encrypt</a> 的根憑證放到信任清單中。弄了半天才真的搞定。</p>
+<p><a href="http://stackoverflow.com/questions/34110426/does-java-support-lets-encrypt-certificates">stackoverflow</a> 上有人說了，Oracle Java 8u101 就會放進去了。</p>
+<p>ref. <a href="https://bugs.openjdk.java.net/browse/JDK-8154757">JDK-8154757</a></p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/01/java-letsencrypt/#java-letsencrypt">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/01/p2p-money-transfer/#p2p-money-transfer">P2P money transfer</a></h2>
+    <p>
+          Posted on Fri 01 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/fintech/">fintech</a>
+    </p>
+  </header>
+  <div>
+      <p>今天聽 <a href="http://softwareengineeringdaily.com/2016/06/30/p2p-money-transfer-with-transferwises-harsh-sinha/">SE daily</a> 講 P2P money transfer 的創業公司。聽到就覺得這就是地下匯兌呀！
+配合另外一則 <a href="http://mp.weixin.qq.com/s?__biz=MzA3NjU0NDEwOQ%3D%3D&amp;from=timeline&amp;idx=3&amp;isappinstalled=0&amp;mid=2757831866&amp;scene=2&amp;sn=c69bbae16ab1df49c76181fbb9c61a91&amp;srcid=0630X3eB6a5EfKmQXWjOcZqV">消息</a>
+講到支付寶的餘額支付受到監管機關的要求，一年的餘額支付額度只有 20 萬人民幣。</p>
+<p>SE daily 訪問的那家公司主要做的生意是讓有需要跨境匯款的人可以用中價來買賣匯兌。對銀行來說，這就是地下匯兌。
+TransferWise 這家公司端要面對的風險首見的就是匯兌情況中產生的不同貨幣持有比例的大額改變所產生的匯兌風險。
+不過對使用者來說，的確真的是很方便。</p>
+<p>支付寶的餘額支付被限制成最高一年只有 20 萬人民幣，但是其他的關聯的支付方式沒有被管制。這算是保護銀行的機制。</p>
+<p>FinTech 要面對的問題最重要的應該就是法規了吧。單純工程師的技術力是無法簡單解決的。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/01/p2p-money-transfer/#p2p-money-transfer">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/06/27/ci-skip-build/#ci-skip-build">CI Skip build</a></h2>
+    <p>
+          Posted on Mon 27 June 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/ci/">ci</a>,              <a href="https://blog.s10g.tw/tag/automation/">automation</a>,              <a href="https://blog.s10g.tw/tag/sysop/">sysop</a>
+    </p>
+  </header>
+  <div>
+      <p>gitlab-ci, travis-ci, circle-ci 跟 jenkins 都支援 <code>[ci skip]</code> 來跳過 commit build。</p>
+<div class="highlight"><pre><span></span><span class="n">Your</span> <span class="n">commit</span> <span class="n">messages</span> <span class="p">[</span><span class="n">ci</span> <span class="n">skip</span><span class="p">]</span>
+</pre></div>
+
+
+<p>其中 jenkins 要裝 plugin。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/06/27/ci-skip-build/#ci-skip-build">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/06/22/trex/#trex">TRex</a></h2>
+    <p>
+          Posted on Wed 22 June 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/trex/">trex</a>,              <a href="https://blog.s10g.tw/tag/linux/">linux</a>,              <a href="https://blog.s10g.tw/tag/tool/">tool</a>
+    </p>
+  </header>
+  <div>
+      <p><a href="https://trex-tgn.cisco.com" title="TRex">TRex</a> 是一個封包產生軟體。底層使用 <a href="http://dpdk.org/">DPDK</a>。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。</p>
+<p>TRex 可以裝在 x86 的設備上，希望可以在自動化測試上有所幫助。</p>
+<p>從 <a href="https://trex-tgn.cisco.com/trex/doc/trex_book.pdf">手冊 (pdf)</a> 看來的資訊：</p>
+<ul>
+<li>產生並分析 L4-L7 的封包</li>
+<li>基於實際流量的模版來產生流量</li>
+<li>虛擬網卡也可以跑</li>
+</ul>
+<p>硬體現在沒有什麼特別的限制，但是未來不一定。</p>
+<blockquote>
+<p>A high-end UCS platform is not required for operating TRex in its current
+version, but may be required for future versions.</p>
+</blockquote>
+<p>網卡的支援很少，支援的卡簡單查了一下都是一萬台幣起跳。可以用 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/06/22/trex/#trex">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2014/02/21/apt-preferences-pinning/#apt-preferences-pinning">apt preferences pinning</a></h2>
+    <p>
+          Posted on Fri 21 February 2014 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/apt/">apt</a>,              <a href="https://blog.s10g.tw/tag/preferences/">preferences</a>,              <a href="https://blog.s10g.tw/tag/debian/">debian</a>
+    </p>
+  </header>
+  <div>
+      <p>將 debian stable 加入 testing 但是只在需要安裝 testing 套件的時候才安裝。</p>
+<ol>
+<li>在 <code>/etc/apt/sources.list</code> 加入 <code>testing</code></li>
+<li>在 <code>/etc/apt/preferences.d/</code> 建立 <code>testing</code> 檔案。內容如下</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">Package</span><span class="p">:</span> <span class="o">*</span>
+<span class="n">Pin</span><span class="p">:</span> <span class="n">release</span> <span class="n">a</span><span class="o">=</span><span class="n">testing</span>
+<span class="n">Pin</span><span class="o">-</span><span class="n">Priority</span><span class="p">:</span> <span class="mi">200</span>
+</pre></div>
+
+
+<p>這樣就可以在 <code>aptitude</code> 中選擇 <code>testing</code> 的套件。或是用 <code>apt-get -t testing install &lt;package&gt;</code> or <code>aptitude -t testing</code> 來指定安裝 <code>testing</code> 套件 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2014/02/21/apt-preferences-pinning/#apt-preferences-pinning">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2014/01/07/line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng/#line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng">Line 合併 whoscall 並開放專業版功能</a></h2>
+    <p>
+          Posted on Tue 07 January 2014 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/line/">line</a>,              <a href="https://blog.s10g.tw/tag/whoscall/">whoscall</a>,              <a href="https://blog.s10g.tw/tag/apps/">apps</a>
+    </p>
+  </header>
+  <div>
+      <p>Whoscall 在加入 Line 母公司之後開放了原本專業版的功能。對於全體使用者來說是一件很好的事情，但是對一開始付費支持的使用者來講有一點像是付出的感情收不回來一樣。支持原本的終生專業版，到現在沒有感受到對早期付費使用者的重視。</p>
+<p>當然，實際上來說付費使用者的權益是沒有消失的，只是情感上容易讓人感到欺騙與受傷。因為如此，所以想了解一下官方是不是有什麼類似「感謝方案」之類的活動或是其他的特惠。在聯絡了官方客服之後得到了最重要的一點也是唯一的一點，就是退費機制。</p>
+<p><em>只有七天內購買的可以退費</em></p>
+<div class="highlight"><pre><span></span><span class="err">對於購買無限期版本的消費者，</span>
+<span class="err">雖然無限期版本沒有提供七天的試用期，</span>
+<span class="err">我們接受七天內無條件退款。</span>
+<span class="err">但是超過七天的消費者，</span>
+<span class="err">很抱歉我們無法提供您退款的需求。</span>
+</pre></div>
+
+
+<!--more-->
+
+<p>附上原始來信</p>
+<div class="highlight"><pre><span></span><span class="n">Dear</span> <span class="k">user</span>
+
+<span class="err">造成您的不愉快，我們感到相當抱歉，使用者對我們是非常重要也十分被我們重視的，</span>
+<span class="err">我們從不敢輕忽任何使用者，未來我們會做出更多的努力來證明我們的誠意。</span>
+
+<span class="n">whoscall</span> <span class="err">從</span> <span class="mi">2012</span> <span class="err">年上線至現在的一年半內，已累積了全球超過六百萬的下載量。我</span>
+<span class="err">們從一個不到十人的小團隊，到現在有這樣亮眼的成績，我們十分感謝使用者們給予我</span>
+<span class="err">們的回饋，因為有了你們的鼓勵、以及建議，團隊才有這麼多的能量跟勇氣，讓我們走</span>
+<span class="err">到現在。</span>
+
+<span class="err">現在，</span><span class="n">whoscall</span> <span class="err">有能力提供所有使用者一致且高品質的服務，團隊希望透過資源分享的 …</span></pre></div>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2014/01/07/line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng/#line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2013/10/25/gitlab-cannot-locate-ruby-with-rvm/#gitlab-cannot-locate-ruby-with-rvm">gitlab cannot locate ruby with rvm</a></h2>
+    <p>
+          Posted on Fri 25 October 2013 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/git/">git</a>,              <a href="https://blog.s10g.tw/tag/gitlab/">gitlab</a>,              <a href="https://blog.s10g.tw/tag/rvm/">rvm</a>,              <a href="https://blog.s10g.tw/tag/ruby/">ruby</a>
+    </p>
+  </header>
+  <div>
+      <p>Gitlab 安裝時若採用 rvm 的 ruby 而不是安裝在 system 上，在 push 的時候會被抱怨找不到 ruby 或是執行到系統的 ruby。</p>
+<p>最簡單的解決方式：將 user git 的 .bashrc 中的 <code>PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting</code> 移到最前面就可以了。</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2013/10/25/gitlab-cannot-locate-ruby-with-rvm/#gitlab-cannot-locate-ruby-with-rvm">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+    <a class="btn float-left" href="https://blog.s10g.tw/index5.html">
+      <i class="fa fa-angle-left"></i>     Older Posts
+
+    </a>
+    <a class="btn float-right" href="https://blog.s10g.tw/index3.html">
+          Newer Posts
+ <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
