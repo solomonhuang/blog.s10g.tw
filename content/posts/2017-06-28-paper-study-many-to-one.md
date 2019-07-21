@@ -21,7 +21,7 @@ tags: infocom, wireless, protocol
 
 > 四個 source nodes 要傳送回應資料
 
-![](/images/2017-06-28-many-to-one-reps.png)
+![Many to one](/images/2017-06-28-many-to-one-reps.png)
 
 這邊有幾個前提：
 
@@ -45,4 +45,4 @@ ByteCast 在兩層的架構只要三步就讓每個 node 都拿到全部的資�
 
 > 雙層架構模擬圖
 
-![](/images/2017-06-25-many-to-many.png)
+![Mant to many](/images/2017-06-25-many-to-many.png)
