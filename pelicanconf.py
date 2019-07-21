@@ -31,8 +31,8 @@ SITEMAP = {
 
 TIMEZONE = 'Asia/Taipei'
 
-DEFAULT_LANG = 'zh'
-HTML_LANG = 'zh'
+DEFAULT_LANG = 'en'
+HTML_LANG = 'en'
 THEME = 'themes/flex'
 OG_LOCALE = 'zh_TW'
 
