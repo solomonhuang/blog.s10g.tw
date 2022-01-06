@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Solomon Huang" />
+<meta name="description" content="這一篇 INFOCOM 2017 的論文提出的 protocol 是為了改善低功耗產品 (如：ZigBee) 中，同時要把 data 回傳給同一個 node 的情況下，減少碰撞，減少 radio-on time。另 …" />
+<meta name="keywords" content="infocom, wireless, protocol">
+
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:title" content="[Paper Study] Mant-to-one, many-to-many protocol"/>
+<meta property="og:description" content="這一篇 INFOCOM 2017 的論文提出的 protocol 是為了改善低功耗產品 (如：ZigBee) 中，同時要把 data 回傳給同一個 node 的情況下，減少碰撞，減少 radio-on time。另 …"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw/posts/2017/06/28/paper-study-many-to-one/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-06-28 17:57:34+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://blog.s10g.tw/author/solomon-huang.html">
+<meta property="article:section" content="paperstudy"/>
+<meta property="article:tag" content="infocom"/>
+<meta property="article:tag" content="wireless"/>
+<meta property="article:tag" content="protocol"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash; [Paper Study] Mant-to-one, many-to-many protocol</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="paper-study-many-to-one">[Paper Study] Mant-to-one, many-to-many protocol</h1>
+    <p>
+          Posted on Wed 28 June 2017 in <a href="https://blog.s10g.tw/category/paperstudy/">paperstudy</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>這一篇 INFOCOM 2017 的論文提出的 protocol 是為了改善低功耗產品 (如：ZigBee) 中，同時要把 data 回傳給同一個 node 的情況下，減少碰撞，減少 radio-on time。另外就是多個 node 要把自己的資料傳遞給其他 node，同時也是要減少碰撞與 radio-on time。</p>
+<ul>
+<li>論文題目：Design and Application of a Many-to-One Communication Protocol</li>
+<li>作者：Sudipta Saha, Mun Choon Chan</li>
+</ul>
+<p>直接看圖講重點</p>
+<h1>Many-to-one: SyncMerge</h1>
+<blockquote>
+<p>架構圖</p>
+</blockquote>
+<p><img alt="Many to one" src="/images/2017-06-28-many-to-one.png" title="many to one"></p>
+<p>圖中的 (b) 就是 source nodes 要回應資料給 initiator。</p>
+<blockquote>
+<p>四個 source nodes 要傳送回應資料</p>
+</blockquote>
+<p><img alt="Many to one" src="/images/2017-06-28-many-to-one-reps.png"></p>
+<p>這邊有幾個前提：</p>
+<ul>
+<li>每個 source nodes 的 header 是一樣的。</li>
+<li>initiator 發出的 INIT 封包中已經讓全部的 source nodes 知道自己的傳送順序。</li>
+<li>時間同步靠 INIT 封包</li>
+</ul>
+<p>所以每個 source nodes 同時發射 header segment，這樣可以確保訊號被正增強，收到的內容是對的。然後每個 source nodes 在自己的傳送時間把 txpower 調到最大，不是自己的時間就把 txpower 關掉或是調到最小，進而達到不會相互碰撞的結果。</p>
+<h1>Many-to-many: ByteCast</h1>
+<p>Many-to-many 利用了 many-to-one 的方式改善。直接看底下的圖。</p>
+<p>圖中的 (a) 指出這是一個雙層四 nodes 的架構，(b) 是作者的 ByteCast，(c) 是另一篇論文提出的 Chaos 方法。</p>
+<p>ByteCast 在兩層的架構只要三步就讓每個 node 都拿到全部的資料了。</p>
+<ol>
+<li>Layer 1 的 node 1 TX，node 2-4 收到 data 1</li>
+<li>Layer 2 的 node 2-4 分別在各自的時間點 TX，node 1 收到 data 2-4。此時 node 1 有了 data 1-4。</li>
+<li>Node 1 TX，node 2-4 都拿到自己所欠缺的 data。</li>
+</ol>
+<blockquote>
+<p>雙層架構模擬圖</p>
+</blockquote>
+<p><img alt="Mant to many" src="/images/2017-06-25-many-to-many.png"></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.s10g.tw/tag/infocom/">infocom</a>
+      <a href="https://blog.s10g.tw/tag/wireless/">wireless</a>
+      <a href="https://blog.s10g.tw/tag/protocol/">protocol</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 's10g';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

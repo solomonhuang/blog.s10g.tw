@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Solomon Huang" />
+<meta name="description" content="為了讀 OAI 的程式碼，一直找一些 call graph 的工具。最後用了 chihchun 好久以前寫的 callgraphviz 來改成 Call Call Graph。 叫 Call Call Graph 只是因為我要畫 caller 與 callee …" />
+<meta name="keywords" content="cscope, graphviz, dot">
+
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:title" content="Call Call Graph"/>
+<meta property="og:description" content="為了讀 OAI 的程式碼，一直找一些 call graph 的工具。最後用了 chihchun 好久以前寫的 callgraphviz 來改成 Call Call Graph。 叫 Call Call Graph 只是因為我要畫 caller 與 callee …"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw/posts/2018/01/09/call-call-graph/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-01-09 19:03:47+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://blog.s10g.tw/author/solomon-huang.html">
+<meta property="article:section" content="note"/>
+<meta property="article:tag" content="cscope"/>
+<meta property="article:tag" content="graphviz"/>
+<meta property="article:tag" content="dot"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash; Call Call Graph</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="call-call-graph">Call Call Graph</h1>
+    <p>
+          Posted on Tue 09 January 2018 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>為了讀 <a href="https://gitlab.eurecom.fr/oai/openairinterface5g">OAI</a> 的程式碼，一直找一些 call graph 的工具。最後用了 <a href="https://github.com/chihchun">chihchun</a> 好久以前寫的 <a href="https://github.com/chihchun/callgraphviz">callgraphviz</a> 來改成 <a href="https://github.com/solomonhuang/callcallgraph">Call Call Graph</a>。</p>
+<p>叫 Call Call Graph 只是因為我要畫 caller 與 callee。大架構沒有改太多，還是照原本的用 cscope 當後端的資料庫。查詢後生出 dot 的圖再餵給 xdot 來畫圖。花最多時間的就是查 python 3 的語法及 PyGObject 的 api。</p>
+<p>我自己加了可以把現在的查詢資料清掉的功能，只要按一下 reload 鈕就可以清掉。不然累積太多查詢會造成節點太多。另外加了可以忽略特定 symbol 的功能，因為我會把 function 的 caller 與 callee 都找出來。所以像是 <code>memset</code>、<code>printf</code> 或是 debug function 可以濾掉，不然會有太多噪音。</p>
+<p>之後有空的話，會再把 function 所在的目錄與檔名加到圖上，可能還要用目錄來切 cluster。不然大專案還是不知道這些 caller/callee 在哪裡。</p>
+<p>最後附圖</p>
+<h3>查 linux-4.14.12 的 add_del_if</h3>
+<p><img alt="add_del_if" src="/images/2018-01-09-linux-4.14.12-add_del_if.png" title="add_del_if"></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.s10g.tw/tag/cscope/">cscope</a>
+      <a href="https://blog.s10g.tw/tag/graphviz/">graphviz</a>
+      <a href="https://blog.s10g.tw/tag/dot/">dot</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 's10g';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

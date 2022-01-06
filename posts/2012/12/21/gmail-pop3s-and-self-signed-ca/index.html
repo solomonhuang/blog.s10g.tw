@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Solomon Huang" />
+<meta name="description" content="從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。 從 2012/12/06 更新的 官方說明 可以看到。 我們不接 …" />
+<meta name="keywords" content="gmail, pop3, ssl">
+
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:title" content="GMail 不支援自行簽署的憑證"/>
+<meta property="og:description" content="從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。 從 2012/12/06 更新的 官方說明 可以看到。 我們不接 …"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw/posts/2012/12/21/gmail-pop3s-and-self-signed-ca/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-12-21 11:10:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://blog.s10g.tw/author/solomon-huang.html">
+<meta property="article:section" content="note"/>
+<meta property="article:tag" content="gmail"/>
+<meta property="article:tag" content="pop3"/>
+<meta property="article:tag" content="ssl"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash; GMail 不支援自行簽署的憑證</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="gmail-pop3s-and-self-signed-ca">GMail 不支援自行簽署的憑證</h1>
+    <p>
+          Posted on Fri 21 December 2012 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。</p>
+<p>從 2012/12/06 更新的 <a href="https://support.google.com/mail/bin/answer.py?hl=zh-Hant&amp;answer=21291" title="擷取郵件時一律使用安全連線 (SSL)">官方說明</a> 可以看到。</p>
+<blockquote>
+<p>我們不接受自行簽署的憑證。有效的憑證必須連結至有效的 CA，例如「Mozilla CA 清單」。</p>
+</blockquote>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.s10g.tw/tag/gmail/">gmail</a>
+      <a href="https://blog.s10g.tw/tag/pop3/">pop3</a>
+      <a href="https://blog.s10g.tw/tag/ssl/">ssl</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 's10g';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

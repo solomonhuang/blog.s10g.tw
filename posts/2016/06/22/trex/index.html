@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Solomon Huang" />
+<meta name="description" content="TRex 是一個封包產生軟體。底層使用 DPDK。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。 TRex 可以裝在 x86 的設備上 …" />
+<meta name="keywords" content="trex, linux, tool">
+
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:title" content="TRex"/>
+<meta property="og:description" content="TRex 是一個封包產生軟體。底層使用 DPDK。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。 TRex 可以裝在 x86 的設備上 …"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw/posts/2016/06/22/trex/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-06-22 23:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://blog.s10g.tw/author/solomon-huang.html">
+<meta property="article:section" content="note"/>
+<meta property="article:tag" content="trex"/>
+<meta property="article:tag" content="linux"/>
+<meta property="article:tag" content="tool"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash; TRex</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="trex">TRex</h1>
+    <p>
+          Posted on Wed 22 June 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p><a href="https://trex-tgn.cisco.com" title="TRex">TRex</a> 是一個封包產生軟體。底層使用 <a href="http://dpdk.org/">DPDK</a>。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。</p>
+<p>TRex 可以裝在 x86 的設備上，希望可以在自動化測試上有所幫助。</p>
+<p>從 <a href="https://trex-tgn.cisco.com/trex/doc/trex_book.pdf">手冊 (pdf)</a> 看來的資訊：</p>
+<ul>
+<li>產生並分析 L4-L7 的封包</li>
+<li>基於實際流量的模版來產生流量</li>
+<li>虛擬網卡也可以跑</li>
+</ul>
+<p>硬體現在沒有什麼特別的限制，但是未來不一定。</p>
+<blockquote>
+<p>A high-end UCS platform is not required for operating TRex in its current
+version, but may be required for future versions.</p>
+</blockquote>
+<p>網卡的支援很少，支援的卡簡單查了一下都是一萬台幣起跳。可以用 ESXi 的虛擬網卡讓不支援的網卡可以使用。</p>
+<p>目前看起來也許用 iperf3 會比較簡單。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.s10g.tw/tag/trex/">trex</a>
+      <a href="https://blog.s10g.tw/tag/linux/">linux</a>
+      <a href="https://blog.s10g.tw/tag/tool/">tool</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 's10g';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

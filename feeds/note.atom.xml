@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Solomon's Notebook - note</title><link href="https://blog.s10g.tw/" rel="alternate"></link><link href="https://blog.s10g.tw/feeds/note.atom.xml" rel="self"></link><id>https://blog.s10g.tw/</id><updated>2019-05-21T11:56:15+08:00</updated><entry><title>Python 安裝 matlab engine</title><link href="https://blog.s10g.tw/posts/2019/05/21/install-the-matlab-engine-for-python/" rel="alternate"></link><published>2019-05-21T11:56:15+08:00</published><updated>2019-05-21T11:56:15+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2019-05-21:/posts/2019/05/21/install-the-matlab-engine-for-python/</id><summary type="html">&lt;p&gt;Matlab 有教學，其實很簡單。主要是記錄一下如果是要安裝在 virtualenv 中的時候要怎麼辦。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找出 python 套件的目錄。在 matlab 的命令列輸入底下 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Matlab 有教學，其實很簡單。主要是記錄一下如果是要安裝在 virtualenv 中的時候要怎麼辦。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;找出 python 套件的目錄。在 matlab 的命令列輸入底下的指令，就會得到目錄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;fullfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;matlabroot&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extern&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;engines&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在你的 python virtual env 中，切換剛剛得到的目錄。再打下面的指令就可以安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python setup.py install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;現在就可以在 python 使用 matlab engine 了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matlab.engine&lt;/span&gt;
+&lt;span class="n"&gt;eng&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matlab&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;start_matlab&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;eng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;eng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ref. &lt;a href="https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html"&gt;Install MATLAB Engine API for Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ref. &lt;a href="https://www.mathworks.com/help/matlab/matlab_external/install-matlab-engine-api-for-python-in-nondefault-locations.html"&gt;Install MATLAB Engine API for Python in Nondefault Locations&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="matlab"></category><category term="python"></category><category term="ubuntu"></category><category term="linux"></category></entry><entry><title>取得 windows 的序號</title><link href="https://blog.s10g.tw/posts/2018/09/09/retrive-windows-key-from-your-laptop/" rel="alternate"></link><published>2018-09-09T01:11:52+08:00</published><updated>2018-09-09T01:11:52+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2018-09-09:/posts/2018/09/09/retrive-windows-key-from-your-laptop/</id><summary type="html">&lt;p&gt;買 notebook 通常會有隨機安裝的 windows，但是像我已經裝了 linux 如果重新安裝 windows 沒有序號怎麼辦？&lt;/p&gt;
+&lt;p&gt;只要一行指令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cat /sys/firmware/acpi/tables/MSDM | tail -c …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;買 notebook 通常會有隨機安裝的 windows，但是像我已經裝了 linux 如果重新安裝 windows 沒有序號怎麼辦？&lt;/p&gt;
+&lt;p&gt;只要一行指令&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo cat /sys/firmware/acpi/tables/MSDM | tail -c 32 | xargs -0 echo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ref. &lt;a href="https://twitter.com/BrandonPrry/status/1038269038881898498"&gt;Brandon Prry&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="windows"></category><category term="linux"></category></entry><entry><title>OpenWRT-LuCi disable cache</title><link href="https://blog.s10g.tw/posts/2018/09/02/openwrt-luci-disable-cache/" rel="alternate"></link><published>2018-09-02T09:21:52+08:00</published><updated>2018-09-02T09:21:52+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2018-09-02:/posts/2018/09/02/openwrt-luci-disable-cache/</id><content type="html">&lt;p&gt;非常簡單&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uci set luci.ccache.enable=0; uci commit luci
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;ref. &lt;a href="https://github.com/openwrt/luci/wiki/DevelopmentEnvironmentHowTo"&gt;Development Environment How To&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="openwrt"></category><category term="luci"></category></entry><entry><title>聽哪些 podcast - 2018</title><link href="https://blog.s10g.tw/posts/2018/03/13/podcast-2018/" rel="alternate"></link><published>2018-03-13T22:01:52+08:00</published><updated>2018-03-13T22:01:52+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2018-03-13:/posts/2018/03/13/podcast-2018/</id><summary type="html">&lt;p&gt;在 twitter 上跟&lt;a href="https://twitter.com/hSATAC/status/973512760251244544"&gt;推友&lt;/a&gt;介紹英文的 podcast &lt;a href="https://twitter.com/solomonhuang/status/973530684512808960"&gt;1&lt;/a&gt; &lt;a href="https://twitter.com/solomonhuang/status/973531511008866304"&gt;2&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;記錄一下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://softwareengineeringdaily.com/"&gt;Software Engineering Daily&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週五集，主要訪問矽谷公司。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twit.tv/shows/security-now"&gt;Security Now - twit.tv&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週一集，爺爺級的主播，講資安 …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;在 twitter 上跟&lt;a href="https://twitter.com/hSATAC/status/973512760251244544"&gt;推友&lt;/a&gt;介紹英文的 podcast &lt;a href="https://twitter.com/solomonhuang/status/973530684512808960"&gt;1&lt;/a&gt; &lt;a href="https://twitter.com/solomonhuang/status/973531511008866304"&gt;2&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;記錄一下。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://softwareengineeringdaily.com/"&gt;Software Engineering Daily&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週五集，主要訪問矽谷公司。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twit.tv/shows/security-now"&gt;Security Now - twit.tv&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週一集，爺爺級的主播，講資安議題。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://996.ggvc.com/podcast/"&gt;996 podcast&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週一集，訪問中國新創公司。996就是中國說的996，9am to 9pm, 6 days a week.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twit.tv/shows/the-tech-guy"&gt;The Tech Guy - twit.tv&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週兩集，是週末的 call-in 節目。所以比較休閒一點，主持人也是爺爺級的主播。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上 幾個 podcast 中，&lt;a href="https://twit.tv"&gt;twit.tv&lt;/a&gt; 的錄音應該是最專業的，也有 video 可以看。語速以 twit 最慢， sed/996 會比較快一點。&lt;/p&gt;
+&lt;p&gt;之前寫的&lt;a href="/posts/2016/10/05/podcast/"&gt;聽哪些 podcast&lt;/a&gt;已經有很多不聽了，不是沒更新就是不想聽了。現在還在聽中文 podcast 的就只剩下底下的，但是大多很少更新。所以可以說是沒有在聽中文 podcast 了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://itunes.apple.com/tw/podcast/id1109872694"&gt;劉必榮教授 國際新聞專題分析&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;一週一更，十分鐘。錄音很小聲，開車聽不方便。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/"&gt;內核恐慌&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;已經不常更新了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/taiyilaile/"&gt;太醫來了&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;已經不常更新了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/weizhidao/"&gt;味之道&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;已經不常更新了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="note"></category><category term="podcast"></category></entry><entry><title>Call Call Graph</title><link href="https://blog.s10g.tw/posts/2018/01/09/call-call-graph/" rel="alternate"></link><published>2018-01-09T19:03:47+08:00</published><updated>2018-01-09T19:03:47+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2018-01-09:/posts/2018/01/09/call-call-graph/</id><summary type="html">&lt;p&gt;為了讀 &lt;a href="https://gitlab.eurecom.fr/oai/openairinterface5g"&gt;OAI&lt;/a&gt; 的程式碼，一直找一些 call graph 的工具。最後用了 &lt;a href="https://github.com/chihchun"&gt;chihchun&lt;/a&gt; 好久以前寫的 &lt;a href="https://github.com/chihchun/callgraphviz"&gt;callgraphviz&lt;/a&gt; 來改成 &lt;a href="https://github.com/solomonhuang/callcallgraph"&gt;Call Call Graph&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;叫 Call Call Graph 只是因為我要畫 caller 與 callee …&lt;/p&gt;</summary><content type="html">&lt;p&gt;為了讀 &lt;a href="https://gitlab.eurecom.fr/oai/openairinterface5g"&gt;OAI&lt;/a&gt; 的程式碼，一直找一些 call graph 的工具。最後用了 &lt;a href="https://github.com/chihchun"&gt;chihchun&lt;/a&gt; 好久以前寫的 &lt;a href="https://github.com/chihchun/callgraphviz"&gt;callgraphviz&lt;/a&gt; 來改成 &lt;a href="https://github.com/solomonhuang/callcallgraph"&gt;Call Call Graph&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;叫 Call Call Graph 只是因為我要畫 caller 與 callee。大架構沒有改太多，還是照原本的用 cscope 當後端的資料庫。查詢後生出 dot 的圖再餵給 xdot 來畫圖。花最多時間的就是查 python 3 的語法及 PyGObject 的 api。&lt;/p&gt;
+&lt;p&gt;我自己加了可以把現在的查詢資料清掉的功能，只要按一下 reload 鈕就可以清掉。不然累積太多查詢會造成節點太多。另外加了可以忽略特定 symbol 的功能，因為我會把 function 的 caller 與 callee 都找出來。所以像是 &lt;code&gt;memset&lt;/code&gt;、&lt;code&gt;printf&lt;/code&gt; 或是 debug function 可以濾掉，不然會有太多噪音。&lt;/p&gt;
+&lt;p&gt;之後有空的話，會再把 function 所在的目錄與檔名加到圖上，可能還要用目錄來切 cluster。不然大專案還是不知道這些 caller/callee 在哪裡。&lt;/p&gt;
+&lt;p&gt;最後附圖&lt;/p&gt;
+&lt;h3&gt;查 linux-4.14.12 的 add_del_if&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="add_del_if" src="/images/2018-01-09-linux-4.14.12-add_del_if.png" title="add_del_if"&gt;&lt;/p&gt;</content><category term="note"></category><category term="cscope"></category><category term="graphviz"></category><category term="dot"></category></entry><entry><title>本地 debug GitLab CI</title><link href="https://blog.s10g.tw/posts/2017/09/17/debug-gitlab-ci-locally/" rel="alternate"></link><published>2017-09-17T23:55:00+08:00</published><updated>2017-09-17T23:55:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2017-09-17:/posts/2017/09/17/debug-gitlab-ci-locally/</id><summary type="html">&lt;p&gt;最近在自己的小專案設定 GitLab-CI 發生了很多問題，但是 debug 很麻煩。每次都要修改再 push。於是找了一下發現可以很簡單的本地端 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近在自己的小專案設定 GitLab-CI 發生了很多問題，但是 debug 很麻煩。每次都要修改再 push。於是找了一下發現可以很簡單的本地端 debug。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安裝 docker&lt;/li&gt;
+&lt;li&gt;安裝 gitlab-ci-multi-runner&lt;/li&gt;
+&lt;li&gt;執行 &lt;code&gt;gitlab-ci-multi-runner exec docker {test_name}&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;收工&lt;/p&gt;
+&lt;p&gt;ref. &lt;a href="https://substrakt.com/how-to-debug-gitlab-ci-builds-locally/"&gt;How to: Debug GitLab CI Builds Locally&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="gitlab"></category><category term="gitlab-ci"></category></entry><entry><title>pdftk 移除 pdf 的浮水印</title><link href="https://blog.s10g.tw/posts/2017/06/19/pdf-watermark-remove/" rel="alternate"></link><published>2017-06-19T00:42:05+08:00</published><updated>2017-06-19T00:42:05+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2017-06-19:/posts/2017/06/19/pdf-watermark-remove/</id><summary type="html">&lt;h3&gt;目標：移除 pdf 中的文字浮水印&lt;/h3&gt;
+&lt;p&gt;手上有一些 pdf 有浮水印，突然想要移除看看。找了一下 &lt;a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/"&gt;pdftk&lt;/a&gt; 可以做到這件事。Superuser 上的 &lt;a href="https://superuser.com/questions/448519/how-to-remove-watermark-from-pdf-using-pdftk"&gt;How to remove watermark from …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3&gt;目標：移除 pdf 中的文字浮水印&lt;/h3&gt;
+&lt;p&gt;手上有一些 pdf 有浮水印，突然想要移除看看。找了一下 &lt;a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/"&gt;pdftk&lt;/a&gt; 可以做到這件事。Superuser 上的 &lt;a href="https://superuser.com/questions/448519/how-to-remove-watermark-from-pdf-using-pdftk"&gt;How to remove watermark from pdf using pdftk?&lt;/a&gt; 寫得很清楚又簡單。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;做修改之前應該要先備份原檔&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;做修改之前應該要先備份原檔&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;做修改之前應該要先備份原檔&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;步驟&lt;/h3&gt;
+&lt;h4&gt;1. 把壓縮過的 pdf 解壓縮&lt;/h4&gt;
+&lt;p&gt;如果你的 pdf 有被壓縮，要先解壓縮&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+pdftk input.pdf ouput uncompress.pdf uncompress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;2. 把浮水印的文字去除&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+sed -e &amp;quot;s/watermarktextstring/ /g&amp;quot; uncompress.pdf &amp;gt; unwatermarked.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;3. 修復破損的 pdf&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+pdftk unwatermarked.pdf output result.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;如果要壓縮，加上 &lt;code&gt;compress&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+pdftk unwatermarked.pdf output result.pdf compress
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="pdf"></category><category term="linux"></category><category term="pdftk"></category><category term="watermark"></category></entry><entry><title>Tmux dump buffer to file</title><link href="https://blog.s10g.tw/posts/2017/03/28/tmux-dump-buffer-to-file/" rel="alternate"></link><published>2017-03-28T16:53:03-08:00</published><updated>2017-03-28T16:53:03-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2017-03-28:/posts/2017/03/28/tmux-dump-buffer-to-file/</id><summary type="html">&lt;h3&gt;將 &lt;code&gt;tmux&lt;/code&gt; buffer 中的資料寫到檔案中&lt;/h3&gt;
+&lt;p&gt;參考 &lt;a href="http://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file"&gt;Unix stackexchange&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;prefix + :, then type in capture-pane -S -3000&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面這行把 3000 行的資料複製到 buffer 中。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;prefix + : again, and type in save-buffer filename.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面這行 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;將 &lt;code&gt;tmux&lt;/code&gt; buffer 中的資料寫到檔案中&lt;/h3&gt;
+&lt;p&gt;參考 &lt;a href="http://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file"&gt;Unix stackexchange&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;prefix + :, then type in capture-pane -S -3000&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面這行把 3000 行的資料複製到 buffer 中。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;prefix + : again, and type in save-buffer filename.txt&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面這行把 buffer 中的資料寫到 &lt;code&gt;filename.txt&lt;/code&gt; 中&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;prefix&lt;/code&gt; 預設值是 &lt;code&gt;Ctrl+b&lt;/code&gt;&lt;/p&gt;</content><category term="note"></category><category term="tmux"></category><category term="linux"></category><category term="utlls"></category></entry><entry><title>Find 排除目錄</title><link href="https://blog.s10g.tw/posts/2017/03/15/find-exclude/" rel="alternate"></link><published>2017-03-15T16:04:32-08:00</published><updated>2017-03-15T16:04:32-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2017-03-15:/posts/2017/03/15/find-exclude/</id><summary type="html">&lt;p&gt;使用 find 可以很簡單的找出目標檔案來做處理，記錄一下要排除特定目錄怎麼做。&lt;/p&gt;
+&lt;h3&gt;目標是排除 .git 下的所有檔案&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;bash&lt;/span&gt;
+&lt;span class="nv"&gt;find&lt;/span&gt; . &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;path&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;./.git/*&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;prune …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;使用 find 可以很簡單的找出目標檔案來做處理，記錄一下要排除特定目錄怎麼做。&lt;/p&gt;
+&lt;h3&gt;目標是排除 .git 下的所有檔案&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;bash&lt;/span&gt;
+&lt;span class="nv"&gt;find&lt;/span&gt; . &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;path&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;./.git/*&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;prune&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;o&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;exec&lt;/span&gt; &lt;span class="nv"&gt;blahblah&lt;/span&gt; {} \&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;blahblah&lt;/code&gt; 就是要對每個檔案做處理的程式。&lt;/p&gt;
+&lt;h3&gt;單元解釋&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+-path &amp;quot;./.git/*&amp;quot; -prune
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;除去 (&lt;code&gt;-prune&lt;/code&gt;) 路徑符合 &lt;code&gt;./.git/*&lt;/code&gt; 的部分&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;bash&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;o&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;type&lt;/span&gt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;exec&lt;/span&gt; &lt;span class="nv"&gt;blahblah&lt;/span&gt; {} \&lt;span class="c1"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;或者是 (&lt;code&gt;-o&lt;/code&gt;) 找出類別是檔案 (&lt;code&gt;-type f&lt;/code&gt;) 的項目交給程式處理 ( &lt;code&gt;-exec blahblah {} \;&lt;/code&gt; )&lt;/p&gt;</content><category term="note"></category><category term="find"></category><category term="linux"></category><category term="utlls"></category></entry><entry><title>Tex 數學式</title><link href="https://blog.s10g.tw/posts/2016/11/02/tex-math/" rel="alternate"></link><published>2016-11-02T02:33:03-08:00</published><updated>2016-11-02T02:33:03-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-11-02:/posts/2016/11/02/tex-math/</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/render_math"&gt;render_math&lt;/a&gt; 可以把 tex 語法的數學式畫出來。語法參考 &lt;a href="http://docs.mathjax.org/en/latest/tex.html"&gt;MathJax&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;範例 - inline&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::tex
+$e=mc^2$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;這是行內數學式的範例： &lt;span class="math"&gt;\(e=mc^2\)&lt;/span&gt; 這樣就可以了。&lt;/p&gt;
+&lt;h3&gt;範例 - block&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::tex …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/render_math"&gt;render_math&lt;/a&gt; 可以把 tex 語法的數學式畫出來。語法參考 &lt;a href="http://docs.mathjax.org/en/latest/tex.html"&gt;MathJax&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;範例 - inline&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::tex
+$e=mc^2$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;這是行內數學式的範例： &lt;span class="math"&gt;\(e=mc^2\)&lt;/span&gt; 這樣就可以了。&lt;/p&gt;
+&lt;h3&gt;範例 - block&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::tex
+$$e=mc^2$$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="math"&gt;$$e=mc^2$$&lt;/div&gt;
+&lt;h3&gt;範例 - block with label&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;tex&lt;/span&gt;
+\&lt;span class="nv"&gt;begin&lt;/span&gt;{&lt;span class="nv"&gt;equation&lt;/span&gt;}
+    \&lt;span class="nv"&gt;label&lt;/span&gt;{&lt;span class="nv"&gt;eq&lt;/span&gt;}
+    &lt;span class="nv"&gt;X&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+\&lt;span class="k"&gt;end&lt;/span&gt;{&lt;span class="nv"&gt;equation&lt;/span&gt;}
+
+\&lt;span class="nv"&gt;begin&lt;/span&gt;{&lt;span class="nv"&gt;equation&lt;/span&gt;}
+    \&lt;span class="nv"&gt;label&lt;/span&gt;{&lt;span class="nv"&gt;eq2&lt;/span&gt;}
+    &lt;span class="nv"&gt;e&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;mc&lt;/span&gt;&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+\&lt;span class="k"&gt;end&lt;/span&gt;{&lt;span class="nv"&gt;equation&lt;/span&gt;}
+
+&lt;span class="nv"&gt;Ref&lt;/span&gt;: \&lt;span class="nv"&gt;ref&lt;/span&gt;{&lt;span class="nv"&gt;eq&lt;/span&gt;}
+
+&lt;span class="nv"&gt;Ref&lt;/span&gt;: \&lt;span class="nv"&gt;ref&lt;/span&gt;{&lt;span class="nv"&gt;eq2&lt;/span&gt;}
+
+\&lt;span class="nv"&gt;begin&lt;/span&gt;{&lt;span class="nv"&gt;array&lt;/span&gt;}{&lt;span class="nv"&gt;cc&lt;/span&gt;}
+  &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;b&lt;/span&gt; \\
+  &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;c&lt;/span&gt;
+\&lt;span class="k"&gt;end&lt;/span&gt;{&lt;span class="nv"&gt;array&lt;/span&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="math"&gt;\begin{equation}
+    \label{eq}
+    X^2
+\end{equation}&lt;/div&gt;
+&lt;div class="math"&gt;\begin{equation}
+    \label{eq2}
+    e=mc^2
+\end{equation}&lt;/div&gt;
+&lt;p&gt;Ref: \ref{eq}&lt;/p&gt;
+&lt;p&gt;Ref: \ref{eq2}&lt;/p&gt;
+&lt;div class="math"&gt;\begin{array}{cc}
+  a &amp;amp; b \\
+  c &amp;amp; c
+\end{array}&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="note"></category><category term="tex"></category><category term="math"></category></entry><entry><title>Kernel Support for miscellaneous Binary Formats</title><link href="https://blog.s10g.tw/posts/2016/10/20/linux-kernel-binfmt/" rel="alternate"></link><published>2016-10-20T03:09:43-08:00</published><updated>2016-10-20T03:09:43-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-20:/posts/2016/10/20/linux-kernel-binfmt/</id><summary type="html">&lt;p&gt;Linux Kernel 文件 &lt;a href="https://www.kernel.org/doc/Documentation/binfmt_misc.txt"&gt;binfmt_misc.txt&lt;/a&gt; 提到的功能。主要就是告訴 kernel 如果把特定的檔案當成執行檔來呼叫。判斷的方式分成 extension 及 magic。&lt;/p&gt;
+&lt;h3&gt;第一步掛載 …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Linux Kernel 文件 &lt;a href="https://www.kernel.org/doc/Documentation/binfmt_misc.txt"&gt;binfmt_misc.txt&lt;/a&gt; 提到的功能。主要就是告訴 kernel 如果把特定的檔案當成執行檔來呼叫。判斷的方式分成 extension 及 magic。&lt;/p&gt;
+&lt;h3&gt;第一步掛載 binfmt_misc&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;向 binfmt 註冊你的格式&lt;/h3&gt;
+&lt;p&gt;註冊字串組成&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:name:type:offset:magic:mask:interpreter:flags
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;name 是識別用的字串，註冊後會出現在 &lt;code&gt;/proc/sys/fs/binfmt_misc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;type 有 &lt;code&gt;M&lt;/code&gt; 與 &lt;code&gt;E&lt;/code&gt;。&lt;code&gt;M&lt;/code&gt; 就是 magic number，&lt;code&gt;E&lt;/code&gt; 則是 extension。&lt;/li&gt;
+&lt;li&gt;offset 是 magic 與 mask 的位移量，預設值是 &lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;magic 是 binfmt 要拿來比較的 binary file 的。&lt;/li&gt;
+&lt;li&gt;mask 也是 binfmt 在比較 magic 時會拿來當遮罩用的。&lt;/li&gt;
+&lt;li&gt;interpreter 就是實際要呼叫的程式，而你的檔案會是 interpreter 第一個參數&lt;/li&gt;
+&lt;li&gt;flags 略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;範例 lua 用 luac 編過的 binary file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;:::&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="p"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nl"&gt;luac:M:&lt;/span&gt;&lt;span class="mh"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;\x1b\x4c\x75\x61::/usr/bin/lua:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;binfmt_misc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="linux"></category><category term="kernel"></category><category term="binfmt"></category></entry><entry><title>Lua 處理 UTF-8 字串</title><link href="https://blog.s10g.tw/posts/2016/10/17/utf8-string-in-lua/" rel="alternate"></link><published>2016-10-17T16:38:52-08:00</published><updated>2016-10-17T16:38:52-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-17:/posts/2016/10/17/utf8-string-in-lua/</id><summary type="html">&lt;p&gt;最近要用 Lua 處理 UTF-8 字串，但是 Lua 到了 &lt;a href="http://www.lua.org/manual/5.3/manual.html#6.5"&gt;5.3&lt;/a&gt; 才開始支援 UTF-8。&lt;/p&gt;
+&lt;h2&gt;UTF-8 字串長度及複製&lt;/h2&gt;
+&lt;p&gt;我的需求很簡單，只要判斷字串長度及類似 &lt;code&gt;strncpy …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近要用 Lua 處理 UTF-8 字串，但是 Lua 到了 &lt;a href="http://www.lua.org/manual/5.3/manual.html#6.5"&gt;5.3&lt;/a&gt; 才開始支援 UTF-8。&lt;/p&gt;
+&lt;h2&gt;UTF-8 字串長度及複製&lt;/h2&gt;
+&lt;p&gt;我的需求很簡單，只要判斷字串長度及類似 &lt;code&gt;strncpy&lt;/code&gt; 的字串複製。所以直接利用 &lt;a href="http://www.lua.org/manual/5.3/manual.html#6.5"&gt;Lua 5.3 手冊&lt;/a&gt; 提到的 charpattern 來進行字串的操作。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;[\0-\x7F\xC2-\xF4][\x80-\xBF]*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;utf8len&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;lua&lt;/span&gt;
+&lt;span class="nv"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;utf8len&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;_&lt;/span&gt;, &lt;span class="nv"&gt;len&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;.&lt;span class="nv"&gt;gsub&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;([\0-\x7F\xC2-\xF4][\x80-\xBF]*)&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;%1&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;len&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;utf8strncpy&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;lua&lt;/span&gt;
+&lt;span class="nv"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;utf8strncpy&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;, &lt;span class="nv"&gt;len&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;local&lt;/span&gt; &lt;span class="nb"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;local&lt;/span&gt; &lt;span class="nv"&gt;count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;string&lt;/span&gt;.&lt;span class="nv"&gt;gmatch&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;s&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;([\0-\x7F\xC2-\xF4][\x80-\xBF]*)&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;count&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="nv"&gt;len&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;result&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+        &lt;span class="nb"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;result&lt;/span&gt; .. &lt;span class="nv"&gt;c&lt;/span&gt;
+        &lt;span class="nv"&gt;count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;result&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;範例&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::lua
+a = &amp;#39;天天開心一二三四abcd&amp;#39;
+
+print(&amp;#39;length: #:&amp;#39; .. #a)
+print(&amp;#39;length: utf8len:&amp;#39; .. utf8len(a))
+print(utf8strncpy(a, 1))
+print(utf8strncpy(a, 3))
+print(utf8strncpy(a, 5))
+print(utf8strncpy(a, 7))
+print(utf8strncpy(a, 9))
+print(utf8strncpy(a, 11))
+print(utf8strncpy(a, 13))
+print(utf8strncpy(a, 15))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;length: #:28
+length: utf8len:12
+天
+天天開
+天天開心一
+天天開心一二三
+天天開心一二三四a
+天天開心一二三四abc
+天天開心一二三四abcd
+天天開心一二三四abcd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="lua"></category><category term="utf8"></category></entry><entry><title>Pelican 裝 ligquid tags plugin</title><link href="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/" rel="alternate"></link><published>2016-10-17T00:19:48-08:00</published><updated>2016-10-17T00:19:48-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-17:/posts/2016/10/17/plugin-liquid-tags-graphviz/</id><summary type="html">&lt;p&gt;為了之後要畫圖方便，加裝了 &lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags"&gt;ligquid tags&lt;/a&gt; 的 plugin。方法很簡單只要加入 &lt;code&gt;PLUGIN_PATHS&lt;/code&gt; 與 &lt;code&gt;PLUGIN&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::python
+PLUGIN_PATHS = [&amp;#39;../pelican-plugins&amp;#39;]
+PLUGINS = [&amp;#39;liquid_tags.graphviz&amp;#39;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;之後底下的 dot 語言就可以 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;為了之後要畫圖方便，加裝了 &lt;a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags"&gt;ligquid tags&lt;/a&gt; 的 plugin。方法很簡單只要加入 &lt;code&gt;PLUGIN_PATHS&lt;/code&gt; 與 &lt;code&gt;PLUGIN&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::python
+PLUGIN_PATHS = [&amp;#39;../pelican-plugins&amp;#39;]
+PLUGINS = [&amp;#39;liquid_tags.graphviz&amp;#39;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;之後底下的 dot 語言就可以畫出 graphviz 的圖了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="c"&gt;% graphviz&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;dot&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nb"&gt;digraph&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;graphname&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="c"&gt;%}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;span class="graphviz" style="text-align: center;"&gt;&lt;img src="data:image/png;base64,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"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;但是&lt;/h3&gt;
+&lt;p&gt;因為我用的是 Python 3 會因為 &lt;code&gt;base64.b64encode&lt;/code&gt; 會輸出 byte string。這會導致 inline base64 encodeing 的格式跑掉，所以圖會出不來。改了一下程式碼發了個 &lt;a href="https://github.com/getpelican/pelican-plugins/pull/798"&gt;PR #798&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;底下是 python 3 的執行結果，只要加了 &lt;code&gt;decode('utf-8')&lt;/code&gt; 就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::python
+&amp;gt;&amp;gt;&amp;gt; print(base64.b64encode(b&amp;#39;\01&amp;#39;))
+b&amp;#39;AQ==&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; print(base64.b64encode(b&amp;#39;\01&amp;#39;).decode(&amp;#39;utf-8&amp;#39;))
+AQ==
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="graphviz"></category><category term="pelican"></category><category term="python"></category></entry><entry><title>Lua 中的 ipairs 與 pairs 的差異。</title><link href="https://blog.s10g.tw/posts/2016/10/07/difference-between-ipairs-and-pairs-in-lua/" rel="alternate"></link><published>2016-10-07T11:31:55-08:00</published><updated>2016-10-07T11:31:55-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-07:/posts/2016/10/07/difference-between-ipairs-and-pairs-in-lua/</id><summary type="html">&lt;p&gt;&lt;a href="https://www.lua.org/pil/7.3.html"&gt;PIL 7.3 – Stateless Iterators&lt;/a&gt; 中有提到&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ipairs, which iterates over all elements in an array, as illustrated next&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;及&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The pairs function, which iterates over all elements in a table&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是說 &lt;code&gt;ipairs&lt;/code&gt; 是遍歷 array (Lua 中以數字為 index 的 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.lua.org/pil/7.3.html"&gt;PIL 7.3 – Stateless Iterators&lt;/a&gt; 中有提到&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ipairs, which iterates over all elements in an array, as illustrated next&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;及&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The pairs function, which iterates over all elements in a table&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是說 &lt;code&gt;ipairs&lt;/code&gt; 是遍歷 array (Lua 中以數字為 index 的 table, 1 為起始)，而 &lt;code&gt;pairs&lt;/code&gt; 則是遍歷 table 中所有的元素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;當你把 Lua 的 table 當 array 用的時候，你只有純數字的 key 當 index。這時候就是用 &lt;code&gt;ipairs&lt;/code&gt; 來迭代。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;當你把 Lua 的 table 當成 dict 來用的時候，你會有各式各樣的 key。這時候要用 &lt;code&gt;pairs&lt;/code&gt; 來迭代。&lt;/strong&gt;&lt;/p&gt;</content><category term="note"></category><category term="lua"></category></entry><entry><title>lua 複製物件</title><link href="https://blog.s10g.tw/posts/2016/10/06/lua-deep-copy/" rel="alternate"></link><published>2016-10-06T13:31:55-08:00</published><updated>2016-10-06T13:31:55-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-06:/posts/2016/10/06/lua-deep-copy/</id><summary type="html">&lt;p&gt;之前踩到一個坑，因為沒注意到指定 array table 中的物件時是 reference 到原有物件，所以整個 table 中的東西都長得一樣，而且還牽一髮動 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;之前踩到一個坑，因為沒注意到指定 array table 中的物件時是 reference 到原有物件，所以整個 table 中的東西都長得一樣，而且還牽一髮動全身。解決方式就是複製生出新的物件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::&lt;span class="nv"&gt;lua&lt;/span&gt;
+&lt;span class="nv"&gt;function&lt;/span&gt; &lt;span class="nv"&gt;deepcopy&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;orig&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;local&lt;/span&gt; &lt;span class="nv"&gt;orig_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;type&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;orig&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;local&lt;/span&gt; &lt;span class="nv"&gt;copy&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;orig_type&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;table&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="nv"&gt;copy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {}
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;orig_key&lt;/span&gt;, &lt;span class="nv"&gt;orig_value&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="k"&gt;next&lt;/span&gt;, &lt;span class="nv"&gt;orig&lt;/span&gt;, &lt;span class="nv"&gt;nil&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+            &lt;span class="nv"&gt;copy&lt;/span&gt;[&lt;span class="nv"&gt;deepcopy&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;orig_key&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;] &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;deepcopy&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;orig_value&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;end&lt;/span&gt;
+        &lt;span class="nv"&gt;setmetatable&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;copy&lt;/span&gt;, &lt;span class="nv"&gt;deepcopy&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;getmetatable&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;orig&lt;/span&gt;&lt;span class="ss"&gt;)))&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="nv"&gt;number&lt;/span&gt;, &lt;span class="nv"&gt;string&lt;/span&gt;, &lt;span class="nv"&gt;boolean&lt;/span&gt;, &lt;span class="nv"&gt;etc&lt;/span&gt;
+        &lt;span class="nv"&gt;copy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;orig&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;copy&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="lua"></category></entry><entry><title>聽哪些 podcast</title><link href="https://blog.s10g.tw/posts/2016/10/05/podcast/" rel="alternate"></link><published>2016-10-05T15:47:33-08:00</published><updated>2016-10-05T15:47:33-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-10-05:/posts/2016/10/05/podcast/</id><summary type="html">&lt;p&gt;跟朋友聊天聊到我開車上下班的時候都聽 podcast，他就問我都聽哪些節目。整理一下聊到的內容。&lt;/p&gt;
+&lt;h2&gt;中文&lt;/h2&gt;
+&lt;p&gt;中文的大部分比較偏休 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;跟朋友聊天聊到我開車上下班的時候都聽 podcast，他就問我都聽哪些節目。整理一下聊到的內容。&lt;/p&gt;
+&lt;h2&gt;中文&lt;/h2&gt;
+&lt;p&gt;中文的大部分比較偏休閒但還有少許知識性。目前沒有聽到台灣的節目，以前有聽劉必榮在 &lt;a href="https://tzangms.com/the-record-of-myaudiocast/"&gt;MyAudioCast(已結束)&lt;/a&gt; 的節目。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/kernelpanic/"&gt;內核恐慌&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;IPN 旗下。一些技術類的閒談，更新時間不固定。&lt;/li&gt;
+&lt;li&gt;如果要從這個節目得到新資訊就太慢了，當成同事閒聊就好。&lt;/li&gt;
+&lt;li&gt;主播是兩位業內工程師。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/taiyilaile/"&gt;太醫來了&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;IPN 旗下。醫生談話類節目，接近每週更新。近期不穩定。&lt;/li&gt;
+&lt;li&gt;聊一些中國大陸的醫療事件與現象，也有一些醫學常識。&lt;/li&gt;
+&lt;li&gt;主播是兩位醫生。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/weizhidao/"&gt;味之道&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;IPN 旗下。美食類節目。一週一檔新節目。&lt;/li&gt;
+&lt;li&gt;聊各種食物、餐廰、主廚還有廚藝學校。我喜歡女主持人席妙雅的聲音。&lt;/li&gt;
+&lt;li&gt;主播是餐飲工作相關人士。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/bowuzhi/"&gt;博物志&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;IPN 旗下。聊博物館、展覽與建築。每月兩至三檔新節目。&lt;/li&gt;
+&lt;li&gt;主播是念博物館學的，另一位常駐的是建築師。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ipn.li/xuanmei/"&gt;選美&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;IPN 旗下。美國選舉觀察。政論性質。&lt;/li&gt;
+&lt;li&gt;聊美國的選舉制度、總統大選、還有一些聯邦等級的議題。&lt;/li&gt;
+&lt;li&gt;主播應該都是政治學相關背景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://banlan.show/keepcalm/"&gt;保持冷靜&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;斑斕播客旗下。兩性類談話節目。消遣用。&lt;/li&gt;
+&lt;li&gt;這不是知識性節目，女主播是婦產科的醫生。我也不完全認同節目內容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://banlan.show/bitvoice/"&gt;比特新聲&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;斑斕播客旗下。科技類談話節目。消遣用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;英文&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://softwareengineeringdaily.com/"&gt;Software engineering daily&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;蠻不錯的英文科技 podcast。上班日每日一個新檔節目。&lt;/li&gt;
+&lt;li&gt;節目型態是談談式。邀請各個公司或是開源專案的人來聊產品、專案或是觀點。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;不推薦&lt;/h2&gt;
+&lt;p&gt;朋友有問我羅輯思維如何？我實在是不會介紹這個節目給他，簡單來說是他的節目調性不符合我的需求。羅輯思維帶給我的感覺就像是看著無腦綜藝節目哈哈大笑的空虛感，但是你又會以為你看了知識性節目，而實質上就是一個精心安排過的書籍直銷節目。「有種、有料、有趣」這三個他宣稱的性質，我認為最多只能說上有趣而已。&lt;/p&gt;</content><category term="note"></category><category term="podcast"></category></entry><entry><title>dropbox 保存密碼的安全措施筆記</title><link href="https://blog.s10g.tw/posts/2016/09/24/dropbox-password/" rel="alternate"></link><published>2016-09-24T00:42:11-08:00</published><updated>2016-09-24T00:42:11-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-09-24:/posts/2016/09/24/dropbox-password/</id><summary type="html">&lt;p&gt;Dropbox 寫了一篇&lt;a href="https://blogs.dropbox.com/tech/2016/09/how-dropbox-securely-stores-your-passwords/"&gt;文章&lt;/a&gt;來告訴大家他們如何安全地保存用戶的密碼。我認為蠻有趣的，有一些是我沒有接觸過的。&lt;/p&gt;
+&lt;h1&gt;保存密碼的方 …&lt;/h1&gt;</summary><content type="html">&lt;p&gt;Dropbox 寫了一篇&lt;a href="https://blogs.dropbox.com/tech/2016/09/how-dropbox-securely-stores-your-passwords/"&gt;文章&lt;/a&gt;來告訴大家他們如何安全地保存用戶的密碼。我認為蠻有趣的，有一些是我沒有接觸過的。&lt;/p&gt;
+&lt;h1&gt;保存密碼的方式&lt;/h1&gt;
+&lt;p&gt;簡單用一行來寫&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;AES256(bcrypt(SHA512(PASSWORD)))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AES256 加密用的是另外存的金鑰 (global pepper)，每個用戶都一樣。&lt;/li&gt;
+&lt;li&gt;bcrypt 做 hash 的 salt 是每個使用者分開的，強度是 10&lt;ul&gt;
+&lt;li&gt;這是引起我細讀的地方&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;bcrypt 是什麼&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Bcrypt"&gt;bcrypt&lt;/a&gt;是基於&lt;a href="https://en.wikipedia.org/wiki/Blowfish_(cipher)"&gt;Blowfish&lt;/a&gt;所發展出來的 hash function。因為有 salt 的關係，所以可以對抗 rainbow table 的攻擊。&lt;/p&gt;
+&lt;p&gt;同時，bcrypt 的 cost (上面寫的強度)會以 2 的 cost 次方來增加運算次數。這樣子可以增加暴力破解的難度。而且 bcrypt 的設計就是慢又很難用客製硬體(我想就是 FPGA，ASIC 之類的吧)及 GPU 來加速。&lt;/p&gt;
+&lt;h1&gt;Dropbox 的選擇&lt;/h1&gt;
+&lt;p&gt;同時 Dropbox 也解釋了為什麼用這樣子的技術實現。&lt;/p&gt;
+&lt;h3&gt;為什麼密碼要先經過 SHA512 再用 bcrypt&lt;/h3&gt;
+&lt;p&gt;這解決了兩個問題&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有一些 bcrypt 的實做會把 input 切成 72 bytes，這降低了密碼的熵。&lt;/li&gt;
+&lt;li&gt;避免 DoS 攻擊。其他不把 input 剪掉的 bcrypt 實做會因為 input 太長而消耗 server 的計算資源，從而達到 DoS 的效果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以用 SHA512 把任意長度的密碼 hash 成固定長度的值直接處理了上面兩種 bcrypt 實做會碰到的問題。&lt;/p&gt;
+&lt;h3&gt;還有什麼？&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;為什麼不用 scrypt 或 argon2 來取代 bcrypt？&lt;ul&gt;
+&lt;li&gt;比較會用 bcrypt&lt;/li&gt;
+&lt;li&gt;argon2 在未來的考慮清單中&lt;/li&gt;
+&lt;li&gt;bcrypt 從 1999 年發表到現在沒有被發現任何嚴重的弱點&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;為什麼用 global pepper (就是 AES256 的加密金鑰) 來給密碼 hash 值加密，而不是再做一次 hash？&lt;ul&gt;
+&lt;li&gt;因為用 global pepper 來做 hash 的話，就很難換掉 hash salt 了。&lt;/li&gt;
+&lt;li&gt;加密的方式提供了類似的安全性，但是同時也可以定期更換。&lt;/li&gt;
+&lt;li&gt;上面這兩點我沒有真正理解所謂的類似的安全性是什麼。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="note"></category><category term="dropbox"></category><category term="security"></category><category term="password"></category></entry><entry><title>docker 更新 jenkins</title><link href="https://blog.s10g.tw/posts/2016/09/13/docker-jenkins-update/" rel="alternate"></link><published>2016-09-13T16:39:18-08:00</published><updated>2016-09-13T16:39:18-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-09-13:/posts/2016/09/13/docker-jenkins-update/</id><summary type="html">&lt;p&gt;因為自己家的 jenkins 是用 docker 裝的，紀錄一下自動更新 weekly 版本的方式。&lt;/p&gt;
+&lt;h3&gt;安裝 jenkins&lt;/h3&gt;
+&lt;p&gt;照著 jenkins 自己的&lt;a href="https://github.com/jenkinsci/docker/blob/master/README.md"&gt;正式文件&lt;/a&gt;來做。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:::&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt;
+&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;jenkins_home&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;jenkins …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;因為自己家的 jenkins 是用 docker 裝的，紀錄一下自動更新 weekly 版本的方式。&lt;/p&gt;
+&lt;h3&gt;安裝 jenkins&lt;/h3&gt;
+&lt;p&gt;照著 jenkins 自己的&lt;a href="https://github.com/jenkinsci/docker/blob/master/README.md"&gt;正式文件&lt;/a&gt;來做。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:::&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt;
+&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;jenkins_home&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;jenkins_data&lt;/span&gt; &lt;span class="n"&gt;jenkinsci&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;jenkins&lt;/span&gt;
+&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;volumes&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;jenkins_data&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;jenkins_container&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;restart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;always&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8080&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="mi"&gt;50000&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50000&lt;/span&gt; &lt;span class="n"&gt;jenkinsci&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;jenkins&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;我的選擇是建一個 jenkins 專用的 volume container。run jenkins container 的時候再掛上來。這樣子的好處是不會看到亂亂的目錄，雖然說實際上還是存在系統上。但是我就不用額外指定了。&lt;/p&gt;
+&lt;h3&gt;自動更新 jenkins&lt;/h3&gt;
+&lt;p&gt;重點只是要紀錄一下我自己用的 script。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:::bash
+#!/bin/bash
+
+docker pull jenkinsci/jenkins
+docker stop jenkins_container
+docker rm jenkins_container
+docker run --name jenkins_container --restart=always -p 127.0.0.1:8081:8080 -p 50000:50000 --volumes-from jenkins_data -d jenkinsci/jenkins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;jenkins_container 是我的容器名字，jenkins_data 是我的資料容器。&lt;/p&gt;
+&lt;p&gt;另外因為我自己的機器跑了不同服務，所以把 8080 mapping 到 127.0.0.1:8081。上面的 script 丟到 cron 去跑就好了。&lt;/p&gt;</content><category term="note"></category><category term="docker"></category><category term="jenkins"></category></entry><entry><title>MQTT 資料格式</title><link href="https://blog.s10g.tw/posts/2016/08/29/mqtt-data-spec/" rel="alternate"></link><published>2016-08-29T23:38:32+08:00</published><updated>2016-08-29T23:38:32+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-08-29:/posts/2016/08/29/mqtt-data-spec/</id><summary type="html">&lt;p&gt;看了一下 &lt;a href="http://mqtt.org/documentation"&gt;MQTT&lt;/a&gt; 的文件，隨手紀錄一下。&lt;/p&gt;
+&lt;h3&gt;資料格式的表示&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;位元組 bit 0 ~ bit 7&lt;ul&gt;
+&lt;li&gt;bit 0 是 least significant bit, bit 7 是 most sigificant bit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;整數&lt;ul&gt;
+&lt;li&gt;big endian 排列的 16 bits 數 …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;看了一下 &lt;a href="http://mqtt.org/documentation"&gt;MQTT&lt;/a&gt; 的文件，隨手紀錄一下。&lt;/p&gt;
+&lt;h3&gt;資料格式的表示&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;位元組 bit 0 ~ bit 7&lt;ul&gt;
+&lt;li&gt;bit 0 是 least significant bit, bit 7 是 most sigificant bit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;整數&lt;ul&gt;
+&lt;li&gt;big endian 排列的 16 bits 數字，也就是最大是 65535。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;字串&lt;ul&gt;
+&lt;li&gt;UTF-8 編碼&lt;/li&gt;
+&lt;li&gt;字串長度從 0-65535&lt;/li&gt;
+&lt;li&gt;字串結構中，前兩個 byte 放整數，表示 UTF-8 編碼字串的位元組長度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;控制封包結構&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;固定表頭&lt;ul&gt;
+&lt;li&gt;全部的 MQTT control packet 都有&lt;/li&gt;
+&lt;li&gt;佔 &lt;code&gt;1+n&lt;/code&gt; bytes，n = 1-4&lt;/li&gt;
+&lt;li&gt;byte 1, bits 7-4 是 control packet type&lt;/li&gt;
+&lt;li&gt;byte 1, bits 3-0 是 flags&lt;/li&gt;
+&lt;li&gt;remaining length 是後續變動表頭與 payload 的長度&lt;ul&gt;
+&lt;li&gt;1 byte 只能表示 127&lt;/li&gt;
+&lt;li&gt;大於 127 的時候，把每個 byte 的 bit 7 OR 1 來表示下個 byte 還是表示長度&lt;/li&gt;
+&lt;li&gt;1 byte &lt;code&gt;0 (0x00)&lt;/code&gt; to &lt;code&gt;127 (0x7F)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;2 bytes &lt;code&gt;128 (0x80, 0x01&lt;/code&gt;) to &lt;code&gt;16 383 (0xFF, 0x7F)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;3 bytes &lt;code&gt;16384 (0x80, 0x80, 0x01)&lt;/code&gt; to &lt;code&gt;2097151 (0xFF, 0xFF, 0x7F)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;4 bytes &lt;code&gt;2097152 (0x80, 0x80, 0x80, 0x01)&lt;/code&gt; to &lt;code&gt;268435455 (0xFF, 0xFF, 0xFF, 0x7F)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;變動表頭&lt;ul&gt;
+&lt;li&gt;2 bytes 的 packet identifier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;資料 payload&lt;ul&gt;
+&lt;li&gt;只有下列控制封包有 payload&lt;ul&gt;
+&lt;li&gt;CONNECT&lt;/li&gt;
+&lt;li&gt;PUBLISH (optional)&lt;/li&gt;
+&lt;li&gt;SUBSCRIBE&lt;/li&gt;
+&lt;li&gt;SUBACK&lt;/li&gt;
+&lt;li&gt;UNSUBSCRIBE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="note"></category><category term="mqtt"></category><category term="iot"></category><category term="protocol"></category></entry><entry><title>Linux Performance tools 整理筆記</title><link href="https://blog.s10g.tw/posts/2016/08/18/linux-performance-tools/" rel="alternate"></link><published>2016-08-18T16:22:30+08:00</published><updated>2016-08-18T16:22:30+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-08-18:/posts/2016/08/18/linux-performance-tools/</id><summary type="html">&lt;p&gt;Twitter 上看到這一篇&lt;a href="https://twitter.com/nixcraft/status/763627361224957952"&gt;推文&lt;/a&gt;，整理了 linux 下許多效能監測工具。手動整理一些自己不熟但可能會用到的部分。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Sar_(Unix)"&gt;sar&lt;/a&gt;: System Activity Report&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cyberciti.biz/files/ss.html"&gt;ss&lt;/a&gt;: another utility to investigate …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Twitter 上看到這一篇&lt;a href="https://twitter.com/nixcraft/status/763627361224957952"&gt;推文&lt;/a&gt;，整理了 linux 下許多效能監測工具。手動整理一些自己不熟但可能會用到的部分。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Sar_(Unix)"&gt;sar&lt;/a&gt;: System Activity Report&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cyberciti.biz/files/ss.html"&gt;ss&lt;/a&gt;: another utility to investigate sockets&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://iptraf.seul.org/"&gt;IPTraf&lt;/a&gt;: IP Network Monitoring Software&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/iovisor/bcc"&gt;bcc&lt;/a&gt;: BPF Compiler Collection (BCC)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;來源：&lt;/p&gt;
+&lt;blockquote class="twitter-tweet" data-lang="zh-tw"&gt;&lt;p lang="en" dir="ltr"&gt;Awesome. &amp;quot;Linux Performance Tools&amp;quot; by &lt;a href="https://twitter.com/brendangregg"&gt;@brendangregg&lt;/a&gt; via &lt;a href="https://twitter.com/FreeBSDHelp"&gt;@FreeBSDHelp&lt;/a&gt; Large version &lt;a href="https://t.co/ByoYeLpjWW"&gt;https://t.co/ByoYeLpjWW&lt;/a&gt; &lt;a href="https://twitter.com/hashtag/sysadmin?src=hash"&gt;#sysadmin&lt;/a&gt; &lt;a href="https://t.co/sLckhiJiPB"&gt;pic.twitter.com/sLckhiJiPB&lt;/a&gt;&lt;/p&gt;&amp;mdash; nixCraft (@nixcraft) &lt;a href="https://twitter.com/nixcraft/status/763627361224957952"&gt;2016年8月11日&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;原始大圖&lt;/p&gt;
+&lt;blockquote class="imgur-embed-pub" lang="en" data-id="2NAvHn1"&gt;&lt;a href="//imgur.com/2NAvHn1"&gt;Linux Performance Tools: full version draft&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;原始大圖 local copy
+&lt;img alt="Linux performance tools" src="/images/2016-08-18-linux-performance-tools.png" title="linux performance tools"&gt;&lt;/p&gt;</content><category term="note"></category><category term="linux"></category><category term="tools"></category></entry><entry><title>VirtualBox 發生 VERR_INTNET_FLT_IF_NOT_FOUND 錯誤</title><link href="https://blog.s10g.tw/posts/2016/08/11/virtualbox-interface-not-found/" rel="alternate"></link><published>2016-08-11T11:34:46+08:00</published><updated>2016-08-11T11:34:46+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-08-11:/posts/2016/08/11/virtualbox-interface-not-found/</id><summary type="html">&lt;p&gt;升級了 Windows 10 的年度更新之後，VirtualBox 就找不到 host only 網卡了。解決方式很簡單，就是把 &lt;code&gt;VirtualBox Host-Only Ethernet Adapter&lt;/code&gt; 網卡的 &lt;code&gt;VirtualBox NDIS6 Bridge Networking Driver&lt;/code&gt; 打開就可以了 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;升級了 Windows 10 的年度更新之後，VirtualBox 就找不到 host only 網卡了。解決方式很簡單，就是把 &lt;code&gt;VirtualBox Host-Only Ethernet Adapter&lt;/code&gt; 網卡的 &lt;code&gt;VirtualBox NDIS6 Bridge Networking Driver&lt;/code&gt; 打開就可以了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="乙太網路內容" src="/images/2016-08-11-virtualbox-interface-not-found.png" title="乙太網路內容"&gt;&lt;/p&gt;</content><category term="note"></category><category term="virutalbox"></category><category term="windows"></category></entry><entry><title>pip 在 windows 下無法使用</title><link href="https://blog.s10g.tw/posts/2016/07/22/windows-python-pip-with-strawberry-perl/" rel="alternate"></link><published>2016-07-22T16:20:00+08:00</published><updated>2016-07-22T16:20:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-22:/posts/2016/07/22/windows-python-pip-with-strawberry-perl/</id><summary type="html">&lt;p&gt;紀錄一下，主要原因是因為我同時安裝了 &lt;a href="http://strawberryperl.com/"&gt;Strawberry Perl&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;輸入 &lt;code&gt;where pip&lt;/code&gt; 查詢一下，&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:\Strawberry\perl\bin\pip
+C:\Strawberry\perl\bin\pip.bat
+C:\Users\Solomon\AppData\Local\Programs\Python\Python35-32\Scripts\pip.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;所 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;紀錄一下，主要原因是因為我同時安裝了 &lt;a href="http://strawberryperl.com/"&gt;Strawberry Perl&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;輸入 &lt;code&gt;where pip&lt;/code&gt; 查詢一下，&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;C:\Strawberry\perl\bin\pip
+C:\Strawberry\perl\bin\pip.bat
+C:\Users\Solomon\AppData\Local\Programs\Python\Python35-32\Scripts\pip.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;所以直接打 &lt;code&gt;pip&lt;/code&gt; 就會出現奇怪的訊息。因為執行到 Strawberry 的 &lt;code&gt;pip&lt;/code&gt; 了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Did not provide a command
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;解決方式就是調整一下 PATH 環境變數，或是使用完整路徑。&lt;/p&gt;</content><category term="note"></category><category term="python"></category><category term="pip"></category><category term="perl"></category></entry><entry><title>用 github 直接新增 blog 文章</title><link href="https://blog.s10g.tw/posts/2016/07/21/new-post-on-pelican-with-github/" rel="alternate"></link><published>2016-07-21T15:50:00+08:00</published><updated>2016-07-21T15:50:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-21:/posts/2016/07/21/new-post-on-pelican-with-github/</id><summary type="html">&lt;p&gt;之前看了 &lt;a href="https://blog.m157q.tw/author/m157q.html"&gt;m157q&lt;/a&gt; 的 &lt;a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/"&gt;用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上&lt;/a&gt;
+的文章後，就設定一樣的自動化發怖流程。&lt;/p&gt;
+&lt;p&gt;剛剛突然想到，我可以直接在 GitHub …&lt;/p&gt;</summary><content type="html">&lt;p&gt;之前看了 &lt;a href="https://blog.m157q.tw/author/m157q.html"&gt;m157q&lt;/a&gt; 的 &lt;a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/"&gt;用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上&lt;/a&gt;
+的文章後，就設定一樣的自動化發怖流程。&lt;/p&gt;
+&lt;p&gt;剛剛突然想到，我可以直接在 GitHub 上新建檔案呀！還可以直接 preview，這下子也不用切 env 來寫新的文章。直接先寫這一篇來試試看！&lt;/p&gt;</content><category term="note"></category><category term="pelican"></category><category term="blog"></category><category term="github"></category></entry><entry><title>xargs 平行化處理指令</title><link href="https://blog.s10g.tw/posts/2016/07/19/xargs-execute-command-parallelly/" rel="alternate"></link><published>2016-07-19T23:25:31+08:00</published><updated>2016-07-19T23:25:31+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-19:/posts/2016/07/19/xargs-execute-command-parallelly/</id><summary type="html">&lt;p&gt;直接先上範例&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xargs -a data.txt -I % -P 0 bash -c &amp;quot;sleep 1; echo %&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;我要解決的問題是，我有一個文字檔 &lt;code&gt;data.txt&lt;/code&gt;，其內容是我要處理的資料，一行一筆 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;直接先上範例&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;xargs -a data.txt -I % -P 0 bash -c &amp;quot;sleep 1; echo %&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;我要解決的問題是，我有一個文字檔 &lt;code&gt;data.txt&lt;/code&gt;，其內容是我要處理的資料，一行一筆。我希望可以同時處理這些資料。答案就是上面的範例。
+&lt;code&gt;data.txt&lt;/code&gt; 的內容是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;a
+b
+c
+d
+e
+f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;現在來解釋一下參數：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-a data.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;從 data.txt 直接讀入參數，而不是從 &lt;code&gt;STDIN&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-P 0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最大執行的 process 數量。平行化的主要參數，&lt;code&gt;0&lt;/code&gt; 是盡可能大。以範例來看的話，設 &lt;code&gt;-P 2&lt;/code&gt;，你就會看到一秒印兩行字。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;( 等一秒 )&lt;br&gt;
+a&lt;br&gt;
+b&lt;br&gt;
+( 等一秒 )&lt;br&gt;
+c&lt;br&gt;
+d&lt;br&gt;
+( 等一秒 )&lt;br&gt;
+e&lt;br&gt;
+f&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-I %&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;將後面的命令中的 &lt;code&gt;%&lt;/code&gt; 換成 &lt;code&gt;data.txt&lt;/code&gt; 中你要塞進來的參數。範例會被展開底下的樣子。&lt;code&gt;%&lt;/code&gt; 可以換成其他字串，像&lt;code&gt;{}&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;bash -c "sleep 1; echo a"&lt;br&gt;
+bash -c "sleep 1; echo b"&lt;br&gt;
+bash -c "sleep 1; echo c"&lt;br&gt;
+bash -c "sleep 1; echo d"&lt;br&gt;
+bash -c "sleep 1; echo e"&lt;br&gt;
+bash -c "sleep 1; echo f"&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;另外，用了 &lt;code&gt;-I&lt;/code&gt; 同時也隱含啟用了 &lt;code&gt;-L 1&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="note"></category><category term="linux"></category><category term="xargs"></category></entry><entry><title>好用的 vpn Hide my ass</title><link href="https://blog.s10g.tw/posts/2016/07/19/hao-yong-de-vpn-hide-my-ass/" rel="alternate"></link><published>2016-07-19T02:06:08+08:00</published><updated>2016-07-19T02:06:08+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-19:/posts/2016/07/19/hao-yong-de-vpn-hide-my-ass/</id><summary type="html">&lt;p&gt;&lt;a href="https://goo.gl/VO3IuK"&gt;Hide My Ass&lt;/a&gt; 還不錯，可以連線的國家多。我試了一下，還可以連到美國 Google Play 去下載 Pokemon Go！雖然在台灣還是不能玩……&lt;/p&gt;
+&lt;p&gt;簡單測了一下，整 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://goo.gl/VO3IuK"&gt;Hide My Ass&lt;/a&gt; 還不錯，可以連線的國家多。我試了一下，還可以連到美國 Google Play 去下載 Pokemon Go！雖然在台灣還是不能玩……&lt;/p&gt;
+&lt;p&gt;簡單測了一下，整體的速度還 ok 喔。之後就是進大陸再試一下有沒有辦法連外。&lt;/p&gt;
+&lt;p&gt;然後找個時間連一下美國的 netflix。&lt;/p&gt;</content><category term="note"></category><category term="vpn"></category><category term="pokemon"></category></entry><entry><title>Java 與 Let's Encrypt</title><link href="https://blog.s10g.tw/posts/2016/07/01/java-letsencrypt/" rel="alternate"></link><published>2016-07-01T12:33:44+08:00</published><updated>2016-07-01T12:33:44+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-01:/posts/2016/07/01/java-letsencrypt/</id><summary type="html">&lt;p&gt;在弄 Jenkins windows slave 的時候踩到 Java 還沒有把 &lt;a href="https://letsencrypt.org"&gt;Let's Encrypt&lt;/a&gt; 的根憑證放到信任清單中。弄了半天才真的搞定。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/34110426/does-java-support-lets-encrypt-certificates"&gt;stackoverflow&lt;/a&gt; 上有人說了，Oracle Java 8u101 就會放進 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;在弄 Jenkins windows slave 的時候踩到 Java 還沒有把 &lt;a href="https://letsencrypt.org"&gt;Let's Encrypt&lt;/a&gt; 的根憑證放到信任清單中。弄了半天才真的搞定。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/34110426/does-java-support-lets-encrypt-certificates"&gt;stackoverflow&lt;/a&gt; 上有人說了，Oracle Java 8u101 就會放進去了。&lt;/p&gt;
+&lt;p&gt;ref. &lt;a href="https://bugs.openjdk.java.net/browse/JDK-8154757"&gt;JDK-8154757&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="java"></category><category term="tls"></category><category term="letsencrypt"></category></entry><entry><title>P2P money transfer</title><link href="https://blog.s10g.tw/posts/2016/07/01/p2p-money-transfer/" rel="alternate"></link><published>2016-07-01T12:33:44+08:00</published><updated>2016-07-01T12:33:44+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-07-01:/posts/2016/07/01/p2p-money-transfer/</id><summary type="html">&lt;p&gt;今天聽 &lt;a href="http://softwareengineeringdaily.com/2016/06/30/p2p-money-transfer-with-transferwises-harsh-sinha/"&gt;SE daily&lt;/a&gt; 講 P2P money transfer 的創業公司。聽到就覺得這就是地下匯兌呀！
+配合另外一則 &lt;a href="http://mp.weixin.qq.com/s?__biz=MzA3NjU0NDEwOQ%3D%3D&amp;amp;from=timeline&amp;amp;idx=3&amp;amp;isappinstalled=0&amp;amp;mid=2757831866&amp;amp;scene=2&amp;amp;sn=c69bbae16ab1df49c76181fbb9c61a91&amp;amp;srcid=0630X3eB6a5EfKmQXWjOcZqV"&gt;消息&lt;/a&gt;
+講到支付寶的餘額支付受到監管機 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;今天聽 &lt;a href="http://softwareengineeringdaily.com/2016/06/30/p2p-money-transfer-with-transferwises-harsh-sinha/"&gt;SE daily&lt;/a&gt; 講 P2P money transfer 的創業公司。聽到就覺得這就是地下匯兌呀！
+配合另外一則 &lt;a href="http://mp.weixin.qq.com/s?__biz=MzA3NjU0NDEwOQ%3D%3D&amp;amp;from=timeline&amp;amp;idx=3&amp;amp;isappinstalled=0&amp;amp;mid=2757831866&amp;amp;scene=2&amp;amp;sn=c69bbae16ab1df49c76181fbb9c61a91&amp;amp;srcid=0630X3eB6a5EfKmQXWjOcZqV"&gt;消息&lt;/a&gt;
+講到支付寶的餘額支付受到監管機關的要求，一年的餘額支付額度只有 20 萬人民幣。&lt;/p&gt;
+&lt;p&gt;SE daily 訪問的那家公司主要做的生意是讓有需要跨境匯款的人可以用中價來買賣匯兌。對銀行來說，這就是地下匯兌。
+TransferWise 這家公司端要面對的風險首見的就是匯兌情況中產生的不同貨幣持有比例的大額改變所產生的匯兌風險。
+不過對使用者來說，的確真的是很方便。&lt;/p&gt;
+&lt;p&gt;支付寶的餘額支付被限制成最高一年只有 20 萬人民幣，但是其他的關聯的支付方式沒有被管制。這算是保護銀行的機制。&lt;/p&gt;
+&lt;p&gt;FinTech 要面對的問題最重要的應該就是法規了吧。單純工程師的技術力是無法簡單解決的。&lt;/p&gt;</content><category term="note"></category><category term="fintech"></category></entry><entry><title>CI Skip build</title><link href="https://blog.s10g.tw/posts/2016/06/27/ci-skip-build/" rel="alternate"></link><published>2016-06-27T15:37:00+08:00</published><updated>2016-06-27T15:37:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-06-27:/posts/2016/06/27/ci-skip-build/</id><content type="html">&lt;p&gt;gitlab-ci, travis-ci, circle-ci 跟 jenkins 都支援 &lt;code&gt;[ci skip]&lt;/code&gt; 來跳過 commit build。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;messages&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ci&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;skip&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;其中 jenkins 要裝 plugin。&lt;/p&gt;</content><category term="note"></category><category term="ci"></category><category term="automation"></category><category term="sysop"></category></entry><entry><title>TRex</title><link href="https://blog.s10g.tw/posts/2016/06/22/trex/" rel="alternate"></link><published>2016-06-22T23:00:00+08:00</published><updated>2016-06-22T23:00:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-06-22:/posts/2016/06/22/trex/</id><summary type="html">&lt;p&gt;&lt;a href="https://trex-tgn.cisco.com" title="TRex"&gt;TRex&lt;/a&gt; 是一個封包產生軟體。底層使用 &lt;a href="http://dpdk.org/"&gt;DPDK&lt;/a&gt;。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。&lt;/p&gt;
+&lt;p&gt;TRex 可以裝在 x86 的設備上 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://trex-tgn.cisco.com" title="TRex"&gt;TRex&lt;/a&gt; 是一個封包產生軟體。底層使用 &lt;a href="http://dpdk.org/"&gt;DPDK&lt;/a&gt;。目前看起來因為 DPDK 的關係，網卡只能用某些 intel 晶片的網路卡。&lt;/p&gt;
+&lt;p&gt;TRex 可以裝在 x86 的設備上，希望可以在自動化測試上有所幫助。&lt;/p&gt;
+&lt;p&gt;從 &lt;a href="https://trex-tgn.cisco.com/trex/doc/trex_book.pdf"&gt;手冊 (pdf)&lt;/a&gt; 看來的資訊：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;產生並分析 L4-L7 的封包&lt;/li&gt;
+&lt;li&gt;基於實際流量的模版來產生流量&lt;/li&gt;
+&lt;li&gt;虛擬網卡也可以跑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;硬體現在沒有什麼特別的限制，但是未來不一定。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A high-end UCS platform is not required for operating TRex in its current
+version, but may be required for future versions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;網卡的支援很少，支援的卡簡單查了一下都是一萬台幣起跳。可以用 ESXi 的虛擬網卡讓不支援的網卡可以使用。&lt;/p&gt;
+&lt;p&gt;目前看起來也許用 iperf3 會比較簡單。&lt;/p&gt;</content><category term="note"></category><category term="trex"></category><category term="linux"></category><category term="tool"></category></entry><entry><title>apt preferences pinning</title><link href="https://blog.s10g.tw/posts/2014/02/21/apt-preferences-pinning/" rel="alternate"></link><published>2014-02-21T15:10:26+08:00</published><updated>2014-02-21T15:10:26+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2014-02-21:/posts/2014/02/21/apt-preferences-pinning/</id><summary type="html">&lt;p&gt;將 debian stable 加入 testing 但是只在需要安裝 testing 套件的時候才安裝。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;/etc/apt/sources.list&lt;/code&gt; 加入 &lt;code&gt;testing&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;/etc/apt/preferences.d/&lt;/code&gt; 建立 &lt;code&gt;testing&lt;/code&gt; 檔案。內容如下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Package: *
+Pin: release a=testing …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;將 debian stable 加入 testing 但是只在需要安裝 testing 套件的時候才安裝。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;/etc/apt/sources.list&lt;/code&gt; 加入 &lt;code&gt;testing&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;/etc/apt/preferences.d/&lt;/code&gt; 建立 &lt;code&gt;testing&lt;/code&gt; 檔案。內容如下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Package: *
+Pin: release a=testing
+Pin-Priority: 200
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;這樣就可以在 &lt;code&gt;aptitude&lt;/code&gt; 中選擇 &lt;code&gt;testing&lt;/code&gt; 的套件。或是用 &lt;code&gt;apt-get -t testing install &amp;lt;package&amp;gt;&lt;/code&gt; or &lt;code&gt;aptitude -t testing&lt;/code&gt; 來指定安裝 &lt;code&gt;testing&lt;/code&gt; 套件。&lt;/p&gt;</content><category term="note"></category><category term="apt"></category><category term="preferences"></category><category term="debian"></category></entry><entry><title>Line 合併 whoscall 並開放專業版功能</title><link href="https://blog.s10g.tw/posts/2014/01/07/line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng/" rel="alternate"></link><published>2014-01-07T15:39:55+08:00</published><updated>2014-01-07T15:39:55+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2014-01-07:/posts/2014/01/07/line-he-bing-whoscall-bing-kai-fang-zhuan-ye-ban-gong-neng/</id><summary type="html">&lt;p&gt;Whoscall 在加入 Line 母公司之後開放了原本專業版的功能。對於全體使用者來說是一件很好的事情，但是對一開始付費支持的使 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Whoscall 在加入 Line 母公司之後開放了原本專業版的功能。對於全體使用者來說是一件很好的事情，但是對一開始付費支持的使用者來講有一點像是付出的感情收不回來一樣。支持原本的終生專業版，到現在沒有感受到對早期付費使用者的重視。&lt;/p&gt;
+&lt;p&gt;當然，實際上來說付費使用者的權益是沒有消失的，只是情感上容易讓人感到欺騙與受傷。因為如此，所以想了解一下官方是不是有什麼類似「感謝方案」之類的活動或是其他的特惠。在聯絡了官方客服之後得到了最重要的一點也是唯一的一點，就是退費機制。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;只有七天內購買的可以退費&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;對於購買無限期版本的消費者，
+雖然無限期版本沒有提供七天的試用期，
+我們接受七天內無條件退款。
+但是超過七天的消費者，
+很抱歉我們無法提供您退款的需求。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;附上原始來信&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Dear user
+
+造成您的不愉快，我們感到相當抱歉，使用者對我們是非常重要也十分被我們重視的，
+我們從不敢輕忽任何使用者，未來我們會做出更多的努力來證明我們的誠意。
+
+whoscall 從 2012 年上線至現在的一年半內，已累積了全球超過六百萬的下載量。我
+們從一個不到十人的小團隊，到現在有這樣亮眼的成績，我們十分感謝使用者們給予我
+們的回饋，因為有了你們的鼓勵、以及建議，團隊才有這麼多的能量跟勇氣，讓我們走
+到現在。
+
+現在，whoscall 有能力提供所有使用者一致且高品質的服務，團隊希望透過資源分享的
+最大化，打造一個更符合用戶體驗的優質國際性服務。我們決定自 2014 年 1 月 7 日起，
+whoscall 專業版的所有服務及功能將免費提供給全球用戶使用。在未來的日子裡，我們
+會繼續致力於產品的開發，更專注於使用者的需求，期盼能夠給各位一個更愉悅以及生活
+化的使用經驗。
+
+
+對於購買無限期版本的消費者，
+雖然無限期版本沒有提供七天的試用期，
+我們接受七天內無條件退款。
+但是超過七天的消費者，
+很抱歉我們無法提供您退款的需求。
+
+Q&amp;amp;A 
+Q1. 我一定要升級嗎？不升級會怎麼樣呢？                                           
+A1. 目前不升級到最新版本並不會影響軟體的使用，而且資料庫我們仍會持續更新。
+Q2. 升級後可以退費嗎？                                                                       
+A2. 升級之後您所購買的功能仍全數支援，目前退費僅提供七天內購買之使用者。
+    已購買專業版的使用者，我們將會保留您的購買資料，未來會提供更好的功能服務。
+
+Should you have any questions, please contact us by our service mail.
+We will be more than happy to meet your needs. Thank you.
+
+whoscall 
+Always at your service :)
+Service Hour: Mon-Fri, 09:00-17:00 (GMT+8)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="note"></category><category term="line"></category><category term="whoscall"></category><category term="apps"></category></entry><entry><title>gitlab cannot locate ruby with rvm</title><link href="https://blog.s10g.tw/posts/2013/10/25/gitlab-cannot-locate-ruby-with-rvm/" rel="alternate"></link><published>2013-10-25T11:32:00+08:00</published><updated>2013-10-25T11:32:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-10-25:/posts/2013/10/25/gitlab-cannot-locate-ruby-with-rvm/</id><summary type="html">&lt;p&gt;Gitlab 安裝時若採用 rvm 的 ruby 而不是安裝在 system 上，在 push 的時候會被抱怨找不到 ruby 或是執行到系統的 ruby。&lt;/p&gt;
+&lt;p&gt;最簡單的解決方式：將 user …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Gitlab 安裝時若採用 rvm 的 ruby 而不是安裝在 system 上，在 push 的時候會被抱怨找不到 ruby 或是執行到系統的 ruby。&lt;/p&gt;
+&lt;p&gt;最簡單的解決方式：將 user git 的 .bashrc 中的 &lt;code&gt;PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting&lt;/code&gt; 移到最前面就可以了。&lt;/p&gt;</content><category term="note"></category><category term="git"></category><category term="gitlab"></category><category term="rvm"></category><category term="ruby"></category></entry><entry><title>Django setting 設定相對路徑</title><link href="https://blog.s10g.tw/posts/2013/08/14/django-setting-she-ding-xiang-dui-lu-jing/" rel="alternate"></link><published>2013-08-14T14:12:00+08:00</published><updated>2013-08-14T14:12:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-08-14:/posts/2013/08/14/django-setting-she-ding-xiang-dui-lu-jing/</id><summary type="html">&lt;p&gt;Django 的 &lt;code&gt;settings.py&lt;/code&gt; 中要設定相關的 template, media 路徑都需要絕對路行。但是往往我們需要相對路徑來符合實際需求。&lt;/p&gt;
+&lt;p&gt;只要在 &lt;code&gt;settings.py&lt;/code&gt; 加入簡單 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Django 的 &lt;code&gt;settings.py&lt;/code&gt; 中要設定相關的 template, media 路徑都需要絕對路行。但是往往我們需要相對路徑來符合實際需求。&lt;/p&gt;
+&lt;p&gt;只要在 &lt;code&gt;settings.py&lt;/code&gt; 加入簡單的幾行就可以達成這個需求。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt;
+
+&lt;span class="n"&gt;DJANGO_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;SITE_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;DJANGO_PATH&lt;/code&gt; 與&lt;code&gt;SITE_PATH&lt;/code&gt; 這兩個變數就可以在後面使用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;MEDIA_ROOT = os.path.join(SITE_PATH, &amp;#39;assets&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;搞定，收工。&lt;/p&gt;</content><category term="note"></category><category term="python"></category><category term="django"></category></entry><entry><title>SVN 回復修改</title><link href="https://blog.s10g.tw/posts/2013/08/14/svn-hui-fu-xiu-gai/" rel="alternate"></link><published>2013-08-14T10:35:00+08:00</published><updated>2013-08-14T10:35:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-08-14:/posts/2013/08/14/svn-hui-fu-xiu-gai/</id><content type="html">&lt;p&gt;svn 要回復已 commit 的修改很簡單。直接 merge backward diff 就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;svn merge -r n:n-1 ^/trunk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;參考 &lt;a href="http://stackoverflow.com/questions/814433/how-do-i-return-to-an-older-version-of-our-code-in-subversion"&gt;stackoverflow: How do I return to an older version of our code in Subversion?&lt;/a&gt; 與 &lt;a href="http://svnbook.red-bean.com/en/1.2/svn.branchmerge.commonuses.html#svn.branchmerge.commonuses.undo"&gt;SVN redbook&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="svn"></category></entry><entry><title>pyenv</title><link href="https://blog.s10g.tw/posts/2013/08/13/pyenv/" rel="alternate"></link><published>2013-08-13T18:09:00+08:00</published><updated>2013-08-13T18:09:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-08-13:/posts/2013/08/13/pyenv/</id><content type="html">&lt;p&gt;&lt;a href="https://github.com/yyuu/pyenv"&gt;pyenv&lt;/a&gt; 好用。相較於 pythonbrew 或是 pythonz 來說， pyenv 光可以自動切換環境這件事就讓人覺得很舒服了。&lt;/p&gt;</content><category term="note"></category><category term="python"></category><category term="pyenv"></category></entry><entry><title>Redmine 升級與更換資料庫</title><link href="https://blog.s10g.tw/posts/2013/05/14/redmine-sheng-ji-yu-geng-huan-zi-liao-ku/" rel="alternate"></link><published>2013-05-14T20:25:00+08:00</published><updated>2013-05-14T20:25:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-05-14:/posts/2013/05/14/redmine-sheng-ji-yu-geng-huan-zi-liao-ku/</id><summary type="html">&lt;p&gt;最近要把 Redmine 從 1.1.0 升級到最新的 2.3.1。附帶將資料庫從 MySQL 換成 PostgreSQL。跑去了 &lt;a href="http://serverfault.com/questions/506884/how-to-migrate-old-redmine-server-to-new-one-with-version-upgrade-and-database-c"&gt;serverfault&lt;/a&gt;
+問這個應該怎麼做比較安全。配合一些工 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近要把 Redmine 從 1.1.0 升級到最新的 2.3.1。附帶將資料庫從 MySQL 換成 PostgreSQL。跑去了 &lt;a href="http://serverfault.com/questions/506884/how-to-migrate-old-redmine-server-to-new-one-with-version-upgrade-and-database-c"&gt;serverfault&lt;/a&gt;
+問這個應該怎麼做比較安全。配合一些工具之後，升級一點痛苦也沒有。&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;幾個主要的重點。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;搬資料庫用 taps 很方便。可以把整個 database 搬好。Table 應該都有搬過來。只有兩個重點要注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UTF8 的問題。這個可以在 taps 的 server 端加上 &lt;code&gt;?encoding=UTF8&lt;/code&gt; 來解決。&lt;/li&gt;
+&lt;li&gt;RACK 相依性的問題。這個安裝 Rack 1.0.1 就可以了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gem install taps
+gem uninstall rack
+gem install rack --version &lt;span class="m"&gt;1&lt;/span&gt;.0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在新的機器上準備好 redmine。再把資料庫跟信箱的設定設好。就可以執行 db:migrate 了。&lt;/li&gt;
+&lt;li&gt;我用 thin 配合 nginx。要記得在 &lt;code&gt;Gemfile.local&lt;/code&gt; 加上 &lt;code&gt;thin&lt;/code&gt; 這個 gem。不然在 rvm 的環境下會跑不起來。&lt;/li&gt;
+&lt;/ol&gt;</content><category term="note"></category><category term="redmine"></category><category term="ruby"></category><category term="sysadmin"></category></entry><entry><title>Clear putty cache</title><link href="https://blog.s10g.tw/posts/2013/03/28/clear-putty-cache/" rel="alternate"></link><published>2013-03-28T16:42:00+08:00</published><updated>2013-03-28T16:42:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-03-28:/posts/2013/03/28/clear-putty-cache/</id><content type="html">&lt;p&gt;PuTTY 的 ssh 連線可以把 host key cache 起來。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;上面這個就是 host key 存的地方。找到相對應的機碼就可以刪掉了。&lt;/p&gt;</content><category term="note"></category><category term="putty"></category><category term="windows"></category></entry><entry><title>Debian Squeeze install python 2.7 via pythonz</title><link href="https://blog.s10g.tw/posts/2013/03/08/debian-squeeze-install-python-27-via-pythonz/" rel="alternate"></link><published>2013-03-08T16:05:00+08:00</published><updated>2013-03-08T16:05:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-03-08:/posts/2013/03/08/debian-squeeze-install-python-27-via-pythonz/</id><summary type="html">&lt;p&gt;要配合 vitrualenv 有幾個重點：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安裝 pythonz&lt;/li&gt;
+&lt;li&gt;用 pythonz 安裝 2.7.x&lt;/li&gt;
+&lt;li&gt;從 pythonz 的 build.log 來看少哪些 module，把相對應的 dev package 補上。&lt;/li&gt;
+&lt;li&gt;再把裝好的 python 2.7.x 路徑 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;要配合 vitrualenv 有幾個重點：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;安裝 pythonz&lt;/li&gt;
+&lt;li&gt;用 pythonz 安裝 2.7.x&lt;/li&gt;
+&lt;li&gt;從 pythonz 的 build.log 來看少哪些 module，把相對應的 dev package 補上。&lt;/li&gt;
+&lt;li&gt;再把裝好的 python 2.7.x 路徑放到 PATH。&lt;/li&gt;
+&lt;li&gt;安裝 &lt;code&gt;easy_install&lt;/code&gt; (setuptools)&lt;/li&gt;
+&lt;li&gt;安裝 &lt;code&gt;pip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;從 &lt;code&gt;pip&lt;/code&gt; 安裝 &lt;code&gt;vitrualenv&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;參考 &lt;a href="http://note.harajuku-tech.org/pythonz-install-debian-squeeze"&gt;pythonz install Debian Squeeze&lt;/a&gt;&lt;/p&gt;</content><category term="note"></category><category term="debian"></category><category term="squeeze"></category><category term="python"></category></entry><entry><title>CentOS 5 使用 debootstrap 安裝 Debian Wheezy</title><link href="https://blog.s10g.tw/posts/2013/03/08/centos-5-shi-yong-debootstrap-an-zhuang-debian-wheezy/" rel="alternate"></link><published>2013-03-08T11:47:00+08:00</published><updated>2013-03-08T11:47:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-03-08:/posts/2013/03/08/centos-5-shi-yong-debootstrap-an-zhuang-debian-wheezy/</id><content type="html">&lt;p&gt;CentOS5 要裝 wheezy 裝不起來。只能改裝 Squeeze。&lt;/p&gt;</content><category term="note"></category><category term="centos"></category><category term="debian"></category><category term="squeeze"></category><category term="chroot"></category><category term="wheezy"></category></entry><entry><title>MySQL 設定 utf8 為預設 charset</title><link href="https://blog.s10g.tw/posts/2013/02/13/debian-mysql-default-charset-in-utf8/" rel="alternate"></link><published>2013-02-13T23:41:00+08:00</published><updated>2013-02-13T23:41:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-02-13:/posts/2013/02/13/debian-mysql-default-charset-in-utf8/</id><summary type="html">&lt;p&gt;因為 debian 預設還是 latin1 所以找了一下如何設定。有一種設定在 5.5.x(不確定哪一版開始) 之後會讓 mysqld 開不起來。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[mysqld]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;上面這 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為 debian 預設還是 latin1 所以找了一下如何設定。有一種設定在 5.5.x(不確定哪一版開始) 之後會讓 mysqld 開不起來。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[mysqld]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;上面這個設定是錯的，底下才是對的。&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[client]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8mb4&lt;/span&gt;
+
+&lt;span class="k"&gt;[mysql]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8mb4&lt;/span&gt;
+
+&lt;span class="k"&gt;[mysqld]&lt;/span&gt;
+&lt;span class="na"&gt;character-set-client-handshake&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;FALSE&lt;/span&gt;
+&lt;span class="na"&gt;character-set-server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8mb4&lt;/span&gt;
+&lt;span class="na"&gt;collation-server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8mb4_unicode_ci&lt;/span&gt;
+&lt;span class="na"&gt;init-connect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;SET NAMES utf8mb4&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;mysqld 的部分不能用 &lt;code&gt;default-character-set&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;找了一下資料才發現 &lt;code&gt;utf8&lt;/code&gt; 與 &lt;code&gt;utf8mb4&lt;/code&gt; 不同。MySQL 中 &lt;code&gt;utf8mb4&lt;/code&gt; 才能完全紀錄 unicode 的碼點。
+可以參考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://mathiasbynens.be/notes/mysql-utf8mb4"&gt;How to support full Unicode in MySQL databases&lt;/a&gt; (&lt;a href="http://mathiasbynens.be/"&gt;Mathias Bynens&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://dev.mysql.com/doc/refman/5.5/en/charset-unicode-utf8mb4.html"&gt;The utf8mb4 Character Set (4-Byte UTF-8 Unicode Encoding)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/3513773/change-mysql-default-character-set-to-utf8-in-my-cnf"&gt;change mysql default character set to UTF8 in my.cnf?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="note"></category><category term="mysql"></category><category term="utf8"></category><category term="utf8mb4"></category><category term="unicode"></category></entry><entry><title>12306 ticket helper 猛擊 github</title><link href="https://blog.s10g.tw/posts/2013/01/16/12306-ticket-helper/" rel="alternate"></link><published>2013-01-16T00:28:00+08:00</published><updated>2013-01-16T00:28:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-01-16:/posts/2013/01/16/12306-ticket-helper/</id><summary type="html">&lt;p&gt;12306 ticket helper 是一個輔助在 12306.cn 定票的 plugin。&lt;/p&gt;
+&lt;p&gt;這個 plugin 的程式碼放在 github 上。因為春運搶票，而導致 github 被廣大的
+購票用戶存取，進而影響 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;12306 ticket helper 是一個輔助在 12306.cn 定票的 plugin。&lt;/p&gt;
+&lt;p&gt;這個 plugin 的程式碼放在 github 上。因為春運搶票，而導致 github 被廣大的
+購票用戶存取，進而影響 github 的穩定。&lt;/p&gt;
+&lt;p&gt;Github 的員工還特地來開 &lt;a href="https://github.com/iccfish/12306_ticket_helper/issues/16"&gt;issue #16&lt;/a&gt; 請作者協助處理。這種用戶量真的是太驚人了。
+完全不是一般用 octopress 架這種簡單 blog 可以比擬的。&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;作者 &lt;a href="https://github.com/iccfish"&gt;iccfish&lt;/a&gt; 有在 &lt;a href="https://github.com/iccfish/12306_ticket_helper/issues/16"&gt;issue #16&lt;/a&gt; 提了主要原因。
+簡單來說就是 github 有流量限制，當達到的時候會回應 403 的 status code。
+而這反而造成 plugin 五秒後再去要一次，這麼一來就變成惡性循環了。&lt;/p&gt;
+&lt;p&gt;所以結論就是 GFW 真的是要保護牆外的廣大世界人民。&lt;/p&gt;</content><category term="note"></category><category term="github"></category><category term="ddos"></category><category term="event"></category></entry><entry><title>國泰世華的 android app</title><link href="https://blog.s10g.tw/posts/2013/01/14/cathay-bank-android-app/" rel="alternate"></link><published>2013-01-14T19:11:00+08:00</published><updated>2013-01-14T19:11:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2013-01-14:/posts/2013/01/14/cathay-bank-android-app/</id><summary type="html">&lt;p&gt;國泰世華的 android app 還不錯，不過個人對於為了讓 icon 排到
+第一個而把軟體的名字最前面加上一個星號「*」這種方式覺得很無
+言 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;國泰世華的 android app 還不錯，不過個人對於為了讓 icon 排到
+第一個而把軟體的名字最前面加上一個星號「*」這種方式覺得很無
+言。&lt;/p&gt;
+&lt;p&gt;雖然這也是一個方便使用者的方法，而且中文的排序本來就不像英文
+這麼單純。但是這樣子很醜呀！&lt;/p&gt;</content><category term="note"></category><category term="android"></category><category term="bank"></category></entry><entry><title>GMail 不支援自行簽署的憑證</title><link href="https://blog.s10g.tw/posts/2012/12/21/gmail-pop3s-and-self-signed-ca/" rel="alternate"></link><published>2012-12-21T11:10:00+08:00</published><updated>2012-12-21T11:10:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2012-12-21:/posts/2012/12/21/gmail-pop3s-and-self-signed-ca/</id><summary type="html">&lt;p&gt;從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。&lt;/p&gt;
+&lt;p&gt;從 2012/12/06 更新的 &lt;a href="https://support.google.com/mail/bin/answer.py?hl=zh-Hant&amp;amp;answer=21291" title="擷取郵件時一律使用安全連線 (SSL)"&gt;官方說明&lt;/a&gt; 可以看到。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我們不接 …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;從 12 月 13 日開始，GMail 已經不支援自己簽發的憑證。為了安全性，但是很不方便。&lt;/p&gt;
+&lt;p&gt;從 2012/12/06 更新的 &lt;a href="https://support.google.com/mail/bin/answer.py?hl=zh-Hant&amp;amp;answer=21291" title="擷取郵件時一律使用安全連線 (SSL)"&gt;官方說明&lt;/a&gt; 可以看到。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我們不接受自行簽署的憑證。有效的憑證必須連結至有效的 CA，例如「Mozilla CA 清單」。&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="note"></category><category term="gmail"></category><category term="pop3"></category><category term="ssl"></category></entry><entry><title>Linux 控制流量的軟體 trickle</title><link href="https://blog.s10g.tw/posts/2012/12/19/trickle/" rel="alternate"></link><published>2012-12-19T20:58:00+08:00</published><updated>2012-12-19T20:58:00+08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2012-12-19:/posts/2012/12/19/trickle/</id><summary type="html">&lt;p&gt;軟體備忘，trickle。我都用來限制 git pull 的速度，尤其是在更新 android 的 source code 的時候。&lt;/p&gt;
+&lt;p&gt;像是 git 沒辦法限速的軟體，可以使用 &lt;code&gt;trickle -d 100 git pull&lt;/code&gt; 的 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;軟體備忘，trickle。我都用來限制 git pull 的速度，尤其是在更新 android 的 source code 的時候。&lt;/p&gt;
+&lt;p&gt;像是 git 沒辦法限速的軟體，可以使用 &lt;code&gt;trickle -d 100 git pull&lt;/code&gt; 的方式來限制。馬上就把大洪水變成涓涓細流了。&lt;/p&gt;</content><category term="note"></category><category term="linux"></category><category term="software"></category></entry></feed>

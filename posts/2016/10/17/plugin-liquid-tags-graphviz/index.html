@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<meta name="author" content="Solomon Huang" />
+<meta name="description" content="為了之後要畫圖方便，加裝了 ligquid tags 的 plugin。方法很簡單只要加入 PLUGIN_PATHS 與 PLUGIN 即可。 :::python PLUGIN_PATHS = [&#39;../pelican-plugins&#39;] PLUGINS = [&#39;liquid_tags.graphviz&#39;] 之後底下的 dot 語言就可以 …" />
+<meta name="keywords" content="graphviz, pelican, python">
+
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:title" content="Pelican 裝 ligquid tags plugin"/>
+<meta property="og:description" content="為了之後要畫圖方便，加裝了 ligquid tags 的 plugin。方法很簡單只要加入 PLUGIN_PATHS 與 PLUGIN 即可。 :::python PLUGIN_PATHS = [&#39;../pelican-plugins&#39;] PLUGINS = [&#39;liquid_tags.graphviz&#39;] 之後底下的 dot 語言就可以 …"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-10-17 00:19:48-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://blog.s10g.tw/author/solomon-huang.html">
+<meta property="article:section" content="note"/>
+<meta property="article:tag" content="graphviz"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="article:tag" content="python"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash; Pelican 裝 ligquid tags plugin</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="plugin-liquid-tags-graphviz">Pelican 裝 ligquid tags plugin</h1>
+    <p>
+          Posted on Mon 17 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>為了之後要畫圖方便，加裝了 <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">ligquid tags</a> 的 plugin。方法很簡單只要加入 <code>PLUGIN_PATHS</code> 與 <code>PLUGIN</code> 即可。</p>
+<div class="highlight"><pre><span></span><code>:::python
+PLUGIN_PATHS = [&#39;../pelican-plugins&#39;]
+PLUGINS = [&#39;liquid_tags.graphviz&#39;]
+</code></pre></div>
+
+<p>之後底下的 dot 語言就可以畫出 graphviz 的圖了。</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="c">% graphviz</span><span class="w"></span>
+<span class="w">    </span><span class="nb">dot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nb">digraph</span><span class="w"> </span><span class="n">graphname</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="c">%}</span><span class="w"></span>
+</code></pre></div>
+
+<p><span class="graphviz" style="text-align: center;"><img src="data:image/png;base64,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"></span></p>
+<h3>但是</h3>
+<p>因為我用的是 Python 3 會因為 <code>base64.b64encode</code> 會輸出 byte string。這會導致 inline base64 encodeing 的格式跑掉，所以圖會出不來。改了一下程式碼發了個 <a href="https://github.com/getpelican/pelican-plugins/pull/798">PR #798</a>。</p>
+<p>底下是 python 3 的執行結果，只要加了 <code>decode('utf-8')</code> 就可以了。</p>
+<div class="highlight"><pre><span></span><code>:::python
+&gt;&gt;&gt; print(base64.b64encode(b&#39;\01&#39;))
+b&#39;AQ==&#39;
+&gt;&gt;&gt; print(base64.b64encode(b&#39;\01&#39;).decode(&#39;utf-8&#39;))
+AQ==
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://blog.s10g.tw/tag/graphviz/">graphviz</a>
+      <a href="https://blog.s10g.tw/tag/pelican/">pelican</a>
+      <a href="https://blog.s10g.tw/tag/python/">python</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 's10g';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Solomon's Notebook - ama</title><link href="https://blog.s10g.tw/" rel="alternate"></link><link href="https://blog.s10g.tw/feeds/ama.atom.xml" rel="self"></link><id>https://blog.s10g.tw/</id><updated>2016-09-09T00:02:46-08:00</updated><entry><title>如何轉換跑道去寫程式</title><link href="https://blog.s10g.tw/posts/2016/09/09/start-programming/" rel="alternate"></link><published>2016-09-09T00:02:46-08:00</published><updated>2016-09-09T00:02:46-08:00</updated><author><name>Solomon Huang</name></author><id>tag:blog.s10g.tw,2016-09-09:/posts/2016/09/09/start-programming/</id><summary type="html">&lt;p&gt;因為 &lt;a href="/posts/2016/09/08/cs-graduate-school/"&gt;準備資工所考試的心得&lt;/a&gt; 貼在 PTT 的研究所板(graduate) 然後就被問如何轉換跑道去寫程式的。其實我的答案就只有一個&lt;/p&gt;
+&lt;h1&gt;怎麼 …&lt;/h1&gt;</summary><content type="html">&lt;p&gt;因為 &lt;a href="/posts/2016/09/08/cs-graduate-school/"&gt;準備資工所考試的心得&lt;/a&gt; 貼在 PTT 的研究所板(graduate) 然後就被問如何轉換跑道去寫程式的。其實我的答案就只有一個&lt;/p&gt;
+&lt;h1&gt;怎麼開始的&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;小時候在小叔叔的 APPLE II 前用 BASIC 寫出九九乘法表，當時候還先把程式碼寫在習作簿上面之後，再一個字一個字打進去。&lt;/li&gt;
+&lt;li&gt;為了玩電動，去書店看書背 arj 指令，然後回家解壓縮。找資料改 &lt;code&gt;CONFIG.SYS&lt;/code&gt; 及 &lt;code&gt;AUTOEXEC.BAT&lt;/code&gt;，來讓記憶體可以玩遊戲還可以多重開機來選不同遊戲！&lt;/li&gt;
+&lt;li&gt;為了修改遊戲，在使用遊戲修改大師的時候學會了十進制與十六進制的轉換，小時候一直不能理解明明十進制的 &lt;code&gt;999&lt;/code&gt; 在十六進制下明明是 &lt;code&gt;0x3E7&lt;/code&gt;，但是遊戲修大師就是要填 &lt;code&gt;E7 03&lt;/code&gt;。一直到後來學到 endian 才明白真正的原因。&lt;/li&gt;
+&lt;li&gt;為了找資料，學會了 modem 撥接上 dial-up BBS。&lt;/li&gt;
+&lt;li&gt;為了玩 MUD，買了當時有名的黑皮書學安裝 FreeBSD。&lt;/li&gt;
+&lt;li&gt;看到人家說 Debian 很棒，所以就買本有附 Debian 光碟的雜誌回家安裝。然後用 56K modem 上網並執行 &lt;code&gt;apt-get update&lt;/code&gt;做更新！跑一個晚上還更新不了，當月電話費爆量！&lt;/li&gt;
+&lt;li&gt;同時還玩了 DOS/FreeBSD/Linux 多重開機。  &lt;/li&gt;
+&lt;li&gt;書上教自己編核心，就照著編。雖然那時候往往沒有成功，但是看著編譯訊息飛快地捲動就是有一股喜悅。&lt;/li&gt;
+&lt;li&gt;大學外宿的時候，為了讓全棟同學可以一起連線打世紀帝國便架了內網。同時為了大家可以上網，就在不是很理解的情況下弄了 NAT。&lt;/li&gt;
+&lt;li&gt;為了方便大家共享資源，也自己架了 FTP server。從這邊對網路及權限有了更進一步的認識。&lt;/li&gt;
+&lt;li&gt;在有宿網的時候，就是我試著安裝各個 Linux 發行版的時候。&lt;/li&gt;
+&lt;li&gt;服替代役的一年多，有時間就學 C 語言，練習 C 語言。同時也跟 MIS 要了台電腦裝 Mandrake Linux，然後掛無名賺相簿容量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然後退伍前找到工作後，一退伍就去上班了。&lt;/p&gt;
+&lt;h1&gt;程式語言只是工具，解決問題的方法才是重要&lt;/h1&gt;
+&lt;p&gt;其實我一直認為學程式就像是玩積木一樣，把不同功能的部件組合起來就是一個成品。&lt;strong&gt;學習工具就從自己可以懂的先開始&lt;/strong&gt;，不然就是需要別人協助跨過一開始的困難點。&lt;/p&gt;
+&lt;h1&gt;動力怎麼來？就是興趣&lt;/h1&gt;
+&lt;p&gt;前面寫了一大堆歷史流水帳就只是要表達一件事情，那就是興趣。我在計算機領域的主動學習都是因為想要「玩」或是要「解決問題」。但是還有一個重點就是不放棄。我第一次上班的前三個月，每天都在想我明天會不會被開除！每天都覺得自己什麼都弄不清楚，這樣子低落的情緒一直持續到我負責的專案開始有可運行的初版才解除。&lt;/p&gt;
+&lt;p&gt;所以，其實我不是轉換跑道。我只是大學分發落到了當時覺得很有趣的心理系，認識了一些可愛的同學與朋友。但是我的前後志願都是資工系！&lt;/p&gt;</content><category term="ama"></category><category term="programming"></category></entry></feed>

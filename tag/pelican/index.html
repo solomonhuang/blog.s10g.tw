@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://blog.s10g.tw/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://blog.s10g.tw/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solomon's Notebook Atom">
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6289598-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+    <meta name="author" content="Solomon Huang" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Solomon's Notebook"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Solomon's Notebook"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:url" content="https://blog.s10g.tw"/>
+<meta property="og:image" content="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200">
+
+  <title>Solomon's Notebook &ndash;     Tag pelican
+</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://blog.s10g.tw">
+        <img src="https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200" alt="" title="">
+      </a>
+      <h1><a href="https://blog.s10g.tw"></a></h1>
+
+
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/solomonhuang/" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/solomonhuang/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/kai-cheng-huang-4074b356/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://blog.s10g.tw">    Home
+</a>
+
+      <a href="/categories">Categories</a>
+      <a href="/archives">Archives</a>
+      <a href="/tags">Tags</a>
+
+      <a href="https://blog.s10g.tw/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/#plugin-liquid-tags-graphviz">Pelican 裝 ligquid tags plugin</a></h2>
+    <p>
+          Posted on Mon 17 October 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/graphviz/">graphviz</a>,              <a href="https://blog.s10g.tw/tag/pelican/">pelican</a>,              <a href="https://blog.s10g.tw/tag/python/">python</a>
+    </p>
+  </header>
+  <div>
+      <p>為了之後要畫圖方便，加裝了 <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">ligquid tags</a> 的 plugin。方法很簡單只要加入 <code>PLUGIN_PATHS</code> 與 <code>PLUGIN</code> 即可。</p>
+<div class="highlight"><pre><span></span><code>:::python
+PLUGIN_PATHS = [&#39;../pelican-plugins&#39;]
+PLUGINS = [&#39;liquid_tags.graphviz&#39;]
+</code></pre></div>
+
+<p>之後底下的 dot 語言就可以 …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/10/17/plugin-liquid-tags-graphviz/#plugin-liquid-tags-graphviz">    Continue reading
+</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://blog.s10g.tw/posts/2016/07/21/new-post-on-pelican-with-github/#new-post-on-pelican-with-github">用 github 直接新增 blog 文章</a></h2>
+    <p>
+          Posted on Thu 21 July 2016 in <a href="https://blog.s10g.tw/category/note/">note</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://blog.s10g.tw/tag/pelican/">pelican</a>,              <a href="https://blog.s10g.tw/tag/blog/">blog</a>,              <a href="https://blog.s10g.tw/tag/github/">github</a>
+    </p>
+  </header>
+  <div>
+      <p>之前看了 <a href="https://blog.m157q.tw/author/m157q.html">m157q</a> 的 <a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/">用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上</a>
+的文章後，就設定一樣的自動化發怖流程。</p>
+<p>剛剛突然想到，我可以直接在 GitHub …</p>
+      <br>
+      <a class="btn" href="https://blog.s10g.tw/posts/2016/07/21/new-post-on-pelican-with-github/#new-post-on-pelican-with-github">    Continue reading
+</a>
+  </div>
+</article>
+
+  <div class="pagination">
+  </div>
+
+
+
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solomon's Notebook ",
+  "url" : "https://blog.s10g.tw",
+  "image": "https://www.gravatar.com/avatar/09a35c0d580bf63af7dac9bbbd76e0a6?s=200",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
