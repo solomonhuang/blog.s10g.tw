@@ -52,7 +52,7 @@ LINKS = ()
 #          ('Another social link', '#'),)
 SOCIAL = (('github', 'https://github.com/solomonhuang/'),
           ('twitter', 'https://twitter.com/solomonhuang/'),
-          ('linkedin', 'https://tw.linkedin.com/in/solomon-huang-4074b356'))
+          ('linkedin', 'https://www.linkedin.com/in/kai-cheng-huang-4074b356/'))
 
 DEFAULT_PAGINATION = 10
 
