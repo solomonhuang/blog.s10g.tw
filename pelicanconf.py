@@ -15,7 +15,7 @@ ARTICLE_EXCLUDES = ['drafts']
 
 try:
     if os.environ['CI'] == 'true':
-        PLUGIN_PATHS = [os.environ['HOME'] + '/pelican-plugins']
+        PLUGIN_PATHS = ['../pelican-plugins']
     else:
         PLUGIN_PATHS = ['../pelican-plugins']
 except KeyError:
